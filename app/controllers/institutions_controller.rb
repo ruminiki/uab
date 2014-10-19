@@ -29,7 +29,7 @@ class InstitutionsController < ApplicationController
 
   def update
     @institution.update(institution_params)
-    respond_with(@institution)
+    redirect_to action: "index"
   end
 
   def destroy

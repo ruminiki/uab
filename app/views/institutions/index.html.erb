@@ -15,8 +15,8 @@
   <tbody>
     <% @institutions.each do |institution| %>
       <tr>
-        <td><%= link_to institution.id, institution_path(institution) %></td>
-        <td><%= institution.name %></td>
+        <td><%= institution.id %></td>
+        <td><%= link_to institution.name, edit_institution_path(institution)%></td>
         <td><%= institution.phone_number %></td>
         <td><%= institution.email %></td>
         <td>
