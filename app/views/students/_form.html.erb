@@ -1,0 +1,75 @@
+
+<%= form_for @student, :html => { :class => "form-horizontal student" } do |f| %>
+
+    <% if @student.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @student.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@student[:name]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone_number, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_number, :class => 'form-control', :style=> 'max-width: 200px'  %>
+    </div>
+    <%= error_span(@student[:phone_number]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'form-control', :style=> 'max-width: 600px'  %>
+    </div>
+    <%= error_span(@student[:email]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :has_badge, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.check_box :has_badge, :class => 'form-control', :style=> 'max-width: 34px' %>
+    </div>
+    <%= error_span(@student[:has_badge]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :badge_observation, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :badge_observation, :class => 'form-control', :style=> 'max-width: 600px'  %>
+    </div>
+    <%= error_span(@student[:badge_observation]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :birthday, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :birthday, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
+    </div>
+    <%= error_span(@student[:birthday]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'form-control', :style=> 'max-width: 600px'  %>
+    </div>
+    <%= error_span(@student[:address]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            students_path, :class => 'btn btn-default' %>
+
+<% end %>

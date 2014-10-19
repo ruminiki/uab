@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "UAB" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "UAB" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'jquery-ui-min.js' => true %>
+   </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+      <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+    </header>
+    <main role="main">
+       <% if notice %>
+         <p class="alert alert-success"><%= notice %></p>
+       <% end %>
+       <% if alert %>
+         <p class="alert alert-danger"><%= alert %></p>
+       <% end %>
+       <%= content_for?(:content) ? yield(:content) : yield %> 
+    </main>
+    <footer>
+      <div class="container">
+        UAB - Universidade Aberta do Brasil - Polo Foz do Iguaçu <br>
+        Parque Tecnológico Itaipú<br>
+        Av. Tancredo Neves<br>
+      </div>
+      </footer>
+  </body>
+</html>
