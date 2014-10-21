@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018185730) do
+ActiveRecord::Schema.define(version: 20141019012938) do
 
-  create_table "addresses", force: true do |t|
-    t.string   "description"
-    t.string   "zip"
-    t.integer  "number"
-    t.integer  "institution_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "coordinators", force: true do |t|
+  create_table "cities", force: true do |t|
     t.string   "name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.integer  "institution_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,17 +28,8 @@ ActiveRecord::Schema.define(version: 20141018185730) do
     t.datetime "updated_at"
   end
 
-  create_table "students", force: true do |t|
-    t.string   "name"
-    t.string   "phone_number"
-    t.string   "email"
-    t.boolean  "has_badge"
-    t.string   "badge_observation"
-    t.date     "birthday"
-    t.string   "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "students" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

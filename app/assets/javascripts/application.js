@@ -12,12 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require autocomplete-rails
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 jQuery(function($){
+
     $(".datepicker").datepicker({
                 dateFormat : "dd/MM/yy",
                 yearRange : "c-20:c+5"
             })
+
 });

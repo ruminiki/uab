@@ -24,7 +24,7 @@ class InstitutionsController < ApplicationController
   def create
     @institution = Institution.new(institution_params)
     @institution.save
-    respond_with(@institution)
+    redirect_to action: "index"
   end
 
   def update

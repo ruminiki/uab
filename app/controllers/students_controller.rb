@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   respond_to :html
-  
+  autocomplete :city, :name, :full => true
+
   def index
     @students = Student.all
     respond_with(@students)
@@ -13,17 +14,21 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @student.city = City.new
     respond_with(@student)
   end
 
   def create
     @student = Student.new(student_params)
+    @student.city = City.find(@student.city)
     @student.save
-    respond_with(@student)
+    redirect_to action: "index"
   end
 
   def update
-    @student.update(student_params)
+    @student = Student.new(student_params)
+    @student.city = City.find(@student.city)
+    @student.update
     redirect_to action: "index"
   end
 
@@ -38,6 +43,6 @@ class StudentsController < ApplicationController
     end
 
     def student_params
-      params.require(:student).permit(:name, :phone_number, :email, :has_badge, :badge_observation, :birthday, :address)
+      params.require(:student).permit(:name, :phone_number, :email, :has_badge, :badge_observation, :birthday, :address, :city_id)
     end
 end

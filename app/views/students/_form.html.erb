@@ -1,5 +1,5 @@
 
-<%= form_for @student, :html => { :class => "form-horizontal student" } do |f| %>
+<%= simple_form_for @student, :html => { :class => "form-horizontal student" } do |f| %>
 
     <% if @student.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -64,6 +64,14 @@
       <%= f.text_field :address, :class => 'form-control', :style=> 'max-width: 600px'  %>
     </div>
     <%= error_span(@student[:address]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :city, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:300px; display: -webkit-box;">
+      <!--<%= f.input :city, :url => autocomplete_city_name_students_path, :as => :autocomplete, :class => 'form-control' %>-->
+      <%= f.select(:city_id, City.all.map{ |c| [c.name, c.id]}, {:value => :city_id}, {:class =>'form-control'})%>
+    </div>
+    <%= error_span(@student[:city]) %>
   </div>
 
   <br>

@@ -1,0 +1,32 @@
+<%= form_for @city, :html => { :class => "form-horizontal city" } do |f| %>
+
+    <% if @city.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@city.errors.count, "error") %> prohibited this city from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @city.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@city[:name]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            cities_path, :class => 'btn btn-default' %>
+
+<% end %>
