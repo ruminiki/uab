@@ -15,6 +15,8 @@
 //= require autocomplete-rails
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 jQuery(function($){
 

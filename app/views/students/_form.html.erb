@@ -1,4 +1,15 @@
+<script type="text/javascript">
+  
+jQuery(function($){
 
+    $(".datepicker").datepicker({
+                dateFormat : "dd/MM/yy",
+                yearRange : "c-20:c+5"
+            })
+
+});
+
+</script>
 <%= simple_form_for @student, :html => { :class => "form-horizontal student" } do |f| %>
 
     <% if @student.errors.any? %>

@@ -1,0 +1,67 @@
+<script type="text/javascript">
+  
+jQuery(function($){
+
+    $(".datepicker").datepicker({
+                dateFormat : "dd/MM/yy",
+                yearRange : "c-20:c+5"
+            })
+
+});
+
+</script>
+<%= simple_form_for @course_class, :html => { :class => "form-horizontal course_class" } do |f| %>
+
+    <% if @course_class.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@course_class.errors.count, "error") %> prohibited this course_class from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @course_class.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@course_class[:name]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :course, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.select(:course_id, Course.all.map{ |c| [c.name, c.id]}, {:value => :course_id}, {:class =>'form-control'})%>
+    </div>
+    <%= error_span(@course_class[:course]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :institution, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.select(:institution_id, Institution.all.map{ |c| [c.name, c.id]}, {:value => :institution_id}, {:class =>'form-control'})%>
+    </div>
+    <%= error_span(@course_class[:institution]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :begin, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :begin, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
+    </div>
+    <%= error_span(@course_class[:begin]) %>
+  </div>
+  <br>
+  <%= error_span(@course_class[:begin]) %>
+
+  <%= f.button :submit, :class => 'col-sm-offset-2 btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                course_classes_path, :class => 'btn btn-default' %>
+<% end %>

@@ -14,21 +14,17 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    @student.city = City.new
     respond_with(@student)
   end
 
   def create
     @student = Student.new(student_params)
-    @student.city = City.find(@student.city)
     @student.save
     redirect_to action: "index"
   end
 
   def update
-    @student = Student.new(student_params)
-    @student.city = City.find(@student.city)
-    @student.update
+    @student.update(student_params)
     redirect_to action: "index"
   end
 
