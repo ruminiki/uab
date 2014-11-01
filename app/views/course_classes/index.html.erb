@@ -18,8 +18,8 @@
       <tr>
         <td><%= link_to course_class.id, course_class_path(course_class) %></td>
         <td><%= link_to course_class.name, edit_course_class_path(course_class) %></td>
-        <td><%= course_class.institution_id %></td>
-        <td><%= course_class.course_id %></td>
+        <td><%= course_class.institution.name %></td>
+        <td><%= course_class.course.acronym %></td>
         <td><%= course_class.begin %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

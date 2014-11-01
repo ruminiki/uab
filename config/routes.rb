@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 	  resources :students do
 	  	get :autocomplete_city_name, :on => :collection
 	  end
-	  resources :course_classes
+	  resources :course_classes do
+	  	get :autocomplete_student_name, :on => :collection
+	  end
 	  resources :cities
 	end
 

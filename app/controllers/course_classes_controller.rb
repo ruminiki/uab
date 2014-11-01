@@ -1,9 +1,12 @@
 class CourseClassesController < ApplicationController
+  
   before_action :set_course_class, only: [:show, :edit, :update, :destroy]
   respond_to :html
+  autocomplete :student, :name
+
 
   def index
-    @course_classes = CourseClass.all
+    @course_classes = CourseClass.joins(:institution, :course)
     respond_with(@course_classes)
   end
 

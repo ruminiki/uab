@@ -5,7 +5,11 @@ jQuery(function($){
     $(".datepicker").datepicker({
                 dateFormat : "dd/MM/yy",
                 yearRange : "c-20:c+5"
-            })
+    });
+
+    $(function () {
+      $('#myTab a:fisrt').tab('show')
+    });
 
 });
 
@@ -58,10 +62,50 @@ jQuery(function($){
     </div>
     <%= error_span(@course_class[:begin]) %>
   </div>
-  <br>
+
+  <br><br>
+
   <%= error_span(@course_class[:begin]) %>
 
   <%= f.button :submit, :class => 'col-sm-offset-2 btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 course_classes_path, :class => 'btn btn-default' %>
+
+  <br><br>
+
+  <!-- TABS -->
+
+  <ul class="nav nav-tabs" role="tablist" id="myTab">
+    <li role="presentation" class="active"><a href="#students" role="tab" data-toggle="tab">Students</a></li>
+    <li role="presentation"><a href="#documents" role="tab" data-toggle="tab">Documents</a></li>
+    <li role="presentation"><a href="#tutors" role="tab" data-toggle="tab">Tutors</a></li>
+    <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <!-- STUDENTS -->
+    <div role="tabpanel" class="tab-pane active" id="students">
+
+        <div class="control-group">
+          <div class="controls" style="!important padding: 0px; display: inline-flex;">
+            <%= f.input :student, 
+                        :url => autocomplete_student_name_course_classes_path, 
+                        :as => :autocomplete, 
+                        :input_html => { :class => 'form-control', :style => 'max-width: 400px;' } %>
+            <%= f.button :submit, "Add Student", :class => 'col-sm-offset-2 btn-success', 
+                         :style=> 'margin-left: 0px;margin-top: -5px;'%>
+          </div>
+          <%= error_span(@course_class[:begin]) %>
+        </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="documents">...</div>
+    <div role="tabpanel" class="tab-pane" id="tutors">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+  
+  <br>
+
+ 
 <% end %>

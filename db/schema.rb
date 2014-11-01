@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023230926) do
+ActiveRecord::Schema.define(version: 20141025125544) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20141023230926) do
     t.datetime "updated_at"
   end
 
+  create_table "course_classes_students", id: false, force: true do |t|
+    t.integer "student_id"
+    t.integer "course_class_id"
+  end
+
   create_table "courses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -42,6 +47,11 @@ ActiveRecord::Schema.define(version: 20141023230926) do
     t.string   "site"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "student_course_class", id: false, force: true do |t|
+    t.integer "student_id"
+    t.integer "course_class_id"
   end
 
 # Could not dump table "students" because of following NoMethodError
