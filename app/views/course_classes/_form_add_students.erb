@@ -1,0 +1,123 @@
+<%= simple_form_for @course_class, :url => {:action => "add_student", :id => @course_class}, 
+    :html => { :class => "form-horizontal course_class" } do |f| %>
+
+    <% if @course_class.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@course_class.errors.count, "error") %> prohibited this course_class from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @course_class.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="page-header">
+    <h1>Add Students</h1>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, 
+          :class => 'form-control', :style=> 'max-width: 600px;', 
+          :disabled => 'disabled' %>
+    </div>
+    <%= error_span(@course_class[:name]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :course, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.select(:course_id, Course.all.map{ |c| [c.name, c.id]}, {:value => :course_id}, 
+                   html_options = {:class =>'form-control', :disabled => 'disabled'}) %>
+    </div>
+    <%= error_span(@course_class[:course]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :institution, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;" disabled>
+      <%= f.select(:institution_id, Institution.all.map{ |c| [c.name, c.id]}, {:value => :institution_id},           html_options = {:class =>'form-control', :disabled => 'disabled'})%>
+    </div>
+    <%= error_span(@course_class[:institution]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :begin, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :begin, :class => 'form-control datepicker', 
+          :style=> 'max-width: 200px', :disabled => 'disabled' %>
+    </div>
+    <%= error_span(@course_class[:begin]) %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :student, :class => 'col-sm-2 control-label' %>
+      <div class="controls">
+
+        <%= f.input :student, 
+                    :url => autocomplete_student_name_course_classes_path, 
+                    :as => :autocomplete,
+                    label: false,
+                    :input_html => { 
+                      :class => 'form-control', 
+                      :style => 'max-width: 600px;',
+                      :id_element=>'#student_id'
+                    } 
+        %>
+
+        <%= f.hidden_field :student, :id => "student_id" %>
+
+      </div>
+
+      <br>
+
+      <%= link_to 'Add Student', 
+        course_classes_add_student_path(:id=> @course_class.id, :student_id => '3' ), 
+        :class=>'col-sm-offset-2' %>
+
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                edit_course_class_path(@course_class), :class => 'btn btn-default' %>
+  </div>
+
+  <!-- STUDENTS -->
+  <div role="tabpanel" class="tab-pane active" id="students">
+      <%- model_class = Student -%>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= model_class.human_attribute_name(:name) %></th>
+            <th><%= model_class.human_attribute_name(:phone_number) %></th>
+            <th><%= model_class.human_attribute_name(:email) %></th>
+            <th><%= model_class.human_attribute_name(:has_badge) %></th>
+            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @course_class.students.each do |student| %>
+            <tr>
+              <td><%= link_to student.name, edit_student_path(student) %></td>
+              <td><%= student.phone_number %></td>
+              <td><%= student.email %></td>
+              <td><%= student.has_badge %></td>
+              <td>
+                <%= link_to "Remove", 
+                  course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= error_span(@course_class[:begin]) %>
+    
+  </div>
+
+
+ 
+<% end %>

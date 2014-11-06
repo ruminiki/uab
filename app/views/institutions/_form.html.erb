@@ -15,28 +15,28 @@
     </div>
   <% end %>
 
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :name, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
     </div>
     <%= error_span(@institution[:name]) %>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :phone_number, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :phone_number, :class => 'form-control', :style=> 'max-width: 200px' %>
     </div>
     <%= error_span(@institution[:phone_number]) %>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :email, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'form-control', :style=> 'max-width: 600px' %>
     </div>
     <%= error_span(@institution[:email]) %>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :site, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :site, :class => 'form-control', :style=> 'max-width: 600px' %>
