@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025125544) do
+ActiveRecord::Schema.define(version: 20141106192529) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "course_class_students", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "course_class_id"
+    t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,13 +57,18 @@ ActiveRecord::Schema.define(version: 20141025125544) do
     t.datetime "updated_at"
   end
 
-  create_table "student_course_class", id: false, force: true do |t|
-    t.integer "student_id"
-    t.integer "course_class_id"
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "email"
+    t.boolean  "has_badge"
+    t.string   "badge_observation"
+    t.date     "birthday"
+    t.string   "address"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-# Could not dump table "students" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -72,7 +85,7 @@ ActiveRecord::Schema.define(version: 20141025125544) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

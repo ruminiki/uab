@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+  resources :course_class_students
+
 	authenticate :user do
 	  #invoke add student to classes
 	  get "course_classes/redirect_to_add_student" => "course_classes#redirect_to_add_student"	

@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   respond_to :html
-  autocomplete :city, :name, :full => true
+  
+  autocomplete :city, :name
 
   def index
     @students = Student.all

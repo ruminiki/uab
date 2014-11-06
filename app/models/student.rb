@@ -1,7 +1,8 @@
 class Student < ActiveRecord::Base
 
 	belongs_to :city, :autosave => true
-	has_and_belongs_to_many :course_classes
+	has_many :course_class_students
+	has_many :course_classes, :through => :course_class_students
 
 	before_save :upper_case
 
@@ -10,6 +11,14 @@ class Student < ActiveRecord::Base
 		self.email.upcase!
 		self.badge_observation.upcase!
 		self.address.upcase!
+	end
+
+	def city_name
+		city.name if city
+	end
+
+	def city_name=(name)
+		self.city = City.find_or_create_by_name(name) unless name.blank?
 	end
 
 end

@@ -37,10 +37,10 @@ class CitiesController < ApplicationController
 
   private
     def set_city
-      @city = City.find(params[:id])
+      #@city = City.find(params[:id])
     end
 
     def city_params
-      params.require(:city).permit(:name)
+      #params.require(:city).permit(:name)
     end
 end

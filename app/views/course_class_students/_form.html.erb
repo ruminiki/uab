@@ -1,0 +1,13 @@
+<%= simple_form_for(@course_class_student) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :student_id %>
+    <%= f.input :course_class_id %>
+    <%= f.input :note %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

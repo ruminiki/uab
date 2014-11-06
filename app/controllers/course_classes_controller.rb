@@ -38,12 +38,14 @@ class CourseClassesController < ApplicationController
 
   def redirect_to_add_student
     @course_class = CourseClass.find(params[:id])
+    #@course_class_student = CourseClassStudent.find(:first, :conditions => [ "course_class_id = ?", :id])
+    #@course_class_student = CourseClassStudent.new if @course_class_student nil
     render '_form_add_students'
   end
 
   def add_student
     @course_class = CourseClass.find(params[:id])
-    @course_class.students << Student.find(params[:student_id])
+    @course_class.students << Student.find(params[:student])
     @course_class.save
     #redirect_to :back, :notice => "Student added with success!"
     redirect_to :back

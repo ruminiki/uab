@@ -79,8 +79,19 @@ jQuery(function($){
   <div class="form-group">
     <%= f.label :city, :class => 'col-sm-2 control-label' %>
     <div class="controls" style="max-width:300px; display: -webkit-box;">
-      <!--<%= f.input :city, :url => autocomplete_city_name_students_path, :as => :autocomplete, :class => 'form-control' %>-->
-      <%= f.select(:city_id, City.all.map{ |c| [c.name, c.id]}, {:value => :city_id}, {:class =>'form-control'})%>
+
+      <%= f.input :city_name, 
+                  :url => autocomplete_city_name_students_path, 
+                  :as => :autocomplete,
+                  :label => false,
+                  :input_html => { 
+                      :class => 'form-control', 
+                      :style => 'max-width: 600px;',
+                      :id_element=>'#city_id'
+                  } 
+      %>
+      <%= f.hidden_field :city_id, :id => "city_id" %>
+
     </div>
     <%= error_span(@student[:city]) %>
   </div>

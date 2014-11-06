@@ -1,0 +1,611 @@
+Script started on Qui 06 Nov 2014 16:37:24 BRST
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=mmkdir script; /plugin[?1l>
+mkdir: cannot create directory ‘script/plugin’: No such file or directory
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=mkdir script/plugin       [?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=mkdir script      script/plugin[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=mkdir script/plugin       [12Dscript      /plugin install git://github.com/rails/auto_complete.git[?1l>
+zsh: permission denied: script/plugin
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=script/plugin install git://github.com/rails/auto_complete.git[62Dsscript/plugin install git://github.com/rails/auto_complete.git[62Dsuscript/plugin install git://github.com/rails/auto_complete.git[62Ddscript/plugin install git://github.com/rails/auto_complete.git[62Doscript/plugin install git://github.com/rails/auto_complete.git[62D script/plugin install git://github.com/rails/auto_complete.git[62D[?1l>
+[sudo] password for ruminiki: 
+sudo: script/plugin: command not found
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/[00m [[01;33mmaster[00m] › [K[181C[01;36m[00m[181D[?1h=sudo script/plugin install git://github.com/rails/auto_complete.git[67D                                                                   [67Dccd script[1m/[0m[0m/l plugin[1m/[0m[0m [?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=cd script/plugin[16Dsudo script/plugin install git://github.com/rails/auto_complete.git[67Dudo script/plugin install git://github.com/rails/auto_complete.git [67Dsudo script/plugin install git://github.com/rails/auto_complete.git[66D[1C[1C[1Cscript/plugin install git://github.com/rails/auto_complete.git [63Dcript/plugin install git://github.com/rails/auto_complete.git [62Dript/plugin install git://github.com/rails/auto_complete.git [61Dipt/plugin install git://github.com/rails/auto_complete.git [60Dpt/plugin install git://github.com/rails/auto_complete.git [59Dt/plugin install git://github.com/rails/auto_complete.git [58D/plugin install git://github.com/rails/auto_complete.git [57Dplugin install git://github.com/rails/auto_complete.git [56Dlugin install git://github.com/rails/auto_complete.git [55Dugin install git://github.com/rails/auto_complete.git [54Dgin install git://github.com/rails/auto_complete.git [53Din install git://github.com/rails/auto_complete.git [52Dn install git://github.com/rails/auto_complete.git [51D install git://github.com/rails/auto_complete.git [50D[?1l>
+install: missing destination file operand after ‘git://github.com/rails/auto_complete.git’
+Try 'install --help' for more information.
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=sudo install git://github.com/rails/auto_complete.git[53Dcd script/plu[2Cn                                     [37D[16Dsudo script/plugin install git://github.com/rails/auto_complete.git[67Dscript/plugin install git://github.com/rails/auto_complete.git     [62Dcript/plugin install git://github.com/rails/auto_complete.git [62Dript/plugin install git://github.com/rails/auto_complete.git [61Dipt/plugin install git://github.com/rails/auto_complete.git [60Dpt/plugin install git://github.com/rails/auto_complete.git [59Dt/plugin install git://github.com/rails/auto_complete.git [58D/plugin install git://github.com/rails/auto_complete.git [57Dplugin install git://github.com/rails/auto_complete.git [56Dlugin install git://github.com/rails/auto_complete.git [55Dugin install git://github.com/rails/auto_complete.git [54Dgin install git://github.com/rails/auto_complete.git [53Din install git://github.com/rails/auto_complete.git [52Dn install git://github.com/rails/auto_complete.git [51D install git://github.com/rails/auto_complete.git [50Dr install git://github.com/rails/auto_complete.git[49Dra install git://github.com/rails/auto_complete.git[49Du install git://github.com/rails/auto_complete.git[49D install git://github.com/rails/auto_complete.git [50Di install git://github.com/rails/auto_complete.git[49Dl install git://github.com/rails/auto_complete.git[49Ds install git://github.com/rails/auto_complete.git[49D[1C install git://github.com/rails/auto_complete.git[49Dp install git://github.com/rails/auto_complete.git[49Dl install git://github.com/rails/auto_complete.git[49Du install git://github.com/rails/auto_complete.git[49Dg install git://github.com/rails/auto_complete.git[49Di install git://github.com/rails/auto_complete.git[49Dn install git://github.com/rails/auto_complete.git[49D[?1l>
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/railties-4.1.6/lib/rails/app_rails_loader.rb:37: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/bundler-1.6.2/lib/bundler/runtime.rb:222: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+Usage:
+  rails plugin new APP_PATH [options]
+
+Options:
+  -r, [--ruby=PATH]                                      # Path to the Ruby binary of your choice
+                                                         # Default: /home/ruminiki/.rbenv/versions/2.1.1/bin/ruby
+  -m, [--template=TEMPLATE]                              # Path to some plugin template (can be a filesystem path or URL)
+      [--skip-gemfile], [--no-skip-gemfile]              # Don't create a Gemfile
+  -B, [--skip-bundle], [--no-skip-bundle]                # Don't run bundle install
+  -G, [--skip-git], [--no-skip-git]                      # Skip .gitignore file
+      [--skip-keeps], [--no-skip-keeps]                  # Skip source control .keep files
+  -O, [--skip-active-record], [--no-skip-active-record]  # Skip Active Record files
+  -V, [--skip-action-view], [--no-skip-action-view]      # Skip Action View files
+  -S, [--skip-sprockets], [--no-skip-sprockets]          # Skip Sprockets files
+      [--skip-spring], [--no-skip-spring]                # Don't install Spring application preloader
+  -d, [--database=DATABASE]                              # Preconfigure for selected database (options: mysql/oracle/postgresql/sqlite3/frontbase/ibm_db/sqlserver/jdbcmysql/jdbcsqlite3/jdbcpostgresql/jdbc)
+                                                         # Default: sqlite3
+  -j, [--javascript=JAVASCRIPT]                          # Preconfigure for selected JavaScript library
+                                                         # Default: jquery
+  -J, [--skip-javascript], [--no-skip-javascript]        # Skip JavaScript files
+      [--dev], [--no-dev]                                # Setup the plugin with Gemfile pointing to your Rails checkout
+      [--edge], [--no-edge]                              # Setup the plugin with Gemfile pointing to Rails repository
+  -T, [--skip-test-unit], [--no-skip-test-unit]          # Skip Test::Unit files
+      [--rc=RC]                                          # Path to file containing extra configuration options for rails command
+      [--no-rc], [--no-no-rc]                            # Skip loading of extra configuration options from .railsrc file
+      [--dummy-path=DUMMY_PATH]                          # Create dummy application at given path
+                                                         # Default: test/dummy
+      [--full], [--no-full]                              # Generate a rails engine with bundled Rails application for testing
+      [--mountable], [--no-mountable]                    # Generate mountable isolated application
+      [--skip-gemspec], [--no-skip-gemspec]              # Skip gemspec file
+      [--skip-gemfile-entry], [--no-skip-gemfile-entry]  # If creating plugin in application's directory skip adding entry to Gemfile
+
+Runtime options:
+  -f, [--force]                    # Overwrite files that already exist
+  -p, [--pretend], [--no-pretend]  # Run but do not make any changes
+  -q, [--quiet], [--no-quiet]      # Suppress status output
+  -s, [--skip], [--no-skip]        # Skip files that already exist
+
+Rails options:
+  -h, [--help], [--no-help]  # Show this help message and quit
+
+Description:
+    The 'rails plugin new' command creates a skeleton for developing any
+    kind of Rails extension with ability to run tests using dummy Rails
+    application.
+
+Example:
+    rails plugin new ~/Code/Ruby/blog
+
+    This generates a skeletal Rails plugin in ~/Code/Ruby/blog.
+    See the README in the newly created plugin to get going.
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=rruby rails plugin install http://github.com/rails/auto_complete.git[?1l>
+ruby: No such file or directory -- rails (LoadError)
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=ruby rails plugin install http://github.com/rails/auto_complete.git[67D[1C[1C[1C[1Crails plugin install http://github.com/rails/auto_complete.git [63Dails plugin install http://github.com/rails/auto_complete.git [62Dils plugin install http://github.com/rails/auto_complete.git [61Dls plugin install http://github.com/rails/auto_complete.git [60Ds plugin install http://github.com/rails/auto_complete.git [59D plugin install http://github.com/rails/auto_complete.git [58D[?1l>
+ruby: No such file or directory -- plugin (LoadError)
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=ruby plugin install http://github.com/rails/auto_complete.git[61D[1Crby plugin install http://github.com/rails/auto_complete.git [60Dry plugin install http://github.com/rails/auto_complete.git [59Dr plugin install http://github.com/rails/auto_complete.git [58Dra plugin install http://github.com/rails/auto_complete.git[57Di plugin install http://github.com/rails/auto_complete.git[57Dl plugin install http://github.com/rails/auto_complete.git[57Ds plugin install http://github.com/rails/auto_complete.git[57D                                                              [62Drrails -v[?1l>
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/railties-4.1.6/lib/rails/app_rails_loader.rb:37: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/bundler-1.6.2/lib/bundler/runtime.rb:222: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+Rails 4.1.6
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=rails -v[8Druby plugin install http://github.com/rails/auto_complete.git[56Drails plugin install http://github.com/rails/auto_complete.git[67Duby rails plugin install http://github.com/rails/auto_complete.git [67Dby rails plugin install http://github.com/rails/auto_complete.git [66Dy rails plugin install http://github.com/rails/auto_complete.git [65D rails plugin install http://github.com/rails/auto_complete.git [64Drails plugin install http://github.com/rails/auto_complete.git [63D[?1l>
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/railties-4.1.6/lib/rails/app_rails_loader.rb:37: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/bundler-1.6.2/lib/bundler/runtime.rb:222: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+Usage:
+  rails plugin new APP_PATH [options]
+
+Options:
+  -r, [--ruby=PATH]                                      # Path to the Ruby binary of your choice
+                                                         # Default: /home/ruminiki/.rbenv/versions/2.1.1/bin/ruby
+  -m, [--template=TEMPLATE]                              # Path to some plugin template (can be a filesystem path or URL)
+      [--skip-gemfile], [--no-skip-gemfile]              # Don't create a Gemfile
+  -B, [--skip-bundle], [--no-skip-bundle]                # Don't run bundle install
+  -G, [--skip-git], [--no-skip-git]                      # Skip .gitignore file
+      [--skip-keeps], [--no-skip-keeps]                  # Skip source control .keep files
+  -O, [--skip-active-record], [--no-skip-active-record]  # Skip Active Record files
+  -V, [--skip-action-view], [--no-skip-action-view]      # Skip Action View files
+  -S, [--skip-sprockets], [--no-skip-sprockets]          # Skip Sprockets files
+      [--skip-spring], [--no-skip-spring]                # Don't install Spring application preloader
+  -d, [--database=DATABASE]                              # Preconfigure for selected database (options: mysql/oracle/postgresql/sqlite3/frontbase/ibm_db/sqlserver/jdbcmysql/jdbcsqlite3/jdbcpostgresql/jdbc)
+                                                         # Default: sqlite3
+  -j, [--javascript=JAVASCRIPT]                          # Preconfigure for selected JavaScript library
+                                                         # Default: jquery
+  -J, [--skip-javascript], [--no-skip-javascript]        # Skip JavaScript files
+      [--dev], [--no-dev]                                # Setup the plugin with Gemfile pointing to your Rails checkout
+      [--edge], [--no-edge]                              # Setup the plugin with Gemfile pointing to Rails repository
+  -T, [--skip-test-unit], [--no-skip-test-unit]          # Skip Test::Unit files
+      [--rc=RC]                                          # Path to file containing extra configuration options for rails command
+      [--no-rc], [--no-no-rc]                            # Skip loading of extra configuration options from .railsrc file
+      [--dummy-path=DUMMY_PATH]                          # Create dummy application at given path
+                                                         # Default: test/dummy
+      [--full], [--no-full]                              # Generate a rails engine with bundled Rails application for testing
+      [--mountable], [--no-mountable]                    # Generate mountable isolated application
+      [--skip-gemspec], [--no-skip-gemspec]              # Skip gemspec file
+      [--skip-gemfile-entry], [--no-skip-gemfile-entry]  # If creating plugin in application's directory skip adding entry to Gemfile
+
+Runtime options:
+  -f, [--force]                    # Overwrite files that already exist
+  -p, [--pretend], [--no-pretend]  # Run but do not make any changes
+  -q, [--quiet], [--no-quiet]      # Suppress status output
+  -s, [--skip], [--no-skip]        # Skip files that already exist
+
+Rails options:
+  -h, [--help], [--no-help]  # Show this help message and quit
+
+Description:
+    The 'rails plugin new' command creates a skeleton for developing any
+    kind of Rails extension with ability to run tests using dummy Rails
+    application.
+
+Example:
+    rails plugin new ~/Code/Ruby/blog
+
+    This generates a skeletal Rails plugin in ~/Code/Ruby/blog.
+    See the README in the newly created plugin to get going.
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=ggs[?1l>
+## [32mmaster[m
+ [31mM[m ../../Gemfile
+ [31mM[m ../../Gemfile.lock
+ [31mM[m ../../app/assets/javascripts/application.js
+ [31mM[m ../../app/controllers/cities_controller.rb
+ [31mM[m ../../app/controllers/students_controller.rb
+ [31mM[m ../../app/models/student.rb
+ [31mM[m ../../app/views/students/_form.html.erb
+ [31mM[m ../../bin/rails
+ [31mM[m ../../bin/rake
+ [31mM[m ../../config/database.yml
+ [31mM[m ../../db/migrate/20141018185730_create_students.rb
+ [31mD[m ../../db/migrate/20141019012938_add_city_ref_to_student.rb
+ [31mM[m ../../db/schema.rb
+ [31mM[m ../../log/development.log
+ [31mM[m ../../tmp/cache/assets/development/sprockets/2f5173deea6c795b8fdde723bb4b63af
+ [31mM[m ../../tmp/cache/assets/development/sprockets/88d619ecb1068dbdbe8eba7c0056e44c
+ [31mM[m ../../tmp/cache/assets/development/sprockets/8ab512c9b33ac90e699b73469d71f061
+ [31mM[m ../../tmp/cache/assets/development/sprockets/8c2b061e379a23e7c4d207adcf992462
+ [31mM[m ../../tmp/cache/assets/development/sprockets/bcca522c6302f184f12fe0e8a7d7e71a
+ [31mM[m ../../tmp/cache/assets/development/sprockets/c13fc73ceafa45876a901b3e775b83ae
+ [31mM[m ../../tmp/cache/assets/development/sprockets/cffd775d018f68ce5dba1ee0d951a994
+ [31mM[m ../../tmp/cache/assets/development/sprockets/d585a06e2ee6203ccb04c8b84150d14d
+ [31mM[m ../../tmp/cache/assets/development/sprockets/f7cbd26ba1d28d48de824f0e94586655
+ [31mM[m ../../tmp/cache/assets/development/sprockets/f81ef22356076e422f5227369b10fa60
+ [31mM[m ../../tmp/cache/assets/development/sprockets/fa6b53e34e4abad5deba3f8a4b016f50
+ [31mM[m ../../tmp/pids/server.pid
+[31m??[m ../../tmp/cache/assets/development/sass/2fdeaaac20bb3b3e2fedcfd4fa0aee1fe68b7ef3/
+[31m??[m ../../tmp/cache/assets/development/sass/602b91078f59c52fd49b8d90a0c46bbc9c329685/
+[31m??[m ../../tmp/cache/assets/development/sass/6ebea274e1bc8928e0feea61b597ca8cd14477d5/
+[31m??[m ../../tmp/cache/assets/development/sass/b805db1a62402c400da0b1d178f8713bf337e876/
+[31m??[m ../../tmp/cache/assets/development/sass/e31c6ba3961d6527031c03b87860270e8530a1b5/
+[31m??[m ../../tmp/cache/assets/development/sprockets/00b1093e2fe376c19f4bbbd55e15d093
+[31m??[m ../../tmp/cache/assets/development/sprockets/015ecee7bc9a64fbcc9b1b9e1e57675b
+[31m??[m ../../tmp/cache/assets/development/sprockets/01a00cb362499525ff68246a2388e49b
+[31m??[m ../../tmp/cache/assets/development/sprockets/01ea51ec238d63aa3d5acb132065e661
+[31m??[m ../../tmp/cache/assets/development/sprockets/03637c9d92790be183e8f22cc4522e52
+[31m??[m ../../tmp/cache/assets/development/sprockets/03b4d6ba03d3d1fa384a1d7b1f19e7fc
+[31m??[m ../../tmp/cache/assets/development/sprockets/044ad2f2a15be520abebcc33b7299e27
+[31m??[m ../../tmp/cache/assets/development/sprockets/05aa677fe11e1b1f4ad9377fdd7426ad
+[31m??[m ../../tmp/cache/assets/development/sprockets/06010f5743df90cc27302b601e2e110c
+[31m??[m ../../tmp/cache/assets/development/sprockets/063d84d999d07469a49187ed6d28acbd
+[31m??[m ../../tmp/cache/assets/development/sprockets/067e7f57e1afef051666f75a66215bad
+[31m??[m ../../tmp/cache/assets/development/sprockets/06ac6f557e530f60db0293dfe8991bfc
+[31m??[m ../../tmp/cache/assets/development/sprockets/09b9d9fbea1f0b943883116f81fcf4ad
+[31m??[m ../../tmp/cache/assets/development/sprockets/09c26213dc53ddfa8a73a186289fc6fc
+[31m??[m ../../tmp/cache/assets/development/sprockets/0a1c2f503657bbab605b663e5c36b713
+[31m??[m ../../tmp/cache/assets/development/sprockets/0c012f912a637192f1b98b0f447d5974
+[31m??[m ../../tmp/cache/assets/development/sprockets/0c1a933d2c3460acb16e1187156e70e2
+[31m??[m ../../tmp/cache/assets/development/sprockets/0c329817847f59d52aae2a6093c8f5b3
+[31m??[m ../../tmp/cache/assets/development/sprockets/0c8590dff99e001210521d397da32cc6
+[31m??[m ../../tmp/cache/assets/development/sprockets/0ccc6a68b756940149a9b7d62ff13838
+[31m??[m ../../tmp/cache/assets/development/sprockets/0d5d148a8d06a73cb724075b6af9c74f
+[31m??[m ../../tmp/cache/assets/development/sprockets/0d7603e5f66b72a7039118631d7889ca
+[31m??[m ../../tmp/cache/assets/development/sprockets/0eb2e3397a2aa216cf5196e4a9d14920
+[31m??[m ../../tmp/cache/assets/development/sprockets/0fa716241438b29017a7edf79ca8adde
+[31m??[m ../../tmp/cache/assets/development/sprockets/0fb6d325c351df1be765d7af19e834c3
+[31m??[m ../../tmp/cache/assets/development/sprockets/1015f5bf11abf211bd30cb5022fb4a94
+[31m??[m ../../tmp/cache/assets/development/sprockets/1038e5a99015475d013eda6eedc7b676
+[31m??[m ../../tmp/cache/assets/development/sprockets/117b17bc3b6eba33bcab224732d4aebe
+[31m??[m ../../tmp/cache/assets/development/sprockets/14262d16db4838b959ea5a393b4f5520
+[31m??[m ../../tmp/cache/assets/development/sprockets/14488bc8aff5e5a015469b709829ba2b
+[31m??[m ../../tmp/cache/assets/development/sprockets/146e2c2cfea13dd3a1e8991d096e2473
+[31m??[m ../../tmp/cache/assets/development/sprockets/149a4a772631666a77232584adb2e9a4
+[31m??[m ../../tmp/cache/assets/development/sprockets/14ab08cf28088124ef3648cdb2b44acd
+[31m??[m ../../tmp/cache/assets/development/sprockets/14cb20c872490f112112273e5ba5eb6e
+[31m??[m ../../tmp/cache/assets/development/sprockets/14f8d6843852f747d2a9e4c3a6330340
+[31m??[m ../../tmp/cache/assets/development/sprockets/1567faf7e07667936df9d8ca80ae7f67
+[31m??[m ../../tmp/cache/assets/development/sprockets/15bee4ff2697d7563205db4824dd9acd
+[31m??[m ../../tmp/cache/assets/development/sprockets/163ded0af7371f36e19813805419243f
+[31m??[m ../../tmp/cache/assets/development/sprockets/166aa5f7eec3cc5019568633cadc50c4
+[31m??[m ../../tmp/cache/assets/development/sprockets/172a5d81daad5fcc796d94b3dcbb9a90
+[31m??[m ../../tmp/cache/assets/development/sprockets/181586b2c2816aac427cf8f2efbc2847
+[31m??[m ../../tmp/cache/assets/development/sprockets/1865c5084d7aedd0d7a793e2e4ba3689
+[31m??[m ../../tmp/cache/assets/development/sprockets/19396c216f1758f8fdc5e047a2cbc867
+[31m??[m ../../tmp/cache/assets/development/sprockets/1952a733371da10d1fbe90ae009f8e65
+[31m??[m ../../tmp/cache/assets/development/sprockets/1958c24a6fc41b7c38183c8e30c5a797
+[31m??[m ../../tmp/cache/assets/development/sprockets/195ecb73634903038382033459972714
+[31m??[m ../../tmp/cache/assets/development/sprockets/1992d21f90d3daa61fb20442b38f605d
+[31m??[m ../../tmp/cache/assets/development/sprockets/19a1aba1c370ac129d38666e6316b7c3
+[31m??[m ../../tmp/cache/assets/development/sprockets/1aa8316ae29ea8f2de250eab13e16395
+[31m??[m ../../tmp/cache/assets/development/sprockets/1abd74a1b588cbcaad88630c02974029
+[31m??[m ../../tmp/cache/assets/development/sprockets/1b83a3bab1b1987abbba7414c81384a9
+[31m??[m ../../tmp/cache/assets/development/sprockets/1bc1726b3384e801b18b89cae1be2f65
+[31m??[m ../../tmp/cache/assets/development/sprockets/1d6c00954165e7516f6131e40b573ccc
+[31m??[m ../../tmp/cache/assets/development/sprockets/1e21b6ac4f41df3e9bf238e1c76b191f
+[31m??[m ../../tmp/cache/assets/development/sprockets/1e3b50d1b39134889cfe3e992dbd9bc5
+[31m??[m ../../tmp/cache/assets/development/sprockets/1f5ca0548e0c88d496d716f88edccea3
+[31m??[m ../../tmp/cache/assets/development/sprockets/2033fb9fd9d8e7458f57d82e84975424
+[31m??[m ../../tmp/cache/assets/development/sprockets/205a27c2ced8baa59743f8a28643a77e
+[31m??[m ../../tmp/cache/assets/development/sprockets/20880d0313e909395669dc2d192c1fa3
+[31m??[m ../../tmp/cache/assets/development/sprockets/21330dc31823a31da52f6f915caf90bd
+[31m??[m ../../tmp/cache/assets/development/sprockets/2153254bccb458d1a63785f215e8bed4
+[31m??[m ../../tmp/cache/assets/development/sprockets/23180842cbe098e6a168e0bed0418bee
+[31m??[m ../../tmp/cache/assets/development/sprockets/23e7293f76004a9c8948d6c29629acdc
+[31m??[m ../../tmp/cache/assets/development/sprockets/24d02abb63a079ab48cbc27f2e86e728
+[31m??[m ../../tmp/cache/assets/development/sprockets/254a20c6d45d5b9ba07f302116d3ac42
+[31m??[m ../../tmp/cache/assets/development/sprockets/25962aa57406506e092cb7d7a2cc565f
+[31m??[m ../../tmp/cache/assets/development/sprockets/2637702d51e4452e3be0ac9f5204eb5f
+[31m??[m ../../tmp/cache/assets/development/sprockets/26749c1ebf2733069ab60403fb9d9408
+[31m??[m ../../tmp/cache/assets/development/sprockets/2686a9771a8d51153de03670548cd7b4
+[31m??[m ../../tmp/cache/assets/development/sprockets/2771cd2be3facef7feb233c65873011b
+[31m??[m ../../tmp/cache/assets/development/sprockets/278e87eefd15133b69a0215880925620
+[31m??[m ../../tmp/cache/assets/development/sprockets/289fba28f631d6cf39267e749a2e5c8a
+[31m??[m ../../tmp/cache/assets/development/sprockets/29373ae227c936134361f2d19c8ba1c5
+[31m??[m ../../tmp/cache/assets/development/sprockets/2a0dcdbef0894578a07e3adb7d4d798c
+[31m??[m ../../tmp/cache/assets/development/sprockets/2a43437e68932f965bbaa54320136521
+[31m??[m ../../tmp/cache/assets/development/sprockets/2a55fa39fe3591720fc2bbabd7721246
+[31m??[m ../../tmp/cache/assets/development/sprockets/2acde43b07cead37f8e64b49c5318f84
+[31m??[m ../../tmp/cache/assets/development/sprockets/2b0857756811855dcd01a6dca3cdc257
+[31m??[m ../../tmp/cache/assets/development/sprockets/2c2a15ee12e6d245312cb29a6eb90550
+[31m??[m ../../tmp/cache/assets/development/sprockets/2c48a4440f7ea2037ce48954dde48e48
+[31m??[m ../../tmp/cache/assets/development/sprockets/2ca2c4f2f12aa2ce5a0a58f89c2c6357
+[31m??[m ../../tmp/cache/assets/development/sprockets/2efe46053252bd3209fc8a67ac82240b
+[31m??[m ../../tmp/cache/assets/development/sprockets/2f8174f02aa6244b11b10d0164c9aa3a
+[31m??[m ../../tmp/cache/assets/development/sprockets/2fac588ee0fb5ebd2c8c8a0be1e42851
+[31m??[m ../../tmp/cache/assets/development/sprockets/30620442d605b3f2aee54bc7376a5e14
+[31m??[m ../../tmp/cache/assets/development/sprockets/309ad1e39c3049fb55326696ae78e25a
+[31m??[m ../../tmp/cache/assets/development/sprockets/3205824adb6b6e0c2b03f8453d179c5f
+[31m??[m ../../tmp/cache/assets/development/sprockets/325bc3f2aad2e0bceed0cd65cd0f2bda
+[31m??[m ../../tmp/cache/assets/development/sprockets/33209e2e60a8d98f506c2a8a3d5e813d
+[31m??[m ../../tmp/cache/assets/development/sprockets/33d76e56ae1fd7bebdedc9fe5ba2ecbb
+[31m??[m ../../tmp/cache/assets/development/sprockets/349f2363159d62de45a50dcc7c981d60
+[31m??[m ../../tmp/cache/assets/development/sprockets/354b881bb1fa258b9c7162ae62124425
+[31m??[m ../../tmp/cache/assets/development/sprockets/359341dce61c8572a51cf0e3480ad2cc
+[31m??[m ../../tmp/cache/assets/development/sprockets/3610d0c20ad2906ddc9afbe295396071
+[31m??[m ../../tmp/cache/assets/development/sprockets/3653677a69aab43b3f8b5bd2f1d2819a
+[31m??[m ../../tmp/cache/assets/development/sprockets/37395454fd1b50a16a867ea7bce7c24a
+[31m??[m ../../tmp/cache/assets/development/sprockets/37d881a35c6dc0dbab60c16c6b6145a0
+[31m??[m ../../tmp/cache/assets/development/sprockets/3a5383a4d66aa93db3ffcc84b398d661
+[31m??[m ../../tmp/cache/assets/development/sprockets/3a56e67ce32bc9fb5cb3787c4d861a48
+[31m??[m ../../tmp/cache/assets/development/sprockets/3aac0d18472b229a45b4285fbf5507f0
+[31m??[m ../../tmp/cache/assets/development/sprockets/3caa00fa8cb53825f11c45bc61e94afb
+[31m??[m ../../tmp/cache/assets/development/sprockets/3cbde7dbde21c44bed71fd64569afa99
+[31m??[m ../../tmp/cache/assets/development/sprockets/3d811a4d015796c47399275881d13066
+[31m??[m ../../tmp/cache/assets/development/sprockets/3e36fbf7c690851fac885a71e2c4a03d
+[31m??[m ../../tmp/cache/assets/development/sprockets/3e73d235fe650a0e661942fc1b943730
+[31m??[m ../../tmp/cache/assets/development/sprockets/401a59fc2fabcdf55d359e83fa7f2f22
+[31m??[m ../../tmp/cache/assets/development/sprockets/415374a019d50349e8c7dd08acc3088f
+[31m??[m ../../tmp/cache/assets/development/sprockets/4160455de25f9c1eb22e242f94d0770b
+[31m??[m ../../tmp/cache/assets/development/sprockets/4170245617f1fc1b5b07e5184841c9e5
+[31m??[m ../../tmp/cache/assets/development/sprockets/4174f2ff01c12c7b068371700ede8217
+[31m??[m ../../tmp/cache/assets/development/sprockets/418882c5b19897df1c45aa5aae4f2079
+[31m??[m ../../tmp/cache/assets/development/sprockets/418abdb9ae1dc1a1f7227980ca328e48
+[31m??[m ../../tmp/cache/assets/development/sprockets/436a4bfa3841e30978c3229690463e76
+[31m??[m ../../tmp/cache/assets/development/sprockets/43efecc3fa5bbbc874bb1d2d962caa5e
+[31m??[m ../../tmp/cache/assets/development/sprockets/4497a0ab587ca8ac32ebc73deff3f336
+[31m??[m ../../tmp/cache/assets/development/sprockets/44a933942b091120bf89e8303b1d2177
+[31m??[m ../../tmp/cache/assets/development/sprockets/44f53dd9abeb6eeacf4744e8771e7e51
+[31m??[m ../../tmp/cache/assets/development/sprockets/454b32d01743b36c49f28259f96bc173
+[31m??[m ../../tmp/cache/assets/development/sprockets/475c9f8de201fff65e59f84fd750c39f
+[31m??[m ../../tmp/cache/assets/development/sprockets/48d6ec85ebfcc1824703c46efc532099
+[31m??[m ../../tmp/cache/assets/development/sprockets/48db700583cd8c12214ceada6e58dd4a
+[31m??[m ../../tmp/cache/assets/development/sprockets/490ee6dc400a3a02a735121006218308
+[31m??[m ../../tmp/cache/assets/development/sprockets/49e05bafd1b10eb94a4c60c3b7a519b1
+[31m??[m ../../tmp/cache/assets/development/sprockets/4a80e584a3c0c46732ff117e86b59118
+[31m??[m ../../tmp/cache/assets/development/sprockets/4c5c0fff921975793b3cd44994c79407
+[31m??[m ../../tmp/cache/assets/development/sprockets/4ccb08d9371e9f2559ce6cee6b6137a0
+[31m??[m ../../tmp/cache/assets/development/sprockets/4cd8e9bcf49ce7651dd90fa07b0b0587
+[31m??[m ../../tmp/cache/assets/development/sprockets/4eca3acb2fbd4fc16ad20f771cb0d226
+[31m??[m ../../tmp/cache/assets/development/sprockets/50e29ee1e126574f3f31be02d12b71a6
+[31m??[m ../../tmp/cache/assets/development/sprockets/5223271f1967c8b5e2f26caf7f725dc5
+[31m??[m ../../tmp/cache/assets/development/sprockets/52a16532feea2cbe32109d498b85ed5d
+[31m??[m ../../tmp/cache/assets/development/sprockets/52b6c66471b718e6ada8e84f1c5a6e2a
+[31m??[m ../../tmp/cache/assets/development/sprockets/53224814e1e34fb1d9f60323e3372920
+[31m??[m ../../tmp/cache/assets/development/sprockets/5362d23d4d71f12a14957aae07b64f5d
+[31m??[m ../../tmp/cache/assets/development/sprockets/54485a13382a73bb6b255975e587bb0d
+[31m??[m ../../tmp/cache/assets/development/sprockets/552fb31bea4bc2c82cf8e98f4ecb01bb
+[31m??[m ../../tmp/cache/assets/development/sprockets/55f26045f9f3c87c9c68846d5d35a020
+[31m??[m ../../tmp/cache/assets/development/sprockets/58758f1cc6c52f2891a43dce64af2d66
+[31m??[m ../../tmp/cache/assets/development/sprockets/587de3eca6b091b6f5f004f870530f2e
+[31m??[m ../../tmp/cache/assets/development/sprockets/5b8fedb8922e24bc92ae7f708236196a
+[31m??[m ../../tmp/cache/assets/development/sprockets/5ca2d6ad0b93d8e8b55889e58de676e1
+[31m??[m ../../tmp/cache/assets/development/sprockets/5d1e11e8492c8d00f5f9a43e3db4c6b8
+[31m??[m ../../tmp/cache/assets/development/sprockets/5e948c646cb52748156ae294aa0f79cc
+[31m??[m ../../tmp/cache/assets/development/sprockets/5ed5713aa0a6c6312ebfa7aa805bf8a6
+[31m??[m ../../tmp/cache/assets/development/sprockets/5f744905dc0bd6430ff8ff23f252c96a
+[31m??[m ../../tmp/cache/assets/development/sprockets/60bbdf18cdb7f54e564c817d51233e2e
+[31m??[m ../../tmp/cache/assets/development/sprockets/619fc1463d45b17d5704ffc32364e351
+[31m??[m ../../tmp/cache/assets/development/sprockets/626737994fe37de81010e0c45c559b4b
+[31m??[m ../../tmp/cache/assets/development/sprockets/63031efb727f1b3740ca274a3656f929
+[31m??[m ../../tmp/cache/assets/development/sprockets/6481b442d51e3707830f4ac2e03ae7d5
+[31m??[m ../../tmp/cache/assets/development/sprockets/64b9f8b92d4bd2e26c8ef7ae3cadf085
+[31m??[m ../../tmp/cache/assets/development/sprockets/64cf9b5dda3d104df2bba889600b005b
+[31m??[m ../../tmp/cache/assets/development/sprockets/653cf0e8f095242c2106acef8da3c645
+[31m??[m ../../tmp/cache/assets/development/sprockets/6648926aee2648732588c93767728349
+[31m??[m ../../tmp/cache/assets/development/sprockets/669f0837fddb58419ffe8ea64c19f07f
+[31m??[m ../../tmp/cache/assets/development/sprockets/67d1476e84aec7e75366d8aeae0e43b1
+[31m??[m ../../tmp/cache/assets/development/sprockets/689a1fbd3d2b2c7ba4d64ed29d6a17e9
+[31m??[m ../../tmp/cache/assets/development/sprockets/69d4da4e0489ed4073aaaef665d663da
+[31m??[m ../../tmp/cache/assets/development/sprockets/69f77e6ffb76fb91b82f53ecca277594
+[31m??[m ../../tmp/cache/assets/development/sprockets/6a62da3a01d6ac4bd7158aad6320c104
+[31m??[m ../../tmp/cache/assets/development/sprockets/6b83a46defb0a7083c854ef9f57593c9
+[31m??[m ../../tmp/cache/assets/development/sprockets/6c86567b9c670bc16f71e9dd5b0b278f
+[31m??[m ../../tmp/cache/assets/development/sprockets/6d64978658d64c12d39749b925b36870
+[31m??[m ../../tmp/cache/assets/development/sprockets/6d9978d77f6c284ade05134e0bcc72c3
+[31m??[m ../../tmp/cache/assets/development/sprockets/6dac2c93a34bf0781d275e618fbbc44f
+[31m??[m ../../tmp/cache/assets/development/sprockets/6de6547f51b9649bba0593590f74149b
+[31m??[m ../../tmp/cache/assets/development/sprockets/6e01568a7d93c9321eb5e108b061b488
+[31m??[m ../../tmp/cache/assets/development/sprockets/6e3160bbe95f031c2dc89ec7a83fedd9
+[31m??[m ../../tmp/cache/assets/development/sprockets/6eff08f8f982606db171b002fc24275b
+[31m??[m ../../tmp/cache/assets/development/sprockets/70256a4ead8bc3ea5cc5169c7679280c
+[31m??[m ../../tmp/cache/assets/development/sprockets/71066c248445f649bc8c6d3364a8c91f
+[31m??[m ../../tmp/cache/assets/development/sprockets/715ab014f75105952014aea4a8199a62
+[31m??[m ../../tmp/cache/assets/development/sprockets/715fac2015b4be4133c851ce8ff39478
+[31m??[m ../../tmp/cache/assets/development/sprockets/7239fffa0fbb982a36dae5186f7b9baf
+[31m??[m ../../tmp/cache/assets/development/sprockets/72fdf3d3ee88d0053355146bd3130aee
+[31m??[m ../../tmp/cache/assets/development/sprockets/736f22d3d05cd3e9c0662bbd4fcce08b
+[31m??[m ../../tmp/cache/assets/development/sprockets/749257915171d3732c404b3ecc08ef90
+[31m??[m ../../tmp/cache/assets/development/sprockets/74c766a8982f252ac57b1640ba9ba8cb
+[31m??[m ../../tmp/cache/assets/development/sprockets/757d95ebc1839e5707ee0fb47600e66f
+[31m??[m ../../tmp/cache/assets/development/sprockets/759ba7f1dd0564134426b1c8a3237701
+[31m??[m ../../tmp/cache/assets/development/sprockets/766e3a4ddb5d7ba714777590054f94a0
+[31m??[m ../../tmp/cache/assets/development/sprockets/76afa4d69d1618b02e05e2b413cc4732
+[31m??[m ../../tmp/cache/assets/development/sprockets/77413721fd6746acbd2054d9df7db46f
+[31m??[m ../../tmp/cache/assets/development/sprockets/77c4130f6b37bb010b06fbeb0f00485c
+[31m??[m ../../tmp/cache/assets/development/sprockets/79150a91c486a3f500f2b7a7b40801c0
+[31m??[m ../../tmp/cache/assets/development/sprockets/79842803d0e3c057a0e390c0e3d29bff
+[31m??[m ../../tmp/cache/assets/development/sprockets/79eb7f4a554b65ad0faee7771d7e0cec
+[31m??[m ../../tmp/cache/assets/development/sprockets/7a1edcb1d9834056ec3e84085211701a
+[31m??[m ../../tmp/cache/assets/development/sprockets/7a28a920bf223a9c5c19fb84499fd28c
+[31m??[m ../../tmp/cache/assets/development/sprockets/7b1b77742d12b3da49c0dd8a2fbb1156
+[31m??[m ../../tmp/cache/assets/development/sprockets/7b2b6f99c352ddf6b7bd5cbc0ba423cc
+[31m??[m ../../tmp/cache/assets/development/sprockets/7da8225f5a0441901312362930b29c2b
+[31m??[m ../../tmp/cache/assets/development/sprockets/7e3d5bfad3bcbcf66b67890327cf113d
+[31m??[m ../../tmp/cache/assets/development/sprockets/7ebaac65f311254e2d9d7510de06a229
+[31m??[m ../../tmp/cache/assets/development/sprockets/8032446f98edc45a044f0cb8d4053229
+[31m??[m ../../tmp/cache/assets/development/sprockets/8073d4efed042df81de4d25a668ef7ba
+[31m??[m ../../tmp/cache/assets/development/sprockets/80b7870451174c29150b4eead31d5f2d
+[31m??[m ../../tmp/cache/assets/development/sprockets/80cdbe5731a8db2773c65dd8265c9ade
+[31m??[m ../../tmp/cache/assets/development/sprockets/813f3f36ce61e3a1c0170c0c84ac3fee
+[31m??[m ../../tmp/cache/assets/development/sprockets/818f0198b6e81b41399824bd0c06483d
+[31m??[m ../../tmp/cache/assets/development/sprockets/81cc3bec0cb321e944ce6fc7925b4a01
+[31m??[m ../../tmp/cache/assets/development/sprockets/823af9c941ee463ad07123d6e87db5c6
+[31m??[m ../../tmp/cache/assets/development/sprockets/82914f180163ef2c3d69ecbc7931879a
+[31m??[m ../../tmp/cache/assets/development/sprockets/82ee20032cb63e143f58db13fa6160a0
+[31m??[m ../../tmp/cache/assets/development/sprockets/85eff73fbc8fa90dce5f17ddf6b25526
+[31m??[m ../../tmp/cache/assets/development/sprockets/8685f3937f8bde69991768818e371429
+[31m??[m ../../tmp/cache/assets/development/sprockets/8c877b4d3bdef38d1a2e30d157dc1ed7
+[31m??[m ../../tmp/cache/assets/development/sprockets/8c89cca3bcb0c184f7d970d3d17b7b52
+[31m??[m ../../tmp/cache/assets/development/sprockets/8c99684be2f57b4b85baaf91bc20d466
+[31m??[m ../../tmp/cache/assets/development/sprockets/8fce7515f0354ca2123d1fb4d6915e2f
+[31m??[m ../../tmp/cache/assets/development/sprockets/91e4ac8b45929d7e1366c15d55cf0e6f
+[31m??[m ../../tmp/cache/assets/development/sprockets/9236e46c1b42a7fa7032ae6e1dfb04a9
+[31m??[m ../../tmp/cache/assets/development/sprockets/92b56088591ad3a54e2657e60ad782c5
+[31m??[m ../../tmp/cache/assets/development/sprockets/930dd75f3503d0bb2ea041a744ef4c95
+[31m??[m ../../tmp/cache/assets/development/sprockets/947fa523079811a96a085dec8fd7f518
+[31m??[m ../../tmp/cache/assets/development/sprockets/9579577c82895dd0eea221bf2101463f
+[31m??[m ../../tmp/cache/assets/development/sprockets/95ea71fbd3ff201c12b8b4900682fa27
+[31m??[m ../../tmp/cache/assets/development/sprockets/960e74cfb312d6a52f2f19e006918e68
+[31m??[m ../../tmp/cache/assets/development/sprockets/97418aa15d43c068939c604c55be1be7
+[31m??[m ../../tmp/cache/assets/development/sprockets/979ad7df78c9fae8366a3418fc7cc077
+[31m??[m ../../tmp/cache/assets/development/sprockets/98c2ccd7aec75409fa17a7bc76a528b9
+[31m??[m ../../tmp/cache/assets/development/sprockets/9afa7000f28296e9c62542153910821d
+[31m??[m ../../tmp/cache/assets/development/sprockets/9afafb98ee6bbb207c80bde3228bad0f
+[31m??[m ../../tmp/cache/assets/development/sprockets/9cc0e5c81d97b0f10c14531ab07deb51
+[31m??[m ../../tmp/cache/assets/development/sprockets/9d99a7cd94ba6f4c34a54f93535a85cc
+[31m??[m ../../tmp/cache/assets/development/sprockets/9daf880bdf625b0da2faa7afb96d0ddb
+[31m??[m ../../tmp/cache/assets/development/sprockets/9df70df176e71e9d51f8012098fa8966
+[31m??[m ../../tmp/cache/assets/development/sprockets/9f2eb4f214049290d225835cf7e9e533
+[31m??[m ../../tmp/cache/assets/development/sprockets/9f7ccdec209d7182a1d1bcd78efaea55
+[31m??[m ../../tmp/cache/assets/development/sprockets/a0380702305445ac0c4a1e8b1c7fd80a
+[31m??[m ../../tmp/cache/assets/development/sprockets/a0ecd1f72e3f4990a6ffd3a19341bc91
+[31m??[m ../../tmp/cache/assets/development/sprockets/a15e87032209a8ae22c5109ad74561f3
+[31m??[m ../../tmp/cache/assets/development/sprockets/a2dbc3c672e87047b0138c0bfbf2bd90
+[31m??[m ../../tmp/cache/assets/development/sprockets/a3b8975eae86ee460749119421cf2886
+[31m??[m ../../tmp/cache/assets/development/sprockets/a3f0896d24555beaafedc385af8d817d
+[31m??[m ../../tmp/cache/assets/development/sprockets/a43f2dd178c532207e49ad3b604c225f
+[31m??[m ../../tmp/cache/assets/development/sprockets/a4ca271f17e1f3eda07a241dffd5a6a9
+[31m??[m ../../tmp/cache/assets/development/sprockets/a59877b6ca1fe29bc18d26b1793c7ae3
+[31m??[m ../../tmp/cache/assets/development/sprockets/a65666f4e74aa7030d61cf1fb54a3e70
+[31m??[m ../../tmp/cache/assets/development/sprockets/a773937737504ae36338a7b3b9c77a6a
+[31m??[m ../../tmp/cache/assets/development/sprockets/a865db07d9cec7916f056c3fbec0928a
+[31m??[m ../../tmp/cache/assets/development/sprockets/ab170da0833fd6533a2d49a1d6ab4b7f
+[31m??[m ../../tmp/cache/assets/development/sprockets/ac0dbb6278b9a26acb6be8c285d8e7a5
+[31m??[m ../../tmp/cache/assets/development/sprockets/ac10033b74b9c3499e6abcb52bde2b5f
+[31m??[m ../../tmp/cache/assets/development/sprockets/ac47aaae8293856f0937fee4dfb6223d
+[31m??[m ../../tmp/cache/assets/development/sprockets/acc88f762bc11ac4c1f7445b82d47a56
+[31m??[m ../../tmp/cache/assets/development/sprockets/adaaeb302880e12eb43a977112a88839
+[31m??[m ../../tmp/cache/assets/development/sprockets/adb603c744be707843fc669bd291fcea
+[31m??[m ../../tmp/cache/assets/development/sprockets/aee96513c53cd18fcdbedf12801b4d12
+[31m??[m ../../tmp/cache/assets/development/sprockets/af41d019c9600e58536d1a3b0d8d5d6e
+[31m??[m ../../tmp/cache/assets/development/sprockets/b087acce3477b639bee544615e84a101
+[31m??[m ../../tmp/cache/assets/development/sprockets/b0bd3f5c0782e2626a487918a0fe9f9e
+[31m??[m ../../tmp/cache/assets/development/sprockets/b0d0d11dd3fb3b597a6f893d1caea1a8
+[31m??[m ../../tmp/cache/assets/development/sprockets/b1319949673ccd291ed7804b32a8646d
+[31m??[m ../../tmp/cache/assets/development/sprockets/b15638ca74436ae77ce0262f4643b563
+[31m??[m ../../tmp/cache/assets/development/sprockets/b1795b4e35fa8bb6d6f471b6dbd9ed86
+[31m??[m ../../tmp/cache/assets/development/sprockets/b3e9f45c7f7648ef1c155b3118c9b674
+[31m??[m ../../tmp/cache/assets/development/sprockets/b45575a8d379e7e7ee7430be6552ac54
+[31m??[m ../../tmp/cache/assets/development/sprockets/b61d1f929c143d111d8c55682a73c486
+[31m??[m ../../tmp/cache/assets/development/sprockets/b64878b6f9922c4312f93df0224f82b2
+[31m??[m ../../tmp/cache/assets/development/sprockets/b662fcb3474da65437eef388cc2d6d19
+[31m??[m ../../tmp/cache/assets/development/sprockets/b68d187cbfb0e0fafc77cd33b6a71577
+[31m??[m ../../tmp/cache/assets/development/sprockets/b69167ac474e14b352004324a6ea0435
+[31m??[m ../../tmp/cache/assets/development/sprockets/b69c333c713ce5e381be6498e06abcaf
+[31m??[m ../../tmp/cache/assets/development/sprockets/b87fcd73ce42fef5400aa2462e311cc2
+[31m??[m ../../tmp/cache/assets/development/sprockets/b8b54131cba6e7979da2ae3cfea058b5
+[31m??[m ../../tmp/cache/assets/development/sprockets/b9408dd21860b238cc19f819362a70ac
+[31m??[m ../../tmp/cache/assets/development/sprockets/ba3abb05fd2faa5b5f8e3c3fb9369958
+[31m??[m ../../tmp/cache/assets/development/sprockets/ba8d8e673629a72d32e2aa98fdd3edab
+[31m??[m ../../tmp/cache/assets/development/sprockets/ba8f67ceb0936ecdba7583e61965a439
+[31m??[m ../../tmp/cache/assets/development/sprockets/bb0c24993f6e2176dba2439814a6eb8f
+[31m??[m ../../tmp/cache/assets/development/sprockets/bb481a07e846c945cfe2f36cee807855
+[31m??[m ../../tmp/cache/assets/development/sprockets/bc2fb5a2612b9e82f1089e5d9f98884e
+[31m??[m ../../tmp/cache/assets/development/sprockets/bd05f33248b6e4dd353b77da56d61b23
+[31m??[m ../../tmp/cache/assets/development/sprockets/bd2da291576925f4dc2fd5a56025c5be
+[31m??[m ../../tmp/cache/assets/development/sprockets/bd93c47b2450bfdeadb5edd6d39ef9a0
+[31m??[m ../../tmp/cache/assets/development/sprockets/bf0cdfba10970b6e48fd520c7e17b199
+[31m??[m ../../tmp/cache/assets/development/sprockets/bf74ada4951955d5b994fbe980c63546
+[31m??[m ../../tmp/cache/assets/development/sprockets/bf8328796b5583bc34844f9428cadbac
+[31m??[m ../../tmp/cache/assets/development/sprockets/c0009dd1c6d94d844ab4a50abc64d5c3
+[31m??[m ../../tmp/cache/assets/development/sprockets/c0f69d8f3a107dc7b920b4f2ee716464
+[31m??[m ../../tmp/cache/assets/development/sprockets/c1694cd2cdbb85eb30582bcd6d58395a
+[31m??[m ../../tmp/cache/assets/development/sprockets/c2debdb2b7c750fad4ab8eaeb9372686
+[31m??[m ../../tmp/cache/assets/development/sprockets/c48e0488079cb73e6fffa2400bb33f3d
+[31m??[m ../../tmp/cache/assets/development/sprockets/c4ac1f69e1b0b3e07596a1876e498478
+[31m??[m ../../tmp/cache/assets/development/sprockets/c4fc40659f50014666d985ee68eb113f
+[31m??[m ../../tmp/cache/assets/development/sprockets/c51889428492aa17b34a4d91a831c9d5
+[31m??[m ../../tmp/cache/assets/development/sprockets/c6146c5ee86b83b0eaddec7aff61c982
+[31m??[m ../../tmp/cache/assets/development/sprockets/c8d0c12bf9317a1c3d8624538596ef9d
+[31m??[m ../../tmp/cache/assets/development/sprockets/c9664d06c040a82d00660f600a548007
+[31m??[m ../../tmp/cache/assets/development/sprockets/cbc7630b824708d3d736b7cb6a975159
+[31m??[m ../../tmp/cache/assets/development/sprockets/cdc3976394d0b2bef5262b3148f5dace
+[31m??[m ../../tmp/cache/assets/development/sprockets/ce03751a5ed28180e458dcf2f03d5c47
+[31m??[m ../../tmp/cache/assets/development/sprockets/ce3570fa55ba5173722f46e87d021e55
+[31m??[m ../../tmp/cache/assets/development/sprockets/d024621d19c1b4774fe23b86e22daa23
+[31m??[m ../../tmp/cache/assets/development/sprockets/d02735cd4751f69ddacf558268469b0a
+[31m??[m ../../tmp/cache/assets/development/sprockets/d05ec8feb8feae757f6b27ebb8d56567
+[31m??[m ../../tmp/cache/assets/development/sprockets/d1b543349604e2a31059debbc83770b4
+[31m??[m ../../tmp/cache/assets/development/sprockets/d1cd959846a0f3c2fa56d2fd67a3492e
+[31m??[m ../../tmp/cache/assets/development/sprockets/d22e1e0ebd238b9a5deaa2d5678b8593
+[31m??[m ../../tmp/cache/assets/development/sprockets/d320d85f07fb78c627ac87de93d39781
+[31m??[m ../../tmp/cache/assets/development/sprockets/d4b35e37db545f64be4dbdfcc844b148
+[31m??[m ../../tmp/cache/assets/development/sprockets/d58106875537f8fa7293ff6f3a8cb92a
+[31m??[m ../../tmp/cache/assets/development/sprockets/d7f91d2c9edd03d088f8b46e9502e349
+[31m??[m ../../tmp/cache/assets/development/sprockets/d9026dc1e4b5d0d3d3e76680bd6ca614
+[31m??[m ../../tmp/cache/assets/development/sprockets/d914f4e0be30986fbc4af57b2f6d2e7e
+[31m??[m ../../tmp/cache/assets/development/sprockets/d9b855eceed39ed93e4bf4574bf279d2
+[31m??[m ../../tmp/cache/assets/development/sprockets/da0d6a14541cd758f933601c9bb13d15
+[31m??[m ../../tmp/cache/assets/development/sprockets/da54f4c83e0645bcb0c656520446e05e
+[31m??[m ../../tmp/cache/assets/development/sprockets/dc3533cf43e2b12f1619b22341e8d270
+[31m??[m ../../tmp/cache/assets/development/sprockets/dd61e6a09c862f2770b26789b22ca2ae
+[31m??[m ../../tmp/cache/assets/development/sprockets/ddbe358f28ffcdbbc23a2a26225b7a2c
+[31m??[m ../../tmp/cache/assets/development/sprockets/de16369c62ef8e13089549254cf3f4ab
+[31m??[m ../../tmp/cache/assets/development/sprockets/de843134b40680da6a1f0760350e270a
+[31m??[m ../../tmp/cache/assets/development/sprockets/e0222038760278b485cc47c71a5b2e44
+[31m??[m ../../tmp/cache/assets/development/sprockets/e075c45bfe7ca62b01d3ed9fb3a32698
+[31m??[m ../../tmp/cache/assets/development/sprockets/e0b9f4b30dbb563d6613b705fbbd1c23
+[31m??[m ../../tmp/cache/assets/development/sprockets/e14cb34bb688a9a7f6147daa5adb7032
+[31m??[m ../../tmp/cache/assets/development/sprockets/e1d49270a5829dbae96dbc8fb72e942f
+[31m??[m ../../tmp/cache/assets/development/sprockets/e37242c14557678e54c2183c70766f50
+[31m??[m ../../tmp/cache/assets/development/sprockets/e4547ee45750302cd011a4ab42cb05e8
+[31m??[m ../../tmp/cache/assets/development/sprockets/e5559617f4e3e1a3bced33f917488d19
+[31m??[m ../../tmp/cache/assets/development/sprockets/e5849440b9ddd0f920f957306fb158bd
+[31m??[m ../../tmp/cache/assets/development/sprockets/e62dfbb8525bd82f25aec84a38bd6dcf
+[31m??[m ../../tmp/cache/assets/development/sprockets/e688b60a66953a0110e1523914f21d36
+[31m??[m ../../tmp/cache/assets/development/sprockets/e6c8115724aea3e64cec8bc25c8f5628
+[31m??[m ../../tmp/cache/assets/development/sprockets/e6f58237952cc13749c0727215ce366d
+[31m??[m ../../tmp/cache/assets/development/sprockets/e732659fb43d2c54988a998c18cde169
+[31m??[m ../../tmp/cache/assets/development/sprockets/e76a0d6947b8c37c89a4f1bb2bf5912c
+[31m??[m ../../tmp/cache/assets/development/sprockets/e7738404565d93f6416786753ed9e477
+[31m??[m ../../tmp/cache/assets/development/sprockets/e79d1e28ff9f85e68ddb9f89077c1500
+[31m??[m ../../tmp/cache/assets/development/sprockets/e8f3c0058b59e447afdb546280dc29f2
+[31m??[m ../../tmp/cache/assets/development/sprockets/e9d2de0165ec63c69cec51be20df0dc3
+[31m??[m ../../tmp/cache/assets/development/sprockets/e9dbadf5d166407fb70095c85028d887
+[31m??[m ../../tmp/cache/assets/development/sprockets/ea0783ce55f631b99e0e04bc8db1c612
+[31m??[m ../../tmp/cache/assets/development/sprockets/ea165d7103c6e1d49a40b4d3c7ad7d66
+[31m??[m ../../tmp/cache/assets/development/sprockets/ebd07279d5342b95ec6f28dcdc2dbd3c
+[31m??[m ../../tmp/cache/assets/development/sprockets/ebfa0ae2d47c7f40977676d2bea5513a
+[31m??[m ../../tmp/cache/assets/development/sprockets/ec1c7f6d9687a8f310a2e385a7ef3122
+[31m??[m ../../tmp/cache/assets/development/sprockets/ece21af26ac6b1072376d8e4743fdf5e
+[31m??[m ../../tmp/cache/assets/development/sprockets/ed5e5aeb212209ce4b93697bd1817869
+[31m??[m ../../tmp/cache/assets/development/sprockets/eda9859da7b244fff8c5bd2c6d6c0dde
+[31m??[m ../../tmp/cache/assets/development/sprockets/edaed13b95e26d19465d8ec8eed313fc
+[31m??[m ../../tmp/cache/assets/development/sprockets/edb37fff426f85f0099d0fdcb7f2b03c
+[31m??[m ../../tmp/cache/assets/development/sprockets/eddc7a3af4a80d3f2f5ca488be720be4
+[31m??[m ../../tmp/cache/assets/development/sprockets/ee5ad26e8ceaa84e137fb9854da887f6
+[31m??[m ../../tmp/cache/assets/development/sprockets/f00a37ccd0352059f22d3c13dd29352c
+[31m??[m ../../tmp/cache/assets/development/sprockets/f0c2946eeabaaff8e51674381bc2dc82
+[31m??[m ../../tmp/cache/assets/development/sprockets/f106c7d561a5385bc7ce2effd8432a30
+[31m??[m ../../tmp/cache/assets/development/sprockets/f120ec9455ce599d8e0bc518c78f5bde
+[31m??[m ../../tmp/cache/assets/development/sprockets/f1427587fac4527af164d4478f246438
+[31m??[m ../../tmp/cache/assets/development/sprockets/f1c4f428c30882704f3eb870eb208ed4
+[31m??[m ../../tmp/cache/assets/development/sprockets/f1d2135402a278123d8376f33b534b7f
+[31m??[m ../../tmp/cache/assets/development/sprockets/f21ee33b1958963ca4a0cd6ae70c9b78
+[31m??[m ../../tmp/cache/assets/development/sprockets/f470474394cf5ba3808c9231674c554e
+[31m??[m ../../tmp/cache/assets/development/sprockets/f712f5923b4b4baba3a0914ac50574a4
+[31m??[m ../../tmp/cache/assets/development/sprockets/f7b5163cad50d7f156942d89bd8c7db4
+[31m??[m ../../tmp/cache/assets/development/sprockets/f90752b09daf1bb592c15b018d933992
+[31m??[m ../../tmp/cache/assets/development/sprockets/f9d3b1a7894a60548458b4302a8c638e
+[31m??[m ../../tmp/cache/assets/development/sprockets/fbc0f07f07581cdd364950aa0b8d7912
+[31m??[m ../../tmp/cache/assets/development/sprockets/fbde8e99e7733489c043a8a8bec5dfce
+[31m??[m ../../tmp/cache/assets/development/sprockets/fc3a1cf7b1cedc8428859b4332181384
+[31m??[m ../../tmp/cache/assets/development/sprockets/fc4a50580e1ef0c5837f2aa977a24267
+[31m??[m ../../tmp/cache/assets/development/sprockets/fc99b74a43cabd1eb7c775cc847856d9
+[31m??[m ../../tmp/cache/assets/development/sprockets/fd30b08803b40d6bc4c6c96d7e76171b
+[31m??[m ../../tmp/cache/assets/development/sprockets/fda645bcf8c110e31c69de31c87390c4
+[31m??[m ../../tmp/cache/assets/development/sprockets/ff3eda08785c33c1256f27c9341e1f3e
+[31m??[m ../../tmp/cache/assets/development/sprockets/ff88e4d8d5d4358356d18af4306335eb
+[31m??[m ../../tmp/cache/assets/development/sprockets/ffb84a3af15e876ed4709375ee794832
+[31m??[m ../../typescript
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=ggco ../../app/views/students/_form.html.erb[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=ggenerate scaffold HighScore game:string score:integer[53Drgenerate scaffold HighScore game:string score:integer[53Dragenerate scaffold HighScore game:string score:integer[53Digenerate scaffold HighScore game:string score:integer[53Dlgenerate scaffold HighScore game:string score:integer[53Dsgenerate scaffold HighScore game:string score:integer[53D generate scaffold HighScore game:string score:integer[53D[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1CHighScore game:string score:integer [36DighScore game:string score:integer [35DghScore game:string score:integer [34DhScore game:string score:integer [33DScore game:string score:integer [32Dcore game:string score:integer [31Dore game:string score:integer [30Dre game:string score:integer [29De game:string score:integer [28D game:string score:integer [27D[1C game:string score:integer[26DC game:string score:integer[26Do game:string score:integer[26Du game:string score:integer[26Dr game:string score:integer[26Ds game:string score:integer[26De game:string score:integer[26DC game:string score:integer[26Dl game:string score:integer[26Da game:string score:integer[26Ds game:string score:integer[26Ds game:string score:integer[26DS game:string score:integer[26Dt game:string score:integer[26Du game:string score:integer[26Dd game:string score:integer[26De game:string score:integer[26Dn game:string score:integer[26Dt game:string score:integer[26D[1Came:string score:integer [25Dme:string score:integer [24De:string score:integer [23D:string score:integer [22Dstring score:integer [21Dtring score:integer [20Dring score:integer [19Ding score:integer [18Dng score:integer [17Dg score:integer [16D score:integer [15Dscore:integer [14Dcore:integer [13Dore:integer [12Dre:integer [11De:integer [10D:integer [9Dinteger [8Dnteger teger eger ger er r  student_id:ingteg    teger, course_classs )i  _id_i  :integer, nogte    ote_s  :string[?1l>
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/railties-4.1.6/lib/rails/app_rails_loader.rb:37: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/bundler-1.6.2/lib/bundler/runtime.rb:222: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20141106192529_create_course_class_students.rb
+[1m[31m    conflict[0m    app/models/course_class_student.rb
+  Overwrite /var/www/uab/app/models/course_class_student.rb? (enter "h" for help) [Ynaqdh] Y
+[1m[33m       force[0m    app/models/course_class_student.rb
+[1m[37m      invoke[0m    rspec
+[1m[32m      create[0m      spec/models/course_class_student_spec.rb
+[1m[37m      invoke[0m      factory_girl
+[1m[32m      create[0m        spec/factories/course_class_students.rb
+[1m[37m      invoke[0m  resource_route
+[1m[32m       route[0m    resources :course_class_students
+[1m[37m      invoke[0m  responders_controller
+[1m[32m      create[0m    app/controllers/course_class_students_controller.rb
+[1m[37m      invoke[0m    erb
+[1m[32m      create[0m      app/views/course_class_students
+[1m[32m      create[0m      app/views/course_class_students/index.html.erb
+[1m[32m      create[0m      app/views/course_class_students/edit.html.erb
+[1m[32m      create[0m      app/views/course_class_students/show.html.erb
+[1m[32m      create[0m      app/views/course_class_students/new.html.erb
+[1m[32m      create[0m      app/views/course_class_students/_form.html.erb
+[1m[37m      invoke[0m    rspec
+[1m[37m      invoke[0m      rspec
+[1m[37m      invoke[0m    helper
+[1m[32m      create[0m      app/helpers/course_class_students_helper.rb
+[1m[37m      invoke[0m      rspec
+[1m[37m      invoke[0m    jbuilder
+[1m[32m      create[0m      app/views/course_class_students/index.json.jbuilder
+[1m[32m      create[0m      app/views/course_class_students/show.json.jbuilder
+[1m[37m      invoke[0m  assets
+[1m[37m      invoke[0m    coffee
+[1m[32m      create[0m      app/assets/javascripts/course_class_students.js.coffee
+[1m[37m      invoke[0m    scss
+[1m[32m      create[0m      app/assets/stylesheets/course_class_students.css.scss
+[1m[37m      invoke[0m  scss
+[1m[34m   identical[0m    app/assets/stylesheets/scaffolds.css.scss
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=
+bck-i-search: _[K[A[24Cgco ../../app/views/students/_form.ht[4mm[24ml.erb[1B[68Dm_[A[60C[37D/usr/bin/java -classpath lib/browserl[24mauncher2-1.0-rc3.jar:lib/commons-cli-1.2.jar:lib/commons-codec-1.3.jar:lib/commons-lang-2.4.jar:lib/commons-logging-1.1.jar:lib/forms-1.0.6.jar:lib/guava-15.0.jar:lib/jdic-0.9.1.jar:lib/log4j-1.2.13.jar:lib/[4mmi[24mglayout-3.7-swing.jar:lib/pcng-client-14.2.jar:lib/pcng-common-14.2.jar:lib/winlaf-0.5.1.jar:lib/xmlrpc-2.0.1.jar: -Dclient.home=. biz.papercut.pcng.client.uit.UserClient -u admunila -m -s[K
+bck-i-search: mi_[K[A[A[59C[1C[4mi[4mg[24m[2B[63Dg_[A[A[58C[A[37Dbin/rake db:[4mm[4mi[4mg[4mr[24mate RAILS_ENV=development[K[126C[01;36m[00m[1Bbck-i-search: migr_[K[1B[K[1B[K[3A[51C[3C[4mr[4ma[24m[1B[38Da_[A[31C[24mm[24mi[24mg[24mr[24ma[1B[K[A[80C[?1l>[1Bzsh: no such file or directory: bin/rake
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=bin/rake db:migrate RAILS_ENV=development[41Din/rake db:migrate RAILS_ENV=development [41Dn/rake db:migrate RAILS_ENV=development [40D/rake db:migrate RAILS_ENV=development [39Drake db:migrate RAILS_ENV=development [38D[?1l>
+(in /var/www/uab)
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/bundler-1.6.2/lib/bundler/runtime.rb:222: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+rake aborted!
+SyntaxError: /var/www/uab/db/migrate/20141106192529_create_course_class_students.rb:4: syntax error, unexpected '\n', expecting :: or '[' or '.'
+/var/www/uab/db/migrate/20141106192529_create_course_class_students.rb:5: syntax error, unexpected '\n', expecting :: or '[' or '.'
+
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=rake db:migrate RAILS_ENV=development[?1l>
+(in /var/www/uab)
+/home/ruminiki/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/bundler-1.6.2/lib/bundler/runtime.rb:222: warning: Insecure world writable dir /var/www/uab/./bin in PATH, mode 040777
+== 20141106192529 CreateCourseClassStudents: migrating ========================
+-- create_table(:course_class_students)
+   -> 0.1292s
+== 20141106192529 CreateCourseClassStudents: migrated (0.1293s) ===============
+
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                               ]2;represo[0m[27m[24m[J[01;36m/var/www/uab/script/plugin/[00m [[01;33mmaster[00m] › [K[167C[01;36m[00m[167D[?1h=[?1l>
+[1m[7m%[27m[1m[0m                                                            

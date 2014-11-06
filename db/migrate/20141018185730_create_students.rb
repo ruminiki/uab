@@ -8,6 +8,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :badge_observation
       t.date :birthday
       t.string :address
+      t.integer :city_id
 
       t.timestamps
     end
