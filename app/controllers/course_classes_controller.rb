@@ -9,7 +9,7 @@ class CourseClassesController < ApplicationController
 
 
   def index
-    @course_classes = CourseClass.joins(:institution, :course)
+    @course_classes = CourseClass.joins(:institution, :course, :course_class_student)
     respond_with(@course_classes)
   end
 
@@ -45,10 +45,15 @@ class CourseClassesController < ApplicationController
 
   def add_student
     @course_class = CourseClass.find(params[:id])
-    @course_class.students << Student.find(params[:student])
+    @student = Student.find(params[:student_id])
+    @course_class_student = CourseClassStudent.new
+    @course_class_student.student = @student
+    @course_class_student.course_class = @course_class
+    @course_class.course_class_students = Array.new if nil
+    @course_class.course_class_students << @course_class_student
     @course_class.save
-    #redirect_to :back, :notice => "Student added with success!"
-    redirect_to :back
+    redirect_to :back, :notice => "Student added with success!"
+    #redirect_to :back
   end
 
   def remove_student

@@ -36,11 +36,6 @@ ActiveRecord::Schema.define(version: 20141106192529) do
     t.datetime "updated_at"
   end
 
-  create_table "course_classes_students", id: false, force: true do |t|
-    t.integer "student_id"
-    t.integer "course_class_id"
-  end
-
   create_table "courses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
