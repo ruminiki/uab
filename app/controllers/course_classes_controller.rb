@@ -4,12 +4,10 @@ class CourseClassesController < ApplicationController
   respond_to :html
   autocomplete :student, :name, :full => true, :extra_data => [:id]
 
-
   helper_method :add_student, :remove_student
 
-
   def index
-    @course_classes = CourseClass.joins(:institution, :course, :course_class_student)
+    @course_classes = CourseClass.joins(:institution, :course)
     respond_with(@course_classes)
   end
 
@@ -38,6 +36,7 @@ class CourseClassesController < ApplicationController
 
   def redirect_to_add_student
     @course_class = CourseClass.find(params[:id])
+    #@course_class.student = Student.new
     #@course_class_student = CourseClassStudent.find(:first, :conditions => [ "course_class_id = ?", :id])
     #@course_class_student = CourseClassStudent.new if @course_class_student nil
     render '_form_add_students'
@@ -60,7 +59,7 @@ class CourseClassesController < ApplicationController
     @course_class = CourseClass.find(params[:id])
     @course_class.students.delete(params[:student_id])
     @course_class.save
-    redirect_to :back
+    redirect_to :back, :notice => "Student removed with success!"
   end
 
   def destroy

@@ -7,13 +7,13 @@ class CourseClass < ActiveRecord::Base
 
 	before_save :upper_case
 	before_update :upper_case
+	
+	#selected student
+	attr_accessor :student
+	attr_accessor :student_id
 
 	def upper_case
 		self.name.upcase!
-	end
-
-	def student
-		@student
 	end
 
 end

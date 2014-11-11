@@ -1,4 +1,7 @@
-<%= simple_form_for @course_class, :html => { :class => "form-horizontal course_class" } do |f| %>
+<%= simple_form_for @course_class, 
+    :html => { :class => "form-horizontal course_class"},
+    :url => url_for(course_classes_add_student_path),
+    :method => 'get' do |f| %>
 
     <% if @course_class.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -62,7 +65,7 @@
           <%= f.input :student, 
                       :url => autocomplete_student_name_course_classes_path, 
                       :as => :autocomplete,
-                      label: false,
+                      :label=> false,
                       :input_html => { 
                         :class => 'form-control', 
                         :style => 'max-width: 600px;',
@@ -70,18 +73,24 @@
                       } 
           %>
 
-          <%= f.hidden_field :student, :id => "student_id" %>
+          <%= f.hidden_field :student_id, :id => "student_id", :name => "student_id" %>
+          <%= f.hidden_field :id, :id => "id", :name => "id" %>
 
       </div>
 
       <br>
 
-      <%= link_to 'Add Student', course_classes_add_student_path(:id=>@course_class.id,:student_id=>'1'),
+      <%= f.submit 'Add Student', :class => 'col-sm-offset-2 btn btn-primary' %>
+      
+      <!--
+      <%= link_to 'Add Student', course_classes_add_student_path(:id=>@course_class.id,:student_id=>@course_class.student),
                   :class=>'col-sm-offset-2 btn btn-primary',
                   :id=>'link_to_add_student'%>
+      -->
 
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 edit_course_class_path(@course_class), :class => 'btn btn-default' %>
+
 
   </div>
 
