@@ -110,13 +110,20 @@
         <tbody>
           <% @course_class.students.each do |student| %>
             <tr>
-              <td><%= link_to student.name, edit_student_path(student) %></td>
+              <td><%= student.name %></td>
               <td><%= student.phone_number %></td>
               <td><%= student.email %></td>
               <td><%= student.has_badge %></td>
               <td>
+
+                <%= link_to "Edit",
+                    redirect_to_edit_student_course_class, 
+                    :class=>'btn btn-xs btn btn-primary' %>
+
                 <%= link_to "Remove", 
-                  course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id) %>
+                    course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),
+                    :class=>'btn btn-xs btn btn-danger' %>
+
               </td>
             </tr>
           <% end %>

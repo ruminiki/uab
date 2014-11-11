@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 	  get "course_classes/redirect_to_add_student" => "course_classes#redirect_to_add_student"	
 	  get "course_classes/add_student" => "course_classes#add_student"	
 	  get "course_classes/remove_student" => "course_classes#remove_student"  
-
+	  get "course_classes/redirect_to_edit_student_course_class" => "course_classes#redirect_to_edit_student_course_class"  
+	  
 	  resources :institutions
 	  resources :courses
 
