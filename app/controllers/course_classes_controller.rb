@@ -44,8 +44,8 @@ class CourseClassesController < ApplicationController
     redirect_to :back
   end
 
-  #manutenção estudantes da turma
-  def redirect_to_add_student
+  #direciona para a pagina de matricula
+  def registrations
     @course_class = CourseClass.find(params[:id])
     render '_form_add_students'
   end

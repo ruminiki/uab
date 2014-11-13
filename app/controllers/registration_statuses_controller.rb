@@ -22,12 +22,12 @@ class RegistrationStatusesController < ApplicationController
   def create
     @registration_status = RegistrationStatus.new(registration_status_params)
     @registration_status.save
-    respond_with(@registration_status)
+    redirect_to action: "index"
   end
 
   def update
     @registration_status.update(registration_status_params)
-    respond_with(@registration_status)
+    redirect_to action: "index"
   end
 
   def destroy

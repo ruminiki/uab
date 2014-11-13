@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141113193749) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
+    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
