@@ -40,10 +40,10 @@ class CourseClassesController < ApplicationController
   end
 
   def redirect_to_edit_student_course_class
-    @course_class_student = CourseClassStudent.find(params[:id])
-    render '_form_edit_student_course_class'
+    @course_class_student = CourseClassStudent.find(:first,
+      :conditions => ['course_class_id = ? AND student_id = ?', params[:couse_class_id], params[:student_id]])
+    render '../course_class_students/_form'
   end
-
 
   def add_student
     @course_class = CourseClass.find(params[:id])
