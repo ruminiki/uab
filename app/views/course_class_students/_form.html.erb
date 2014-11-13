@@ -79,7 +79,6 @@ jQuery(function($){
 
   <%= f.button :submit, :class => 'col-sm-offset-2 btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                course_class_students_cancel_path, :class => 'btn btn-default' %>
-
+                url_for(:back), :class => 'btn btn-default' %>
 
 <% end %>
