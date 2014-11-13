@@ -5,7 +5,7 @@ class CreateCourseClassStudents < ActiveRecord::Migration
       t.integer :course_class_id
       t.date :date_abandonment
       t.date :date_conclusion
-      t.fload :end_not
+      t.float :end_note
       t.string :note
       t.timestamps
     end

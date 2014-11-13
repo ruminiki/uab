@@ -34,15 +34,25 @@ class CourseClassesController < ApplicationController
     redirect_to action: "index"
   end
 
+  def destroy
+    @course_class.destroy
+    respond_with(@course_class)
+  end
+
+  #metodo para retornar para a página anterior
+  def cancel
+    redirect_to :back
+  end
+
+  #manutenção estudantes da turma
   def redirect_to_add_student
     @course_class = CourseClass.find(params[:id])
     render '_form_add_students'
   end
 
   def redirect_to_edit_student_course_class
-    @course_class_student = CourseClassStudent.find(:first,
-      :conditions => ['course_class_id = ? AND student_id = ?', params[:couse_class_id], params[:student_id]])
-    render '../course_class_students/_form'
+    @course_class_student = CourseClassStudent.where(course_class_id: params[:course_class_id], student_id: params[:student_id]).first
+    redirect_to edit_course_class_student_path(@course_class_student)
   end
 
   def add_student
@@ -65,10 +75,6 @@ class CourseClassesController < ApplicationController
     redirect_to :back, :notice => "Student removed with success!"
   end
 
-  def destroy
-    @course_class.destroy
-    respond_with(@course_class)
-  end
 
   private
     def set_course_class

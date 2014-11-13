@@ -117,7 +117,7 @@
               <td>
 
               <%= link_to "Edit",
-                    course_class_students_redirect_to_edit_student_course_class_path(:course_class_id => @course_class.id, :student_id => student.id), :class=>'btn btn-xs btn btn-primary' %>
+                    course_classes_redirect_to_edit_student_course_class_path(:course_class_id => @course_class.id, :student_id => student.id), :class=>'btn btn-xs btn btn-primary' %>
               
               <%= link_to "Remove", 
                     course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),

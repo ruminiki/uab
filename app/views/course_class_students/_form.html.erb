@@ -1,6 +1,18 @@
-<%= simple_form_for @course_class_student, :html => { :class => 'form-horizontal' } do |f| %>
+<script type="text/javascript">
+  
+jQuery(function($){
 
-    <% if @course_class_student.errors.any? %>
+    $(".datepicker").datepicker({
+                dateFormat : "dd/MM/yy",
+                yearRange : "c-20:c+5"
+            })
+
+});
+
+</script>
+<%= simple_form_for @course_class_student, :html => { :class => "form-horizontal course_class_student" } do |f| %>
+
+  <% if @course_class_student.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title"><%= pluralize(@course_class_student.errors.count, "error") %> prohibited this course_class_student from being saved:</h3>
@@ -15,18 +27,19 @@
     </div>
   <% end %>
 
+
   <div class="form-group">
     <%= f.label :course_class, :class => 'col-sm-2 control-label' %>
-    <div class="controls" style="max-width:600px; display: -webkit-box;">
-      <%= f.input :course_class_name, {:class =>'form-control'})%>
+    <div class="controls">
+      <%= f.text_field :course_class_name, :class =>'form-control', :style=> 'max-width: 600px' %>
     </div>
     <%= error_span(@course_class_student[:course_class]) %>
   </div>
 
   <div class="form-group">
     <%= f.label :student, :class => 'col-sm-2 control-label' %>
-    <div class="controls" style="max-width:600px; display: -webkit-box;">
-      <%= f.input :student_name, {:class =>'form-control'})%>
+    <div class="controls">
+      <%= f.text_field :student_name, :class =>'form-control', :style=> 'max-width: 600px' %>
     </div>
     <%= error_span(@course_class_student[:student]) %>
   </div>
@@ -37,7 +50,7 @@
     <div class="controls">
       <%= f.text_field :date_abandonment, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
     </div>
-    <%= error_span(@student[:date_abandonment]) %>
+    <%= error_span(@course_class_student[:date_abandonment]) %>
   </div>
 
   <div class="form-group">
@@ -45,26 +58,28 @@
     <div class="controls">
       <%= f.text_field :date_conclusion, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
     </div>
-    <%= error_span(@student[:date_conclusion]) %>
+    <%= error_span(@course_class_student[:date_conclusion]) %>
   </div>
 
   <div class="form-group">
     <%= f.label :end_note, :class => 'col-sm-2 control-label' %>
     <div class="controls">
-      <%= f.text_field :end_note, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
+      <%= f.text_field :end_note, :class => 'form-control', :style=> 'max-width: 50px'  %>
     </div>
-    <%= error_span(@student[:end_note]) %>
+    <%= error_span(@course_class_student[:end_note]) %>
   </div>
 
   <div class="form-group">
     <%= f.label :note, :class => 'col-sm-2 control-label' %>
     <div class="controls">
-      <%= f.text_field :note, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
+      <%= f.text_area :note, :class => 'form-control', :style=> 'max-width: 600px'  %>
     </div>
-    <%= error_span(@student[:note]) %>
+    <%= error_span(@course_class_student[:note]) %>
   </div>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= f.button :submit, :class => 'col-sm-offset-2 btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                course_class_students_path, :class => 'btn btn-default' %>
+                course_class_students_cancel_path, :class => 'btn btn-default' %>
+
+
 <% end %>

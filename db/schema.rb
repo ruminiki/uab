@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20141106192529) do
   create_table "course_class_students", force: true do |t|
     t.integer  "student_id"
     t.integer  "course_class_id"
+    t.date     "date_abandonment"
+    t.date     "date_conclusion"
+    t.float    "end_note",         limit: 24
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
