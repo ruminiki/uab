@@ -1,8 +1,8 @@
 class Student < ActiveRecord::Base
 
 	belongs_to :city, :autosave => true
-	has_many :course_class_students
-	has_many :course_classes, :through => :course_class_students
+	has_many :registrations
+	has_many :course_classes, :through => :registrations
 
 	before_save :upper_case
 

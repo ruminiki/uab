@@ -19,17 +19,6 @@ ActiveRecord::Schema.define(version: 20141106192529) do
     t.datetime "updated_at"
   end
 
-  create_table "course_class_students", force: true do |t|
-    t.integer  "student_id"
-    t.integer  "course_class_id"
-    t.date     "date_abandonment"
-    t.date     "date_conclusion"
-    t.float    "end_note",         limit: 24
-    t.string   "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "course_classes", force: true do |t|
     t.string   "name"
     t.integer  "institution_id"
@@ -51,6 +40,18 @@ ActiveRecord::Schema.define(version: 20141106192529) do
     t.string   "phone_number"
     t.string   "email"
     t.string   "site"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registrations", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "course_class_id"
+    t.integer  "registration_status_id"
+    t.date     "date_abandonment"
+    t.date     "date_conclusion"
+    t.float    "end_note",               limit: 24
+    t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

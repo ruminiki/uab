@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+  resources :course_class_student_statuses
+
   resources :course_class_students
 
 	authenticate :user do
@@ -9,7 +11,8 @@ Rails.application.routes.draw do
 	  get "course_classes/remove_student" => "course_classes#remove_student"  
 	  get "course_classes/redirect_to_edit_student_course_class" => "course_classes#redirect_to_edit_student_course_class"  
 	  
-	  resources :course_class_students
+	  #resources :registration_status
+	  resources :registrations
 	  resources :institutions
 	  resources :courses
 

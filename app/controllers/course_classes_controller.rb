@@ -51,18 +51,18 @@ class CourseClassesController < ApplicationController
   end
 
   def redirect_to_edit_student_course_class
-    @course_class_student = CourseClassStudent.where(course_class_id: params[:course_class_id], student_id: params[:student_id]).first
-    redirect_to edit_course_class_student_path(@course_class_student)
+    @registration = Registration.where(course_class_id: params[:course_class_id], student_id: params[:student_id]).first
+    redirect_to edit_registration_path(@registration)
   end
 
   def add_student
     @course_class = CourseClass.find(params[:id])
     @student = Student.find(params[:student_id])
-    @course_class_student = CourseClassStudent.new
-    @course_class_student.student = @student
-    @course_class_student.course_class = @course_class
-    @course_class.course_class_students = Array.new if nil
-    @course_class.course_class_students << @course_class_student
+    @registration = Registration.new
+    @registration.student = @student
+    @registration.course_class = @course_class
+    @course_class.registrations = Array.new if nil
+    @course_class.registrations << @registration
     @course_class.save
     redirect_to :back, :notice => "Student added with success!"
     #redirect_to :back
