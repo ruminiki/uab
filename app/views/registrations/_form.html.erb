@@ -61,6 +61,15 @@ jQuery(function($){
   </div>
 
   <div class="form-group">
+    <%= f.label :status, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.association :registration_status, collection: RegistrationStatus.all, label: false,
+                        :class => 'form-control' %>
+    </div>
+    <%= error_span(@registration[:registration_status]) %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :end_note, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :end_note, :class => 'form-control', :style=> 'max-width: 50px'  %>

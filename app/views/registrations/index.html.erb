@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:student) %></th>
       <th><%= model_class.human_attribute_name(:course_class) %></th>
+      <th><%= model_class.human_attribute_name(:registration_status) %></th>
       <th><%= model_class.human_attribute_name(:note) %></th>
       <th><%= model_class.human_attribute_name(:date_abandonment) %></th>
       <th><%= model_class.human_attribute_name(:date_conclusion) %></th>
@@ -22,6 +23,7 @@
         <td><%= link_to registration.id, registration_path(registration) %></td>
         <td><%= registration.student.name %></td>
         <td><%= registration.course_class.name %></td>
+        <td><%= registration.registration_status.name %></td>
         <td><%= registration.note %></td>
         <td><%= registration.date_abandonment %></td>
         <td><%= registration.date_conclusion %></td>
