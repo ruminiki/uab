@@ -42,6 +42,6 @@ class RegistrationsController < ApplicationController
     end
 
     def registration_params
-      params.require(:registration).permit(:student_id, :course_class_id, :note, :date_abandonment, :date_conclusion, :end_note)
+      params.require(:registration).permit(:student_id, :course_class_id, :registration_status_id, :note, :date_abandonment, :date_conclusion, :end_note)
     end
 end

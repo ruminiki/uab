@@ -62,9 +62,12 @@ jQuery(function($){
 
   <div class="form-group">
     <%= f.label :status, :class => 'col-sm-2 control-label' %>
-    <div class="controls">
-      <%= f.association :registration_status, collection: RegistrationStatus.all, label: false,
-                        :class => 'form-control' %>
+    <div class="form-group">
+    
+      <%= f.collection_select :registration_status_id, RegistrationStatus.all, :id, :name, 
+                              {prompt: "Select a status"}, 
+                              {:class => "form-control", :style=> 'max-width: 350px'} %>
+
     </div>
     <%= error_span(@registration[:registration_status]) %>
   </div>
