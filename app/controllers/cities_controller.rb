@@ -21,8 +21,11 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params)
-    @city.save
-    redirect_to action: "index"
+    if @city.valid?
+      @city.save
+      redirect_to action: "index", :notice => "City saved with success" 
+    end
+    respond_with(@city)
   end
 
   def update
