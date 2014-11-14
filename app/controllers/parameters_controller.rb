@@ -41,6 +41,6 @@ class ParametersController < ApplicationController
     end
 
     def parameter_params
-      params.require(:parameter).permit(:name, :value)
+      params.require(:parameter).permit(:name, :value, :description)
     end
 end
