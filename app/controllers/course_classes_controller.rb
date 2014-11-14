@@ -56,9 +56,19 @@ class CourseClassesController < ApplicationController
   end
 
   def add_student
+    @registration = Registration.new
+
     @course_class = CourseClass.find(params[:id])
     @student = Student.find(params[:student_id])
-    @registration = Registration.new
+
+    id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
+    if id_status_inicial.nil?
+      redirect_to :back, :notice => "Parâmetro ID_STATUS_INICIAL_MATRICULA não definido. Contate o administrador"
+    end
+    
+    @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
+
+    @registration.registration_status = @registration_status
     @registration.student = @student
     @registration.course_class = @course_class
     @course_class.registrations = Array.new if nil
