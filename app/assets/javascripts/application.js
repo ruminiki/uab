@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap-sprockets
 //= require autocomplete-rails
 //= require bootstrap-datepicker
 
@@ -33,3 +34,5 @@ jQuery(function($){
             })
 
 });
+
+$('.dropdown-toggle').dropdown();
