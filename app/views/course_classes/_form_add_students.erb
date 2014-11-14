@@ -79,12 +79,6 @@
       <br>
 
       <%= f.submit 'Add Student', :class => 'col-sm-offset-2 btn btn-primary' %>
-      
-      <!--
-      <%= link_to 'Add Student', course_classes_add_student_path(:id=>@course_class.id,:student_id=>@course_class.student),
-                  :class=>'col-sm-offset-2 btn btn-primary',
-                  :id=>'link_to_add_student'%>
-      -->
 
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 edit_course_class_path(@course_class), :class => 'btn btn-default' %>
@@ -118,7 +112,7 @@
                     course_classes_redirect_to_edit_student_course_class_path(:course_class_id => @course_class.id, :student_id => student.id), :class=>'btn btn-xs btn btn-primary' %>
               
               <%= link_to "Remove", 
-                    course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),
+                    course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                     :class=>'btn btn-xs btn btn-danger' %>
 
               </td>

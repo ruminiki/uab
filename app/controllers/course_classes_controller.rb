@@ -64,13 +64,14 @@ class CourseClassesController < ApplicationController
     id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
     if id_status_inicial.nil? || id_status_inicial.value.nil?
       @course_class.errors.add(:param, "Param ID_STATUS_INICIAL_MATRICULA is not defined. Please contact the system administrator.")
-    end
+    else
+      #rescue exception
+      begin
+        @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
+      rescue
+        @course_class.errors.add(:status, "Registration Status not found with ID: " + id_status_inicial.value + ". Please insert the register.")
+      end
 
-    #rescue exception
-    begin
-      @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
-    rescue
-      @course_class.errors.add(:status, "Registration Status nof find with ID: " + id_status_inicial.value + ". Please insert the register.")
     end
 
     #if occurred any erros, back to page
