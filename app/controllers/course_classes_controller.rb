@@ -62,11 +62,22 @@ class CourseClassesController < ApplicationController
     @student = Student.find(params[:student_id])
 
     id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
-    if id_status_inicial.nil?
-      redirect_to :back, :notice => "Parâmetro ID_STATUS_INICIAL_MATRICULA não definido. Contate o administrador"
+    if id_status_inicial.nil? || id_status_inicial.value.nil?
+      @course_class.errors.add(:param, "Param ID_STATUS_INICIAL_MATRICULA is not defined. Please contact the system administrator.")
     end
-    
-    @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
+
+    #rescue exception
+    begin
+      @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
+    rescue
+      @course_class.errors.add(:status, "Registration Status nof find with ID: " + id_status_inicial.value + ". Please insert the register.")
+    end
+
+    #if occurred any erros, back to page
+    if @course_class.errors.any?
+      render '_form_add_students'
+      return
+    end
 
     @registration.registration_status = @registration_status
     @registration.student = @student
@@ -74,8 +85,8 @@ class CourseClassesController < ApplicationController
     @course_class.registrations = Array.new if nil
     @course_class.registrations << @registration
     @course_class.save
-    redirect_to :back, :notice => "Student added with success!"
-    #redirect_to :back
+    redirect_to :back, :notice => "Student added with success!"  
+    
   end
 
   def remove_student

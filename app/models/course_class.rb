@@ -12,6 +12,10 @@ class CourseClass < ActiveRecord::Base
 	attr_accessor :student
 	attr_accessor :student_id
 
+	def initialize
+    	@errors = ActiveModel::Errors.new(self)
+  	end
+
 	def upper_case
 		self.name.upcase!
 	end

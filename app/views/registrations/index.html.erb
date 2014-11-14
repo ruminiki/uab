@@ -9,11 +9,6 @@
       <th><%= model_class.human_attribute_name(:student) %></th>
       <th><%= model_class.human_attribute_name(:class) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:note) %></th>
-      <th><%= model_class.human_attribute_name(:date_abandonment) %></th>
-      <th><%= model_class.human_attribute_name(:date_conclusion) %></th>
-      <th><%= model_class.human_attribute_name(:end_note) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,12 +18,7 @@
         <td><%= link_to registration.id, registration_path(registration) %></td>
         <td><%= registration.student.name %></td>
         <td><%= registration.course_class.name %></td>
-        <td><%= registration.registration_status.name %></td>
-        <td><%= registration.note %></td>
-        <td><%= registration.date_abandonment %></td>
-        <td><%= registration.date_conclusion %></td>
-        <td><%= registration.end_note %></td>
-        <td><%=l registration.created_at %></td>
+        <td><%= (registration.registration_status.nil? ? "" : registration.registration_status.name) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_registration_path(registration), :class => 'btn btn-default btn-xs' %>
