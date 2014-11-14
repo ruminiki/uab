@@ -2,6 +2,23 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<!-- FORM SEARCH -->
+
+<%= form_tag(students_path, :method => "get", id: "search-form", :class => "simple_form form-horizontal student") do %>
+  <div class="form-group">
+    <%= label_tag :name %>
+    <div class="controls">
+      <%= text_field_tag :search, params[:search], placeholder: "name", :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+  </div>
+  <%= submit_tag "Search", :class => 'col-sm-offset-2 btn-primary' %>
+
+<% end %>
+
+<br>
+<!-- END FORM SEARCH -->
+
 <table class="table table-striped">
   <thead>
     <tr>

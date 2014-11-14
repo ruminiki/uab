@@ -5,8 +5,15 @@ class StudentsController < ApplicationController
   autocomplete :city, :name
 
   def index
-    @students = Student.all
+    
+    if params[:search]
+      @students = Student.search(params[:search])
+    else
+      @students = Student.all
+    end
+
     respond_with(@students)
+
   end
 
   def show
