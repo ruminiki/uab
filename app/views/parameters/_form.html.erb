@@ -1,0 +1,41 @@
+<%= simple_form_for @parameter, :html => { :class => "form-horizontal parameter" } do |f| %>
+   
+   <% if @parameter.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@parameter.errors.count, "error") %> prohibited this parameter from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @parameter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@parameter[:name]) %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :value, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :value, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@parameter[:value]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            parameters_path, :class => 'btn btn-default' %>
+
+
+<% end %>
