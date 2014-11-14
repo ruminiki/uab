@@ -7,6 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:value) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -15,7 +16,8 @@
     <% @parameters.each do |parameter| %>
       <tr>
         <td><%= parameter.id%></td>
-        <td style="width:50%"><%= link_to parameter.name, edit_parameter_path(parameter) %></td>
+        <td><%= link_to parameter.name, edit_parameter_path(parameter) %></td>
+        <td><%= parameter.description %></td>
         <th><%= parameter.value %></th>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

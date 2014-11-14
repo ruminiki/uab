@@ -31,6 +31,14 @@
     <%= error_span(@parameter[:value]) %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :description, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@parameter[:description]) %>
+  </div>
+
   <br>
 
   <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>

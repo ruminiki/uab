@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20141114002702) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
-    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -48,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141114002702) do
   create_table "parameters", force: true do |t|
     t.string   "name"
     t.string   "value"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
