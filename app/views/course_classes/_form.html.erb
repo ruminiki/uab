@@ -7,15 +7,7 @@ jQuery(function($){
                 yearRange : "c-20:c+5"
     });
 
-    $(function () {
-      $('#myTab a:fisrt').tab('show')
-    });
-
 });
-
-function getParameters(){
-  return 'student_id' + $('#student_id').val();
-}
 
 </script>
 <%= simple_form_for @course_class, :html => { :class => "form-horizontal course_class" } do |f| %>
@@ -72,7 +64,6 @@ function getParameters(){
   <%= error_span(@course_class[:begin]) %>
 
   <%= f.button :submit, :class => 'col-sm-offset-2 btn-primary' %>
-  <%= link_to 'Students', course_classes_registrations_path(:id=>@course_class.id), :class => 'btn btn-success' %>
 
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 course_classes_path, :class => 'btn btn-default' %>

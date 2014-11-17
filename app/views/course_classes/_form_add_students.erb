@@ -79,10 +79,9 @@
       <br>
 
       <%= f.submit 'Add Student', :class => 'col-sm-offset-2 btn btn-primary' %>
-
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                edit_course_class_path(@course_class), :class => 'btn btn-default' %>
-
+      
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), 
+                    :back, :class => 'btn btn-default' %>
 
   </div>
 

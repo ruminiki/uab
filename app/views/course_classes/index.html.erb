@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:institution_id) %></th>
       <th><%= model_class.human_attribute_name(:course_id) %></th>
-      <th><%= model_class.human_attribute_name(:begin) %></th>
+      <th><%=t '.students', :default => t("helpers.actions") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +20,14 @@
         <td><%= link_to course_class.name, edit_course_class_path(course_class) %></td>
         <td><%= course_class.institution.name %></td>
         <td><%= course_class.course.acronym %></td>
-        <td><%= course_class.begin %></td>
+        <td>
+        <%= link_to 'Students', 
+            course_classes_registrations_path(:id=>course_class.id), :class => 'btn btn-success btn-xs' %>
+        <%= link_to 'Tutors', 
+            course_classes_registrations_path(:id=>course_class.id), :class => 'btn btn-primary btn-xs' %>
+        <%= link_to 'Documents', 
+            course_classes_registrations_path(:id=>course_class.id), :class => 'btn btn-default btn-xs' %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_course_class_path(course_class), :class => 'btn btn-default btn-xs' %>
