@@ -1,0 +1,29 @@
+<%= form_for @employee_category, :html => { :class => "form-horizontal employee_category" } do |f| %>
+
+    <% if @employee_category.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @employee_category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@employee_category[:name]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            employee_categories_path, :class => 'btn btn-default' %>
+
+<% end %>

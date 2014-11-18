@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+  resources :employee_categories
+
   	authenticate :user do
 	  #invoke add student to classes
 	  get "course_classes/registrations" => "course_classes#registrations"	
