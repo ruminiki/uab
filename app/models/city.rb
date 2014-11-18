@@ -1,5 +1,5 @@
 class City < ActiveRecord::Base
-	validates :name, presence: true#, :message => "Name can't be empty"
+	validates :name, presence: true
 
 	before_save :upper_case
 	before_update :upper_case
