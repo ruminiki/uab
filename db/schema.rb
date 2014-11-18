@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114002702) do
+ActiveRecord::Schema.define(version: 20141118224250) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141114002702) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
+    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,6 +34,32 @@ ActiveRecord::Schema.define(version: 20141114002702) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "acronym"
+  end
+
+  create_table "document_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employee_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employees", force: true do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "rg"
+    t.string   "cpf"
+    t.date     "birthday"
+    t.integer  "employee_category_id"
+    t.integer  "city_id"
+    t.string   "address"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "institutions", force: true do |t|
@@ -81,6 +108,9 @@ ActiveRecord::Schema.define(version: 20141114002702) do
     t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rg"
+    t.string   "cpf"
+    t.string   "sanguine_type"
   end
 
   create_table "users", force: true do |t|

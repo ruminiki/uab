@@ -1,0 +1,112 @@
+<script type="text/javascript">
+  
+jQuery(function($){
+
+    $(".datepicker").datepicker({
+                dateFormat : "dd/mm/yy",
+                yearRange : "c-20:c+5"
+            })
+
+});
+
+</script>
+<%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
+ 
+  <% if @employee.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @employee.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :category, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.select(:employee_category_id, 
+        EmployeeCategory.all.map{ |c| [c.name, c.id]}, 
+        {:value => :employee_category_id}, 
+        {:class =>'form-control'})%>
+    </div>
+    <%= error_span(@employee[:employee_category]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@employee[:name]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_number, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_number, :class => 'form-control', :style=> 'max-width: 200px'  %>
+    </div>
+    <%= error_span(@employee[:phone_number]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'form-control', :style=> 'max-width: 600px'  %>
+    </div>
+    <%= error_span(@employee[:email]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :rg, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :rg, :class => 'form-control', :style=> 'max-width: 150px' %>
+    </div>
+    <%= error_span(@employee[:rg]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cpf, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :cpf, :class => 'form-control', :style=> 'max-width: 150px' %>
+    </div>
+    <%= error_span(@employee[:cpf]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :birthday, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
+    </div>
+    <%= error_span(@employee[:birthday]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'form-control', :style=> 'max-width: 600px'  %>
+    </div>
+    <%= error_span(@employee[:address]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:300px; display: -webkit-box;">
+
+      <%= f.input :city_name, 
+                  :url => autocomplete_city_name_employees_path, 
+                  :as => :autocomplete,
+                  :label => false,
+                  :input_html => { 
+                      :class => 'form-control', 
+                      :style => 'max-width: 600px;',
+                      :id_element=>'#city_id'
+                  } 
+      %>
+      <%= f.hidden_field :city_id, :id => "city_id" %>
+
+    </div>
+    <%= error_span(@employee[:city]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            employees_path, :class => 'btn btn-default' %>
+
+<% end %>

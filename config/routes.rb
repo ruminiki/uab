@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 	
-  resources :employee_categories
-
   	authenticate :user do
 	  #invoke add student to classes
 	  get "course_classes/registrations" => "course_classes#registrations"	
@@ -9,12 +7,17 @@ Rails.application.routes.draw do
 	  get "course_classes/remove_student" => "course_classes#remove_student"  
 	  get "course_classes/redirect_to_edit_student_course_class" => "course_classes#redirect_to_edit_student_course_class"  
 
+	  resources :employee_categories
 	  resources :document_categories
 	  resources :parameters	  
 	  resources :registration_statuses
 	  resources :registrations
 	  resources :institutions
 	  resources :courses
+	  
+  	  resources :employees do
+  	  	get :autocomplete_city_name, :on => :collection
+  	  end
 
 	  resources :students do
 	  	get :autocomplete_city_name, :on => :collection
