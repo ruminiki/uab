@@ -22,9 +22,34 @@ class Student < ActiveRecord::Base
 	end
 
 	def self.search(name, city, has_badge)
-		if name
-				
-	  where("name like ? and has_badge", "%#{name}%")
+
+		search = "";
+
+		if city.present?
+			search += "Student.joins(:city).where('cities.name like ?', '%#{city}%')."
+		end
+
+		if name.present?
+			search += "where('students.name like ?', '%#{name}%')." #$ usado para o replace
+		end
+
+		if has_badge.present?
+			if has_badge == 'yes'
+				search += "where('has_badge = ?', true)"
+			elsif has_badge == 'no'
+				search += "where('has_badge = ?', false)"
+			end
+		end
+
+		#remove o ponto final da última string
+		search.chop! if search.end_with? '.'
+
+		if search.empty?
+			all
+		else
+			eval(search)
+		end
+
 	end
 
 end

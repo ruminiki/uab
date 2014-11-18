@@ -6,12 +6,10 @@ class StudentsController < ApplicationController
 
   def index
     
-    if params[:name] || params[:city] || params[:has_badge]
-      @students = Student.search(params[:name], params[:city], params[:has_badge])
-    else
-      @students = Student.all
-    end
-
+    @students = Student.search(params[:name], params[:city], params[:has_badge])
+    
+    #@students = Student.all
+    
     respond_with(@students)
 
   end
