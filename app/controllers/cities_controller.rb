@@ -24,8 +24,9 @@ class CitiesController < ApplicationController
     if @city.valid?
       @city.save
       redirect_to action: "index", :notice => "City saved with success" 
+    else
+      respond_with(@city)  
     end
-    respond_with(@city)
   end
 
   def update
