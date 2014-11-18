@@ -7,8 +7,11 @@ class CourseClassesController < ApplicationController
   helper_method :add_student, :remove_student
 
   def index
-    @course_classes = CourseClass.joins(:institution, :course)
+    @course_classes = CourseClass.search(params[:name], params[:institution], params[:course])
     respond_with(@course_classes)
+
+    #@course_classes = CourseClass.joins(:institution, :course)
+    #respond_with(@course_classes)
   end
 
   def show

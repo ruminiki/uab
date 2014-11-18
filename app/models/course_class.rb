@@ -20,4 +20,16 @@ class CourseClass < ActiveRecord::Base
 		self.name.upcase!
 	end
 
+	def self.search(name, institution, course)
+
+		search = "";
+
+		search += "CourseClass.joins(:institution, :course)"
+		search += ".where('institutions.name like ? and courses.name like ? ', '%#{institution}%', '%#{course}%')"
+		search += ".where('course_classes.name like ?', '%#{name}%')"
+		
+		eval(search)
+
+	end
+
 end
