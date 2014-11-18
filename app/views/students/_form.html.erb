@@ -49,6 +49,33 @@ jQuery(function($){
     <%= error_span(@student[:email]) %>
   </div>
   <div class="form-group">
+    <%= f.label :rg, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :rg, :class => 'form-control', :style=> 'max-width: 150px' %>
+    </div>
+    <%= error_span(@student[:rg]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cpf, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :cpf, :class => 'form-control', :style=> 'max-width: 150px' %>
+    </div>
+    <%= error_span(@student[:cpf]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanguine_type, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.select(:sanguine_type, 
+            [['A+', 'A+'],['A-', 'A-'],
+             ['AB+', 'AB+'],['AB-', 'AB-'],
+             ['B+', 'B+'],['B-', 'B-'],
+             ['O+', 'O+'],['O-', 'O-']],
+            {:include_blank => '...'},
+            {:class =>'form-control', :style=> 'max-width: 100px'}) %>
+    </div>
+    <%= error_span(@student[:sanguine_type]) %>
+  </div>
+  <div class="form-group">
     <%= f.label :has_badge, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.check_box :has_badge, :class => 'form-control', :style=> 'max-width: 34px' %>
