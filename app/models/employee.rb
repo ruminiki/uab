@@ -14,4 +14,17 @@ class Employee < ActiveRecord::Base
 		city.name if city
 	end
 
+	def self.search(name, category)
+
+		search = "";
+
+		search += "Employee.joins(:employee_category)"
+		search += ".where('employee_categories.name like ?', '%#{category}%')"
+		search += ".where('employees.name like ?', '%#{name}%')"
+		
+		eval(search)
+
+	end
+
+
 end

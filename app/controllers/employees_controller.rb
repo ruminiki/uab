@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   autocomplete :city, :name
   
   def index
-    @employees = Employee.all
+    @employees = Employee.search(params[:name], params[:category])
     respond_with(@employees)
   end
 
