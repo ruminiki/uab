@@ -1,23 +1,50 @@
 <%- model_class = Student -%>
+
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
 <!-- FORM SEARCH -->
+<%= form_tag(students_path, :method => "get", id: "search-form", :class => "form-inline students") do %>
 
-<%= form_tag(students_path, :method => "get", id: "search-form", :class => "simple_form form-horizontal student") do %>
-  <div class="form-group">
-    <%= label_tag :name %>
-    <div class="controls">
-      <%= text_field_tag :search, params[:search], placeholder: "name", :class => 'form-control', :style=> 'max-width: 600px' %>
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Search</legend>
+    <div class="form-group">
+      <%= label_tag :name %>
+      <div class="controls">
+        <%= text_field_tag :name, params[:name], 
+           placeholder: "name", :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
     </div>
-  </div>
-  <%= submit_tag "Search", :class => 'col-sm-offset-2 btn-primary' %>
+    <div class="form-group">
+      <%= label_tag :city %>
+      <div class="controls">
+        <%= text_field_tag :city, params[:city], 
+            placeholder: "city", :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :has_badge? %>
+      <div class="controls">
+        <%= label_tag :yes %>
+        <%= radio_button_tag(:has_badge, value = "yes", 
+            checked = false, options = {:class => 'form-control', :style=> 'width: 34px'}) %>
+        <%= label_tag :no %>
+        <%= radio_button_tag(:has_badge, value = "no", 
+            checked = false, options = {:class => 'form-control', :style=> 'width: 34px'}) %>
+        <%= label_tag :both %>
+        <%= radio_button_tag(:has_badge, value = "both", 
+            checked = true, options = {:class => 'form-control', :style=> 'width: 34px'}) %>
+      </div>
+    </div>
+    
+    <%= submit_tag "Search", :class => 'btn btn-success sm', :style => "margin-top: 26px;" %>
+  </fieldset>
 
 <% end %>
 
 <br>
-<!-- END FORM SEARCH -->
 
 <table class="table table-striped">
   <thead>

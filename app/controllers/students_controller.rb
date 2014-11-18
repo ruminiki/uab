@@ -6,8 +6,8 @@ class StudentsController < ApplicationController
 
   def index
     
-    if params[:search]
-      @students = Student.search(params[:search])
+    if params[:name] || params[:city] || params[:has_badge]
+      @students = Student.search(params[:name], params[:city], params[:has_badge])
     else
       @students = Student.all
     end

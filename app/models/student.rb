@@ -21,8 +21,10 @@ class Student < ActiveRecord::Base
 		self.city = City.find_or_create_by_name(name) unless name.blank?
 	end
 
-	def self.search(name)
-	  where("name like ?", "%#{name}%")
+	def self.search(name, city, has_badge)
+		if name
+				
+	  where("name like ? and has_badge", "%#{name}%")
 	end
 
 end
