@@ -2,6 +2,8 @@ class Employee < ActiveRecord::Base
 
 	belongs_to :city, :autosave => true
 	belongs_to :employee_category, :autosave => true
+	has_and_belongs_to_many :course_classes
+
 	before_save :upper_case
 
 	def upper_case

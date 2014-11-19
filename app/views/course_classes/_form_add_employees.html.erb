@@ -1,0 +1,116 @@
+<%= simple_form_for @course_class, 
+    :html => { :class => "form-horizontal course_class"},
+    :url => url_for(course_classes_add_employee_path),
+    :method => 'get' do |f| %>
+
+
+  <div class="page-header">
+    <h1>Add Employee</h1>
+  </div>
+
+  <% if @course_class.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @course_class.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, 
+          :class => 'form-control', :style=> 'max-width: 600px;', 
+          :disabled => 'disabled' %>
+    </div>
+    <%= error_span(@course_class[:name]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :course, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.select(:course_id, Course.all.map{ |c| [c.name, c.id]}, {:value => :course_id}, 
+                   html_options = {:class =>'form-control', :disabled => 'disabled'}) %>
+    </div>
+    <%= error_span(@course_class[:course]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :institution, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;" disabled>
+      <%= f.select(:institution_id, Institution.all.map{ |c| [c.name, c.id]}, {:value => :institution_id},           
+          html_options = {:class =>'form-control', :disabled => 'disabled'})%>
+    </div>
+    <%= error_span(@course_class[:institution]) %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :employee, :class => 'col-sm-2 control-label' %>
+      <div class="controls">
+
+          <%= f.input :employee, 
+                      :url => autocomplete_employee_name_course_classes_path, 
+                      :as => :autocomplete,
+                      :label=> false,
+                      :input_html => { 
+                        :class => 'form-control', 
+                        :style => 'max-width: 600px;',
+                        :id_element=>'#employee_id'
+                      } 
+          %>
+
+          <%= f.hidden_field :employee_id, :id => "employee_id", :name => "employee_id" %>
+          <%= f.hidden_field :id, :id => "id", :name => "id" %>
+
+      </div>
+
+      <br>
+
+      <%= f.submit 'Add Employee', :class => 'col-sm-offset-2 btn btn-primary' %>
+      
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), 
+                    course_classes_path, :class => 'btn btn-default' %>
+
+  </div>
+
+  <!-- STUDENTS -->
+  <div role="tabpanel" class="tab-pane active" id="students">
+      <%- model_class = Employee -%>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= model_class.human_attribute_name(:name) %></th>
+            <th><%= model_class.human_attribute_name(:phone_number) %></th>
+            <th><%= model_class.human_attribute_name(:email) %></th>
+            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @course_class.employees.each do |employee| %>
+            <tr>
+              <td><%= employee.name %></td>
+              <td><%= employee.phone_number %></td>
+              <td><%= employee.email %></td>
+              <td>
+
+              <%= link_to "Remove", 
+                    course_classes_remove_employee_path(:id => @course_class.id, :employee_id => employee.id),:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class=>'btn btn-xs btn btn-danger' %>
+
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= error_span(@course_class[:begin]) %>
+    
+  </div>
+
+
+ 
+<% end %>

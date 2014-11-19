@@ -2,7 +2,9 @@ class CourseClassesController < ApplicationController
   
   before_action :set_course_class, only: [:show, :edit, :update, :destroy]
   respond_to :html
+
   autocomplete :student, :name, :full => true, :extra_data => [:id]
+  autocomplete :employee, :name, :full => true, :extra_data => [:id]
 
   helper_method :add_student, :remove_student
 
@@ -47,7 +49,9 @@ class CourseClassesController < ApplicationController
     redirect_to :back
   end
 
-  #direciona para a pagina de matricula
+=begin
+  MÉTODOS PARA ADICIONAR, REMOVER E EDITAR UMA MATRÍCULA DA TURMA
+=end
   def registrations
     @course_class = CourseClass.find(params[:id])
     render '_form_add_students'
@@ -62,8 +66,13 @@ class CourseClassesController < ApplicationController
     @registration = Registration.new
 
     @course_class = CourseClass.find(params[:id])
-    @student = Student.find(params[:student_id])
-
+    
+    begin
+      @student = Student.find(params[:student_id])
+    rescue
+      @course_class.errors.add(:status, "Estudante não encontrado. Por favor selecione um estudante válido.")
+    end
+    
     id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
     if id_status_inicial.nil? || id_status_inicial.value.nil?
       @course_class.errors.add(:param, "Param ID_STATUS_INICIAL_MATRICULA is not defined. Please contact the system administrator.")
@@ -85,7 +94,7 @@ class CourseClassesController < ApplicationController
 
     @registration.registration_status = @registration_status
     @registration.student = @student
-    @registration.course_class = @course_class
+    #@registration.course_class = @course_class
     @course_class.registrations = Array.new if nil
     @course_class.registrations << @registration
     @course_class.save
@@ -100,6 +109,44 @@ class CourseClassesController < ApplicationController
     redirect_to :back, :notice => "Student removed with success!"
   end
 
+=begin
+  METODOS PARA ADICIONAR E REMOVER UM TUTOR DA TURMA
+=end
+  def employees
+    @course_class = CourseClass.find(params[:id])
+    render '_form_add_employees'
+  end
+
+  def add_employee
+    
+    @course_class = CourseClass.find(params[:id])
+    
+    begin
+      @employee = Employee.find(params[:employee_id])
+    rescue
+      @course_class.errors.add(:status, "Tutor não encontrado. Por favor selecione um tutor válido. ")
+    end
+    
+    #if occurred any erros, back to page
+    if @course_class.errors.any?
+      render '_form_add_employees'
+      return
+    end
+
+    @course_class.employees << @employee
+    #@employee.course_classes << @course_class
+    @course_class.save
+
+    redirect_to :back, :notice => "Tutor adicionado à turma com sucesso!"  
+    
+  end
+
+  def remove_employee
+    @course_class = CourseClass.find(params[:id])
+    @course_class.employees.delete(params[:employee_id])
+    @course_class.save
+    redirect_to :back, :notice => "Tutor removido da turma com sucesso!"
+  end
 
   private
     def set_course_class

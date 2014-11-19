@@ -4,6 +4,7 @@ class CourseClass < ActiveRecord::Base
 	belongs_to :course, :class_name => 'Course', :foreign_key => 'course_id'
 	has_many :registrations
 	has_many :students, :through => :registrations
+	has_and_belongs_to_many :employees
 
 	before_save :upper_case
 	before_update :upper_case
@@ -12,9 +13,9 @@ class CourseClass < ActiveRecord::Base
 	attr_accessor :student
 	attr_accessor :student_id
 
-	def initialize
-    	@errors = ActiveModel::Errors.new(self)
-  	end
+	#selected employee
+	attr_accessor :employee
+	attr_accessor :employee_id
 
 	def upper_case
 		self.name.upcase!
