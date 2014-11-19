@@ -1,0 +1,53 @@
+<script type="text/javascript">
+  $('input[type=file]').bootstrapFileInput();
+  $('.file-inputs').bootstrapFileInput();
+</script>
+
+<%= form_for @document, :html => { :class => "form-horizontal city" } do |f| %>
+
+  <% if @document.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @document.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@document[:name]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.select(:document_category_id, 
+        DocumentCategory.all.map{ |c| [c.name, c.id]}, 
+        {:value => :document_category_id}, 
+        {:class =>'form-control'})%>
+    </div>
+    <%= error_span(@document[:document_category]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :file, :class => 'col-sm-2 control-label' %>
+    <div class="controls" style="max-width:600px; display: -webkit-box;">
+      <%= f.file_field :file, :style=> 'max-width: 600px', :title => "Escolha um arquivo" %>
+    </div>
+    <%= error_span(@document[:file]) %>
+  </div>
+  
+  <br>
+
+  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            documents_path, :class => 'btn btn-default' %>
+
+<% end %>

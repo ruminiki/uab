@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 	  get "course_classes/remove_employee" => "course_classes#remove_employee"  
 
 
+	  get "documents/download_file" => "documents#download_file"
+
+	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories
 	  resources :parameters	  

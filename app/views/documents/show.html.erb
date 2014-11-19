@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @document.name %>
+</p>
+
+<p>
+  <strong>Document category:</strong>
+  <%= @document.document_category_id %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @document.path %>
+</p>
+
+<p>
+  <strong>Extension:</strong>
+  <%= @document.extension %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @document.size %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
