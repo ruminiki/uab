@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 	  get "course_classes/add_employee" => "course_classes#add_employee"	
 	  get "course_classes/remove_employee" => "course_classes#remove_employee"  
 
+	  get "course_classes/documents" => "course_classes#documents"	
+	  get "course_classes/add_document" => "course_classes#add_document"	
+	  get "course_classes/remove_document" => "course_classes#remove_document"  
 
 	  get "documents/download_file" => "documents#download_file"
 
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
 	  resources :course_classes do
 	  	get :autocomplete_student_name, :on => :collection
 	  	get :autocomplete_employee_name, :on => :collection
+	  	get :autocomplete_document_name, :on => :collection
 	  end
 
 	  resources :cities

@@ -20,70 +20,36 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :name, :class => 'col-sm-2 control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, 
-          :class => 'form-control', :style=> 'max-width: 600px;', 
-          :disabled => 'disabled' %>
+  <!--GROUP FIND EMPLOYEE -->
+  <fieldset class="well the-fieldset">
+    <div class="form-group">
+        <%= f.label :student, :class => 'col-sm-2 control-label' %>
+        <div class="controls">
+
+            <%= f.input :student, 
+                        :url => autocomplete_student_name_course_classes_path, 
+                        :as => :autocomplete,
+                        :label=> false,
+                        :input_html => { 
+                          :class => 'form-control', 
+                          :style => 'max-width: 600px;',
+                          :id_element=>'#student_id'
+                        } 
+            %>
+
+            <%= f.hidden_field :student_id, :id => "student_id", :name => "student_id" %>
+            <%= f.hidden_field :id, :id => "id", :name => "id" %>
+
+        </div>
+
+        <br>
+
+        <%= f.submit 'Add Student', :class => 'col-sm-offset-2 btn btn-primary' %>
+        
+        <%= link_to "<< Voltar", course_classes_path, :class => 'btn btn-default' %>                      
+
     </div>
-    <%= error_span(@course_class[:name]) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :course, :class => 'col-sm-2 control-label' %>
-    <div class="controls" style="max-width:600px; display: -webkit-box;">
-      <%= f.select(:course_id, Course.all.map{ |c| [c.name, c.id]}, {:value => :course_id}, 
-                   html_options = {:class =>'form-control', :disabled => 'disabled'}) %>
-    </div>
-    <%= error_span(@course_class[:course]) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :institution, :class => 'col-sm-2 control-label' %>
-    <div class="controls" style="max-width:600px; display: -webkit-box;" disabled>
-      <%= f.select(:institution_id, Institution.all.map{ |c| [c.name, c.id]}, {:value => :institution_id},           html_options = {:class =>'form-control', :disabled => 'disabled'})%>
-    </div>
-    <%= error_span(@course_class[:institution]) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :begin, :class => 'col-sm-2 control-label' %>
-    <div class="controls">
-      <%= f.text_field :begin, :class => 'form-control datepicker', 
-          :style=> 'max-width: 200px', :disabled => 'disabled' %>
-    </div>
-    <%= error_span(@course_class[:begin]) %>
-  </div>
-
-  <div class="form-group">
-      <%= f.label :student, :class => 'col-sm-2 control-label' %>
-      <div class="controls">
-
-          <%= f.input :student, 
-                      :url => autocomplete_student_name_course_classes_path, 
-                      :as => :autocomplete,
-                      :label=> false,
-                      :input_html => { 
-                        :class => 'form-control', 
-                        :style => 'max-width: 600px;',
-                        :id_element=>'#student_id'
-                      } 
-          %>
-
-          <%= f.hidden_field :student_id, :id => "student_id", :name => "student_id" %>
-          <%= f.hidden_field :id, :id => "id", :name => "id" %>
-
-      </div>
-
-      <br>
-
-      <%= f.submit 'Add Student', :class => 'col-sm-offset-2 btn btn-primary' %>
-      
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), 
-                    course_classes_path, :class => 'btn btn-default' %>
-
-  </div>
+  </fieldset>
 
   <!-- STUDENTS -->
   <div role="tabpanel" class="tab-pane active" id="students">
@@ -107,10 +73,10 @@
               <td><%= student.has_badge %></td>
               <td>
 
-              <%= link_to "Edit",
+              <%= link_to "Editar Matricula",
                     course_classes_redirect_to_edit_student_course_class_path(:course_class_id => @course_class.id, :student_id => student.id), :class=>'btn btn-xs btn btn-primary' %>
               
-              <%= link_to "Remove", 
+              <%= link_to "Remover", 
                     course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                     :class=>'btn btn-xs btn btn-danger' %>
 

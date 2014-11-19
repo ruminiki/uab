@@ -5,6 +5,7 @@ class CourseClass < ActiveRecord::Base
 	has_many :registrations
 	has_many :students, :through => :registrations
 	has_and_belongs_to_many :employees
+	has_and_belongs_to_many :documents
 
 	before_save :upper_case
 	before_update :upper_case
@@ -16,6 +17,10 @@ class CourseClass < ActiveRecord::Base
 	#selected employee
 	attr_accessor :employee
 	attr_accessor :employee_id
+
+	#selected document
+	attr_accessor :document
+	attr_accessor :document_id
 
 	def upper_case
 		self.name.upcase!
