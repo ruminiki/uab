@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
 	  get "documents/download_file" => "documents#download_file"
 
+	  get "students/add_for_select" => "students#add_for_select"
+
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories

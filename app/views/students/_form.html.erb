@@ -27,6 +27,8 @@ jQuery(function($){
     </div>
   <% end %>
 
+  <%= hidden_field_tag :is_adding_for_select, @student.is_adding_for_select %>
+
   <div class="form-group">
     <%= f.label :name, :class => 'col-sm-2 control-label' %>
     <div class="controls">
