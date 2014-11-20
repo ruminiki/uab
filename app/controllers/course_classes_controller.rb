@@ -163,6 +163,14 @@ class CourseClassesController < ApplicationController
     
     @document = Document.new(document_params)
     #@document.uploaded_io = params[:document][:file]
+    @document.valid?
+    #if occurred any erros, back to page
+    if @document.errors.any?
+      @course_class.document = @document
+      render '_form_add_documents'
+      return
+    end
+
     @document.save(params[:document][:file])
 
     @course_class.documents << @document

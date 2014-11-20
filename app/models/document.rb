@@ -3,6 +3,10 @@ class Document < ActiveRecord::Base
 	belongs_to :document_category
 	has_and_belongs_to_many :course_classes
 
+	validates :name, presence: true
+	validates :file, presence: true
+	validates :document_category, presence: true
+
 	attr_accessor :file
 
 	def save(uploaded_io)

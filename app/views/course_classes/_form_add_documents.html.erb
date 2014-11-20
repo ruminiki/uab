@@ -7,11 +7,11 @@
     <h1>Add Documents</h1>
   </div>
 
-  <% if @course_class.errors.any? %>
+  <% if @course_class.document.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-body">
         <ul>
-        <% @course_class.errors.full_messages.each do |msg| %>
+        <% @course_class.document.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -21,38 +21,41 @@
 
    <fieldset class="well the-fieldset">
       <div class="form-group">
-        <%= f.label :name, :class => 'col-sm-2 control-label' %>
-        <div class="controls">
-          <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+       
+        <div class="form-group">
+          <%= f.label :name, :class => 'col-sm-2 control-label' %>
+          <div class="controls">
+            <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+          </div>
+          <%= error_span(@course_class.document[:name]) %>
         </div>
-        <%= error_span(@course_class.document[:name]) %>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :category, :class => 'col-sm-2 control-label' %>
-        <div class="controls" style="max-width:600px; display: -webkit-box;">
-          <%= f.select(:document_category_id, 
-            DocumentCategory.all.map{ |c| [c.name, c.id]}, 
-            {:value => :document_category_id}, 
-            {:class =>'form-control'})%>
+        <div class="form-group">
+          <%= f.label :category, :class => 'col-sm-2 control-label' %>
+          <div class="controls" style="max-width:600px; display: -webkit-box;">
+            <%= f.select(:document_category_id, 
+              DocumentCategory.all.map{ |c| [c.name, c.id]}, 
+              {:value => :document_category_id}, 
+              {:class =>'form-control'})%>
+          </div>
+          <%= error_span(@course_class.document[:document_category]) %>
         </div>
-        <%= error_span(@course_class.document[:document_category]) %>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :file, :class => 'col-sm-2 control-label' %>
-        <div class="controls" style="max-width:600px; display: -webkit-box;">
-          <%= f.file_field :file, :style=> 'max-width: 600px', :title => "Escolha um arquivo" %>
+        <div class="form-group">
+          <%= f.label :file, :class => 'col-sm-2 control-label' %>
+          <div class="controls" style="max-width:600px; display: -webkit-box;">
+            <%= f.file_field :file, :style=> 'max-width: 600px', :title => "Escolha um arquivo" %>
+          </div>
+          <%= error_span(@course_class.document[:file]) %>
         </div>
-        <%= error_span(@course_class.document[:file]) %>
+
+        <br>
+
+        <%= hidden_field_tag :course_class_id, @course_class.id %>
+
+        <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
+
       </div>
-
-      <br>
-
-      <%= hidden_field_tag :course_class_id, @course_class.id %>
-
-      <%= f.submit nil, :class => 'col-sm-ofset-4 btn btn-primary' %>
-
     </fieldset>
 
   <!-- DOCUMENTS -->
@@ -62,6 +65,7 @@
         <thead>
           <tr>
             <th><%= model_class.human_attribute_name(:name) %></th>
+            <th><%= model_class.human_attribute_name(:categoria) %></th>
             <th><%= model_class.human_attribute_name(:original_file_name) %></th>
             <th><%= model_class.human_attribute_name(:extension) %></th>
             <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -70,7 +74,8 @@
         <tbody>
           <% @course_class.documents.each do |document| %>
             <tr>
-              <td width="40%"><%= document.name %></td>
+              <td width="30%"><%= document.name %></td>
+              <td><%= (document.document_category.nil? ? "" : document.document_category.name) %></td>
               <td><%= document.original_file_name %></td>
               <td><%= document.extension %></td>
               <td>
@@ -86,5 +91,7 @@
       </table>
 
   </div>
+
+  <%= link_to "<< Voltar", course_classes_path, :class => 'btn btn-default' %>                      
 
 <% end %>
