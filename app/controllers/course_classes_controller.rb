@@ -151,26 +151,19 @@ class CourseClassesController < ApplicationController
 =end
   def documents
     @course_class = CourseClass.find(params[:id])
+    @course_class.document = Document.new
     render '_form_add_documents'
   end
 
   def add_document
 
-    @course_class = CourseClass.find(params[:id])
+    @course_class = CourseClass.find(params[:course_class_id])
     #limpa os erros que podem existir da requisição anterior
     @course_class.errors.clear
     
-    begin
-      @document = Document.find(params[:document_id])
-    rescue
-      @course_class.errors.add(:info, "Documento não encontrado. Por favor selecione um documento válido. ")
-    end
-    
-    #if occurred any erros, back to page
-    if @course_class.errors.any?
-      render '_form_add_documents'
-      return
-    end
+    @document = Document.new(document_params)
+    #@document.uploaded_io = params[:document][:file]
+    @document.save(params[:document][:file])
 
     @course_class.documents << @document
     @course_class.save
@@ -179,10 +172,15 @@ class CourseClassesController < ApplicationController
     
   end
 
-  def remove_employee
+  def remove_document
     @course_class = CourseClass.find(params[:id])
     @course_class.documents.delete(params[:document_id])
     @course_class.save
+
+    @document = Document.find(params[:document_id])
+    @document.destroy
+    FileUtils.remove_file(@document.path, force = true)
+
     redirect_to :back, :notice => "Documento removido com sucesso!"
   end  
 
@@ -193,5 +191,9 @@ class CourseClassesController < ApplicationController
 
     def course_class_params
       params.require(:course_class).permit(:name, :institution_id, :course_id, :begin)
+    end
+
+    def document_params
+      params.require(:document).permit(:name, :document_category_id, :path, :extension, :size)
     end
 end

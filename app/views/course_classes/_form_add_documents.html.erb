@@ -1,8 +1,7 @@
-<%= simple_form_for @course_class, 
-    :html => { :class => "form-horizontal course_class"},
+<%= simple_form_for @course_class.document, 
+    :html => { :class => "form-horizontal course_class", :multipart => true },
     :url => url_for(course_classes_add_document_path),
-    :method => 'get' do |f| %>
-
+    :method => 'post' do |f| %>
 
   <div class="page-header">
     <h1>Add Documents</h1>
@@ -20,38 +19,41 @@
     </div>
   <% end %>
 
-  <!--GROUP FIND DOCUMENT -->
- <fieldset class="well the-fieldset">
-    <div class="form-group">
-        <%= f.label :document, :class => 'col-sm-2 control-label' %>
+   <fieldset class="well the-fieldset">
+      <div class="form-group">
+        <%= f.label :name, :class => 'col-sm-2 control-label' %>
         <div class="controls">
-
-            <%= f.input :document, 
-                        :url => autocomplete_document_name_course_classes_path, 
-                        :as => :autocomplete,
-                        :label=> false,
-                        :input_html => { 
-                          :class => 'form-control', 
-                          :style => 'max-width: 600px;',
-                          :id_element=>'#document_id'
-                        } 
-            %>
-
-            <%= f.hidden_field :document_id, :id => "document_id", :name => "document_id" %>
-            <%= f.hidden_field :id, :id => "id", :name => "id" %>
-
+          <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
         </div>
+        <%= error_span(@course_class.document[:name]) %>
+      </div>
 
-        <br>
+      <div class="form-group">
+        <%= f.label :category, :class => 'col-sm-2 control-label' %>
+        <div class="controls" style="max-width:600px; display: -webkit-box;">
+          <%= f.select(:document_category_id, 
+            DocumentCategory.all.map{ |c| [c.name, c.id]}, 
+            {:value => :document_category_id}, 
+            {:class =>'form-control'})%>
+        </div>
+        <%= error_span(@course_class.document[:document_category]) %>
+      </div>
 
-        <%= f.submit 'Adicionar', :class => 'col-sm-offset-2 btn btn-success' %>
+      <div class="form-group">
+        <%= f.label :file, :class => 'col-sm-2 control-label' %>
+        <div class="controls" style="max-width:600px; display: -webkit-box;">
+          <%= f.file_field :file, :style=> 'max-width: 600px', :title => "Escolha um arquivo" %>
+        </div>
+        <%= error_span(@course_class.document[:file]) %>
+      </div>
 
-        <%= link_to "Novo", new_document_path, :class => 'btn btn-primary' %>
-        
-        <%= link_to "<< Voltar", course_classes_path, :class => 'btn btn-default' %>
+      <br>
 
-    </div>
-  </fieldset>
+      <%= hidden_field_tag :course_class_id, @course_class.id %>
+
+      <%= f.submit nil, :class => 'col-sm-ofset-4 btn btn-primary' %>
+
+    </fieldset>
 
   <!-- DOCUMENTS -->
   <div role="tabpanel" class="tab-pane active" id="students">

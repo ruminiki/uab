@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	  get "course_classes/remove_employee" => "course_classes#remove_employee"  
 
 	  get "course_classes/documents" => "course_classes#documents"	
-	  get "course_classes/add_document" => "course_classes#add_document"	
+	  post "course_classes/add_document" => "course_classes#add_document"	
 	  get "course_classes/remove_document" => "course_classes#remove_document"  
 
 	  get "documents/download_file" => "documents#download_file"

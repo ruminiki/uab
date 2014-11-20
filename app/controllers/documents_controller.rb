@@ -16,51 +16,10 @@ class DocumentsController < ApplicationController
     respond_with(@document)
   end
 
-  def edit
-  end
-
-  def create
-    @document = Document.new(document_params)
-
-    uploaded_io = params[:document][:file]
-
-    @document.original_file_name = uploaded_io.original_filename
-    @document.extension = File.extname(@document.original_file_name)
-    @document.disc_file_name = Time.now.to_f.to_s.gsub!('.','') + @document.extension
-    @document.path = File.join('public/uploads',@document.disc_file_name)
-    
-    #write the file
-    File.open(Rails.root.join('public', 'uploads', @document.disc_file_name), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-
-    unit = ' bytes'
-    size = File.size(@document.path).to_f
-    
-    #converte para Kb caso tenha mais de um Kb
-    if (size / 1024) > 1
-      unit = ' Kb'
-      size = size / 1024  
-    end
-    
-    #converte para Mb caso tenha mais de um Mb
-    if (size / 1024 / 1024 ) > 1
-      unit = ' Mb'
-      size = size / 1024 / 1024
-    end
-
-    @document.size = size.round(2).to_s + unit
-
-    @document.save
-
-    redirect_to action: "index"
-  end
-
   def download_file
     @document = Document.find(params[:id])
     send_file @document.path, :x_sendfile => true
   end
-
 
   def update
     @document.update(document_params)
