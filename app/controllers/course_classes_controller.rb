@@ -158,43 +158,40 @@ class CourseClassesController < ApplicationController
   def add_document
 
     @course_class = CourseClass.find(params[:course_class_id])
-    #limpa os erros que podem existir da requisição anterior
-    @course_class.errors.clear
     
-    @document = Document.new(document_params)
-    #@document.uploaded_io = params[:document][:file]
-    @document.valid?
+    @course_class.document = Document.new(document_params)
+    @course_class.document.file = params[:document][:file]
+    @course_class.document.valid?
+
     #if occurred any erros, back to page
-    if @document.errors.any?
-      @course_class.document = @document
+    if @course_class.document.errors.any?
       render '_form_add_documents'
       return
     end
 
-    @document.save(params[:document][:file])
-
-    @course_class.documents << @document
+    @course_class.document.save
+    @course_class.documents << @course_class.document
     @course_class.save
 
-    redirect_to :back, :notice => "Documento adicionado com sucesso!"  
+    render '_form_add_documents', :notice => "Documento adicionado com sucesso!"  
     
   end
 
   def remove_document
     @course_class = CourseClass.find(params[:id])
+    @course_class.document = Document.find(params[:document_id])
+
     @course_class.documents.delete(params[:document_id])
     @course_class.save
+    @course_class.document.destroy
 
-    @document = Document.find(params[:document_id])
-    @document.destroy
-    FileUtils.remove_file(@document.path, force = true)
-
-    redirect_to :back, :notice => "Documento removido com sucesso!"
+    FileUtils.remove_file(@course_class.document.path, force = true)
+    render '_form_add_documents', :notice => "Documento removido com sucesso!"
   end  
 
   private
     def set_course_class
-      @course_class = CourseClass.find(params[:id])
+      @course_class = CourseClass.find(params[:id]) if params[:id].to_i > 0
     end
 
     def course_class_params
