@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
 	  get "students/add_for_select" => "students#add_for_select"
 
+	  get "employees/add_for_select" => "employees#add_for_select"
+
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories

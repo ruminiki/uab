@@ -32,9 +32,10 @@
 
         <br>
 
-        <%= f.submit 'Add Employee', :class => 'col-sm-offset-2 btn btn-primary' %>
+        <%= f.submit 'Adicionar Tutor', :class => 'col-sm-offset-2 btn btn-primary' %>
+        <%= link_to "Cadastrar Novo", employees_add_for_select_path, :class => 'btn btn-success', 
+            :target => "blank" %> 
         
-        <%= link_to "<< Voltar", course_classes_path, :class => 'btn btn-default' %>
     </div>
   </fieldset>
 
@@ -70,6 +71,6 @@
     
   </div>
 
-
+<%= link_to "<< Voltar", course_classes_path, :class => 'btn btn-default' %>
  
 <% end %>
