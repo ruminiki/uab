@@ -2,6 +2,28 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<!-- FORM SEARCH -->
+<%= form_tag(cities_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
+
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Search</legend>
+    <div class="form-group">
+      <%= label_tag :name %>
+      <div class="controls">
+        <%= text_field_tag :name, session[:search_city_name], 
+           placeholder: "name", :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+    
+    <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
+    <%= link_to "Limpar", cities_clear_search_path, 
+          :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
+
+  </fieldset>
+
+<% end %>
+
+<br>
 <table class="table table-striped">
   <thead>
     <tr>

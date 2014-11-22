@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	  get "course_classes/remove_employee" => "course_classes#remove_employee"  
 
 	  get "course_classes/documents" => "course_classes#documents"	
-	  post "course_classes/add_document" => "course_classes#add_document"	
+	  post "course_classes/add_document" => "course_classes#add_document"
 	  get "course_classes/remove_document" => "course_classes#remove_document"  
 
 	  get "documents/download_file" => "documents#download_file"
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 	  get "students/add_for_select" => "students#add_for_select"
 
 	  get "employees/add_for_select" => "employees#add_for_select"
+
+      get "cities/clear_search" => "cities#clear_search"
 
 	  resources :documents
 	  resources :employee_categories

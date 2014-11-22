@@ -3,8 +3,16 @@ class CitiesController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
-    @cities = City.all
+
+    if params[:name]
+      #session[:search_city_name] = params[:name]
+      @cities = City.search(params[:name])
+    else
+      @cities = City.all
+    end
+
     respond_with(@cities)
+
   end
 
   def show
@@ -37,6 +45,11 @@ class CitiesController < ApplicationController
   def destroy
     @city.destroy
     respond_with(@city)
+  end
+
+  def clear_search
+    session.delete :search_city_name
+    redirect_to action: "index"
   end
 
   private

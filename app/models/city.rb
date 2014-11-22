@@ -7,4 +7,11 @@ class City < ActiveRecord::Base
 	def upper_case
 		self.name.upcase!
 	end
+
+	def self.search(name)
+
+		where("cities.name like ?", "%#{name}%")
+
+	end
+
 end

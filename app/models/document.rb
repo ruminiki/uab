@@ -4,8 +4,7 @@ class Document < ActiveRecord::Base
 	has_and_belongs_to_many :course_classes
 
 	validates :name, presence: true
-	validates :document_category, presence: true
-	validates_associated :document_category
+	validates :document_category_id, presence: true
 	validates :file, presence: true
 	
 	before_save :upper_case

@@ -7,7 +7,9 @@ class StudentsController < ApplicationController
   autocomplete :student, :name
 
   def index
-    @students = Student.search(params[:name], params[:student], params[:has_badge])
+    namespace :students_controller do
+      
+    end@students = Student.search(params[:name], params[:student], params[:has_badge])
     respond_with(@students)
   end
 
