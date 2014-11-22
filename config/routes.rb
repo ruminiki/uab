@@ -41,7 +41,6 @@ Rails.application.routes.draw do
 	  resources :course_classes do
 	  	get :autocomplete_student_name, :on => :collection
 	  	get :autocomplete_employee_name, :on => :collection
-	  	get :autocomplete_document_name, :on => :collection
 	  end
 
 	  resources :cities

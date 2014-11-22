@@ -5,7 +5,6 @@ class CourseClassesController < ApplicationController
 
   autocomplete :student, :name, :full => true, :extra_data => [:id]
   autocomplete :employee, :name, :full => true, :extra_data => [:id]
-  autocomplete :document, :name, :full => true, :extra_data => [:id]
 
   helper_method :add_student, :remove_student
 

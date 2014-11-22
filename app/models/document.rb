@@ -5,6 +5,7 @@ class Document < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :document_category, presence: true
+	validates_associated :document_category
 	validates :file, presence: true
 	
 	before_save :upper_case
