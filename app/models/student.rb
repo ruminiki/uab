@@ -6,8 +6,6 @@ class Student < ActiveRecord::Base
 
 	before_save :upper_case
 
-	attr_accessor :is_adding_for_select
-
 	def upper_case
 		self.name.upcase!
 		self.email.upcase!

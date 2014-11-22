@@ -41,7 +41,7 @@ class StudentsController < ApplicationController
   #action invocada a partir de uma tela que tem associação com estudante
   #após salvar, a tela deve ser fechada
   def add_for_select
-    session[:is_adding_for_select] = 'YES'
+    session[:is_adding_for_select] = true
     redirect_to action: "new"
   end
 
@@ -53,15 +53,12 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:name, :phone_number, :email, :has_badge, 
                 :badge_observation, :birthday, :address, :city_id,
-                :rg, :cpf, :sanguine_type, :is_adding_for_select)
+                :rg, :cpf, :sanguine_type)
     end
 
     def close_window
-      if session[:is_adding_for_select] == 'YES'
-        session[:is_adding_for_select] = 'NO'
-        #fechar a janela atual
-        render 'window.close' #page with javascript to close
-      end
+      render 'window.close' if session[:is_adding_for_select]
+      session[:is_adding_for_select] = false
     end
 
 end
