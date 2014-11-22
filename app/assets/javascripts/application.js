@@ -28,11 +28,8 @@ require_tree .
 
 jQuery(function($){
 
-    $(".datepicker").datepicker({
-                dateFormat : "dd/MM/yy",
-                yearRange : "c-20:c+5"
-            })
+    $(".datepicker").datepicker( "option", "dateFormat", 'dd.MM.yy' );
+	$('.dropdown-toggle').dropdown();
 
 });
 
-$('.dropdown-toggle').dropdown();
