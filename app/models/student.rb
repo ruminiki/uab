@@ -4,6 +4,8 @@ class Student < ActiveRecord::Base
 	has_many :registrations
 	has_many :course_classes, :through => :registrations
 
+	validates :name, :email, presence: true
+
 	before_save :upper_case
 
 	def upper_case

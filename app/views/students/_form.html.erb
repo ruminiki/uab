@@ -2,9 +2,6 @@
 
     <% if @student.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h3>
-      </div>
       <div class="panel-body">
         <ul>
         <% @student.errors.full_messages.each do |msg| %>

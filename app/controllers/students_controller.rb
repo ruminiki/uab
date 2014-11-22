@@ -4,10 +4,10 @@ class StudentsController < ApplicationController
   before_action :close_window, only: [:index]
   respond_to :html
   
-  autocomplete :city, :name
+  autocomplete :student, :name
 
   def index
-    @students = Student.search(params[:name], params[:city], params[:has_badge])
+    @students = Student.search(params[:name], params[:student], params[:has_badge])
     respond_with(@students)
   end
 
@@ -22,10 +22,12 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    @student.save
-
-    redirect_to action: "index"  
-
+    if @student.valid?
+      @student.save
+      redirect_to action: "index", :notice => "Student saved with success" 
+    else
+      respond_with(@student)
+    end
   end
 
   def update
@@ -52,7 +54,7 @@ class StudentsController < ApplicationController
 
     def student_params
       params.require(:student).permit(:name, :phone_number, :email, :has_badge, 
-                :badge_observation, :birthday, :address, :city_id,
+                :badge_observation, :birthday, :address, :student_id,
                 :rg, :cpf, :sanguine_type)
     end
 
