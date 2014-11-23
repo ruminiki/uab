@@ -1,12 +1,13 @@
 class CitiesController < ApplicationController
+  
   before_action :set_city, only: [:show, :edit, :update, :destroy]
   respond_to :html, :xml, :json
 
   def index
 
-    if params[:name]
-      #session[:search_city_name] = params[:name]
-      @cities = City.search(params[:name])
+    if params[:name] || session[:search_city_name]
+      session[:search_city_name] = params[:name] if params[:name]
+      @cities = City.search(session[:search_city_name])
     else
       @cities = City.all
     end
