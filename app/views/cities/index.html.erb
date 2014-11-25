@@ -1,14 +1,14 @@
 <%- model_class = City -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h3><%=t '.title', :default => "Cidades" %></h3>
 </div>
 <!-- FORM SEARCH -->
 <%= form_tag(cities_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
 
   <fieldset class="well the-fieldset">
-    <legend class="the-legend">Search</legend>
+    <legend class="the-legend">Pesquisa</legend>
     <div class="form-group">
-      <%= label_tag :name %>
+      <%= label_tag :nome %>
       <div class="controls">
         <%= text_field_tag :search_city_name, session[:search_city_name], :class => 'form-control', :style=> 'max-width: 600px' %>
       </div>
@@ -27,8 +27,8 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%=t '.actions', :default => "Ações" %></th>
     </tr>
   </thead>
   <tbody>
@@ -37,12 +37,12 @@
         <td><%= city.id%></td>
         <td style="width:50%"><%= link_to city.name, edit_city_path(city) %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.edit', :default => "Editar"),
                       edit_city_path(city), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('.destroy', :default => "Remover"),
                       city_path(city),
                       :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                       :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
@@ -50,6 +50,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', :default => "Novo"),
             new_city_path,
             :class => 'btn btn-primary' %>
