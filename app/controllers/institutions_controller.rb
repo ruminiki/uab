@@ -4,8 +4,10 @@ class InstitutionsController < ApplicationController
 
   before_filter :authenticate_user!
   
+  include ModelSearchHelper
+
   def index
-    @institutions = Institution.all
+    @institutions = self.search(params, Institution)
     respond_with(@institutions)
   end
 
@@ -16,9 +18,6 @@ class InstitutionsController < ApplicationController
   def new
     @institution = Institution.new
     respond_with(@institution)
-  end
-
-  def edit
   end
 
   def create
@@ -35,6 +34,11 @@ class InstitutionsController < ApplicationController
   def destroy
     @institution.destroy
     respond_with(@institution)
+  end
+
+  def clear_search
+    session.delete :search_institution_name
+    redirect_to action: "index"
   end
 
   private
