@@ -23,7 +23,11 @@ class Student < ActiveRecord::Base
 		self.city = City.find_or_create_by_name(name) unless name.blank?
 	end
 
-	def self.search(name, city, has_badge)
+	def self.search(session)
+
+		name      = session["search_student_name"]
+		city      = session["search_student_city_name"]
+		has_badge = session["search_student_has_badge"]
 
 		search = "";
 

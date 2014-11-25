@@ -51,11 +51,22 @@ section {
   }
 
 .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-background-color: #F5F5F5;
-color: black;
+  background-color: #F5F5F5;
+  color: black;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-background-color: #F5F5F5;
-color: black;
+  background-color: #F5F5F5;
+  color: black;
+}
+
+h3, .h3 {
+  font-size: 24px;
+  color: darkkhaki;
+}
+
+.page-header {
+  padding-bottom: 0px;
+  margin: 5px 0 10px;
+  border-bottom: 2px solid darkkhaki;
 }

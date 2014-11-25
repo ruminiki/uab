@@ -6,10 +6,10 @@ class StudentsController < ApplicationController
   
   autocomplete :student, :name
 
+  include ModelSearchHelper
+
   def index
-    namespace :students_controller do
-      
-    end@students = Student.search(params[:name], params[:student], params[:has_badge])
+    @students = self.search(params, Student)
     respond_with(@students)
   end
 
@@ -40,6 +40,13 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_with(@student)
+  end
+
+  def clear_search
+    session.delete :search_student_has_badge
+    session.delete :search_student_city_name
+    session.delete :search_student_name
+    redirect_to action: "index"
   end
 
   #action invocada a partir de uma tela que tem associação com estudante
