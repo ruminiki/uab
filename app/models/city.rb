@@ -8,10 +8,9 @@ class City < ActiveRecord::Base
 		self.name.upcase!
 	end
 
-	def self.search(name)
-
+	def self.search(session)
+		name = session["search_city_name"]
 		where("cities.name like ?", "%#{name}%")
-
 	end
 
 end

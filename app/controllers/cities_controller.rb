@@ -3,17 +3,11 @@ class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
   respond_to :html, :xml, :json
 
+  include ModelSearchHelper
+
   def index
-
-    if params[:name] || session[:search_city_name]
-      session[:search_city_name] = params[:name] if params[:name]
-      @cities = City.search(session[:search_city_name])
-    else
-      @cities = City.all
-    end
-
+    @cities = self.search(params, City)
     respond_with(@cities)
-
   end
 
   def show
@@ -23,9 +17,6 @@ class CitiesController < ApplicationController
   def new
     @city = City.new
     respond_with(@city)
-  end
-
-  def edit
   end
 
   def create
@@ -39,7 +30,7 @@ class CitiesController < ApplicationController
   end
 
   def update
-    @city.update(city_params)
+    @city.update(city_pa rams)
     redirect_to action: "index"
   end
 
