@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
       get "institutions/clear_search" => "institutions#clear_search"
 
+      get "courses/clear_search" => "courses#clear_search"
+
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories

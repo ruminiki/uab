@@ -2,8 +2,10 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   respond_to :html
   
+  include ModelSearchHelper
+
   def index
-    @courses = Course.all
+    @courses = self.search(params, Course)
     respond_with(@courses)
   end
 
@@ -14,9 +16,6 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     respond_with(@course)
-  end
-
-  def edit
   end
 
   def create
@@ -33,6 +32,11 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_with(@course)
+  end
+
+  def clear_search
+    session.delete :search_course_name
+    redirect_to action: "index"
   end
 
   private

@@ -12,4 +12,9 @@ class Course < ActiveRecord::Base
 		self.acronym.upcase!
 	end
 
+	def self.search(session)
+		name = session["search_course_name"]
+		where("courses.name like ?", "%#{name}%")
+	end
+
 end
