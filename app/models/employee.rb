@@ -16,7 +16,10 @@ class Employee < ActiveRecord::Base
 		city.name if city
 	end
 
-	def self.search(name, category)
+	def self.search(session)
+
+		name     = session["search_employee_name"]
+		category = session["search_employee_category_name"]
 
 		search = "";
 

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 	  get "students/clear_search" => "students#clear_search"
 
 	  get "employees/add_for_select" => "employees#add_for_select"
+	  get "employees/clear_search" => "employees#clear_search"
 
       get "cities/clear_search" => "cities#clear_search"
 

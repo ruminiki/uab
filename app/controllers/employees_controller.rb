@@ -5,8 +5,10 @@ class EmployeesController < ApplicationController
   respond_to :html, :xml, :json
   autocomplete :city, :name
   
+  include ModelSearchHelper
+
   def index
-    @employees = Employee.search(params[:name], params[:category])
+    @employees = self.search(params, Employee)
     respond_with(@employees)
   end
 
@@ -17,9 +19,6 @@ class EmployeesController < ApplicationController
   def new
     @employee = Employee.new
     respond_with(@employee)
-  end
-
-  def edit
   end
 
   def create
@@ -36,6 +35,12 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     respond_with(@employee)
+  end
+
+  def clear_search
+    session.delete :search_employee_name
+    session.delete :search_employee_category_name
+    redirect_to action: "index"
   end
 
   #action invocada a partir de uma tela que tem associação com colaborador
