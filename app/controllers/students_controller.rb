@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
   autocomplete :student, :name
 
   include ModelSearchHelper
+  include ModelAddForSelectHelper
 
   def index
     @students = self.search(params, Student)
@@ -49,13 +50,6 @@ class StudentsController < ApplicationController
     redirect_to action: "index"
   end
 
-  #action invocada a partir de uma tela que tem associação com estudante
-  #após salvar, a tela deve ser fechada
-  def add_for_select
-    session[:is_adding_for_select] = true
-    redirect_to action: "new"
-  end
-
   private
     def set_student
       @student = Student.find(params[:id]) if params[:id].to_i > 0
@@ -65,11 +59,6 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:name, :phone_number, :email, :has_badge, 
                 :badge_observation, :birthday, :address, :student_id,
                 :rg, :cpf, :sanguine_type)
-    end
-
-    def close_window
-      render 'window.close' if session[:is_adding_for_select]
-      session[:is_adding_for_select] = false
     end
 
 end
