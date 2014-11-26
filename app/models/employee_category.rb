@@ -7,4 +7,10 @@ class EmployeeCategory < ActiveRecord::Base
 	def upper_case
 		self.name.upcase!
 	end
+
+	def self.search(session)
+		name = session["search_employee_category_name"]
+		where("employee_categories.name like ?", "%#{name}%")
+	end
+
 end

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
       get "courses/clear_search" => "courses#clear_search"
 
+ 	  get "employee_categories/clear_search" => "employee_categories#clear_search"     
+
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories

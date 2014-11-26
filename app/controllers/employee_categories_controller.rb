@@ -2,8 +2,10 @@ class EmployeeCategoriesController < ApplicationController
   before_action :set_employee_category, only: [:show, :edit, :update, :destroy]
   respond_to :html, :xml, :json
   
+  include ModelSearchHelper
+
   def index
-    @employee_categories = EmployeeCategory.all
+    @employee_categories = self.search(params, EmployeeCategory)
     respond_with(@employee_categories)
   end
 
@@ -33,6 +35,11 @@ class EmployeeCategoriesController < ApplicationController
   def destroy
     @employee_category.destroy
     respond_with(@employee_category)
+  end
+
+  def clear_search
+    session.delete :search_employee_category_name
+    redirect_to action: "index"
   end
 
   private
