@@ -1,5 +1,5 @@
 
-<h2>Sign in</h2>
+<h3>Entrar</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
 <div class="form-group">
@@ -10,7 +10,7 @@
 </div>
 
 <div class="form-group">
-    <%= f.label :password, class: "col-sm-2 control-label" %>
+    <%= f.label :senha, class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>
@@ -19,20 +19,15 @@
 <% if devise_mapping.rememberable? -%>
 <div class="form-group">
     <div class="col-sm-6 col-sm-offset-2">
-        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+        <%= f.check_box :remember_me %> <%= f.label :lembrar_me %>
     </div>
 </div>
 <% end -%>
 
 <div class="form-group">
     <div class="col-sm-6 col-sm-offset-2">
-        <%= f.submit "Sign in", class: 'btn btn-primary' %>
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= render "users/shared/links" %>
+        <%= f.submit "Entrar", class: 'btn btn-primary' %>
+        <%= link_to "Esqueçeu sua senha?", new_password_path(resource_name), class: 'btn btn-default' %><br />
     </div>
 </div>
 
