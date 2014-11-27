@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
  	  get "parameters/clear_search" => "parameters#clear_search"  
 
+	  #resources :accounts
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
 
 	end
 
-	devise_for :users
+	devise_for :users, :controllers => {:users => "users"}
+		
 	root to: 'visitors#index'
 end

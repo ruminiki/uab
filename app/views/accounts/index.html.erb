@@ -1,0 +1,44 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => "Usuários" %></h3>
+</div>
+
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name("Último Login") %></th>
+      <th><%= model_class.human_attribute_name("Papéis") %></th>
+      <th><%=t '.actions', :default => "Ações" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id%></td>
+        <td><%= user.name%></td>
+        <td><%= user.email%></td>
+        <td><%= user.last_sign_in_at%></td>
+        <td>
+          <%= link_to "Papéis", edit_account_path(user), :class => 'btn btn-success btn-xs' %>        
+        </td>
+        <td>
+          <%= link_to t('.edit', :default => "Editar"),
+                      edit_account_path(user), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => "Remover"),
+                      account_path(user),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => "Novo"),
+            new_account_path,
+            :class => 'btn btn-primary' %>

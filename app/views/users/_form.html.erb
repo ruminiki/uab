@@ -1,0 +1,47 @@
+<%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
+
+    <% if @user.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+      <%= f.label :nome, class: 'col-sm-2 control-label'  %>
+      <div class="col-sm-6">
+          <%= f.text_field :name, class: 'form-control'  %>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :email, class: 'col-sm-2 control-label'  %>
+      <div class="col-sm-6">
+          <%= f.email_field :email, class: 'form-control'  %>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :senha, class: 'col-sm-2 control-label'  %> <i>(deixe em branco se não deseja alterar)</i>
+      <div class="col-sm-6">
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
+      </div>
+  </div>
+
+
+  <div class="form-group">
+      <%= f.label "Confirmação Senha", class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
+      </div>
+  </div>
+
+  <%= f.submit "Salvar Usuário", :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to "Cancelar", users_path, :class => 'btn btn-default' %>
+
+<% end %>
