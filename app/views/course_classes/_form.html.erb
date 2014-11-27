@@ -14,9 +14,6 @@ jQuery(function($){
 
     <% if @course_class.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@course_class.errors.count, "error") %> prohibited this course_class from being saved:</h3>
-      </div>
       <div class="panel-body">
         <ul>
         <% @course_class.errors.full_messages.each do |msg| %>
@@ -28,7 +25,7 @@ jQuery(function($){
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
     </div>
@@ -36,7 +33,7 @@ jQuery(function($){
   </div>
 
   <div class="form-group">
-    <%= f.label :course, :class => 'col-sm-2 control-label' %>
+    <%= f.label :curso, :class => 'col-sm-2 control-label' %>
     <div class="controls" style="max-width:600px; display: -webkit-box;">
       <%= f.select(:course_id, Course.all.map{ |c| [c.name, c.id]}, {:value => :course_id}, {:class =>'form-control'})%>
     </div>
@@ -44,7 +41,7 @@ jQuery(function($){
   </div>
 
   <div class="form-group">
-    <%= f.label :institution, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Instituição", :class => 'col-sm-2 control-label' %>
     <div class="controls" style="max-width:600px; display: -webkit-box;">
       <%= f.select(:institution_id, Institution.all.map{ |c| [c.name, c.id]}, {:value => :institution_id}, {:class =>'form-control'})%>
     </div>
@@ -52,7 +49,7 @@ jQuery(function($){
   </div>
 
   <div class="form-group">
-    <%= f.label :begin, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Data Início", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :begin, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
     </div>
@@ -63,10 +60,8 @@ jQuery(function($){
 
   <%= error_span(@course_class[:begin]) %>
 
-  <%= f.button :submit, :class => 'col-sm-offset-2 btn-primary' %>
-
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                course_classes_path, :class => 'btn btn-default' %>
+  <%= f.submit "Salvar Turma", :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to "Cancelar", course_classes_path, :class => 'btn btn-default' %>
 
  
 <% end %>

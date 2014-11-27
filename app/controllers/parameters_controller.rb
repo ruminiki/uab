@@ -1,9 +1,11 @@
 class ParametersController < ApplicationController
   before_action :set_parameter, only: [:show, :edit, :update, :destroy]
   respond_to :html
+  
+  include ModelSearchHelper
 
   def index
-    @parameters = Parameter.all
+    @parameters = self.search(params, Parameter)
     respond_with(@parameters)
   end
 
@@ -33,6 +35,11 @@ class ParametersController < ApplicationController
   def destroy
     @parameter.destroy
     respond_with(@parameter)
+  end
+
+  def clear_search
+    session.delete :search_parameter_name
+    redirect_to action: "index"
   end
 
   private

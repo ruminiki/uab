@@ -5,7 +5,7 @@
 
 
   <div class="page-header">
-    <h1>Add Students</h1>
+    <h3>Matrículas</h3>
   </div>
 
   <% if @course_class.errors.any? %>
@@ -23,7 +23,7 @@
   <!--GROUP FIND EMPLOYEE -->
   <fieldset class="well the-fieldset">
     <div class="form-group">
-        <%= f.label :student, :class => 'col-sm-2 control-label' %>
+        <%= f.label :aluno, :class => 'col-sm-2 control-label' %>
         <div class="controls">
 
             <%= f.input :student, 
@@ -56,11 +56,11 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th><%= model_class.human_attribute_name(:name) %></th>
-            <th><%= model_class.human_attribute_name(:phone_number) %></th>
+            <th><%= model_class.human_attribute_name(:nome) %></th>
+            <th><%= model_class.human_attribute_name(:telefone) %></th>
             <th><%= model_class.human_attribute_name(:email) %></th>
-            <th><%= model_class.human_attribute_name(:has_badge) %></th>
-            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+            <th><%= model_class.human_attribute_name("Possui Crachá") %></th>
+            <th><%=t '.actions', :default => "Ações" %></th>
           </tr>
         </thead>
         <tbody>
@@ -69,14 +69,14 @@
               <td><%= student.name %></td>
               <td><%= student.phone_number %></td>
               <td><%= student.email %></td>
-              <td><%= student.has_badge %></td>
+              <td><%= (student.has_badge ? "SIM" : "NÃO") %></td>
               <td>
 
               <%= link_to "Editar Matricula",
                     course_classes_redirect_to_edit_student_course_class_path(:course_class_id => @course_class.id, :student_id => student.id), :class=>'btn btn-xs btn btn-primary' %>
               
               <%= link_to "Remover", 
-                    course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),:data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir a matrícula?') },
                     :class=>'btn btn-xs btn btn-danger' %>
 
               </td>

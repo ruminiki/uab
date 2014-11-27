@@ -26,7 +26,11 @@ class CourseClass < ActiveRecord::Base
 		self.name.upcase!
 	end
 
-	def self.search(name, institution, course)
+	def self.search(session)
+
+		institution = session["search_course_class_institution_name"]
+		course      = session["search_course_class_course_name"]
+		name        = session["search_course_class_name"]
 
 		search = "";
 

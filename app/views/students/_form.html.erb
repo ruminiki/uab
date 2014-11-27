@@ -13,14 +13,14 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
     </div>
     <%= error_span(@student[:name]) %>
   </div>
   <div class="form-group">
-    <%= f.label :phone_number, :class => 'col-sm-2 control-label' %>
+    <%= f.label :telefone, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :phone_number, :class => 'form-control', :style=> 'max-width: 200px'  %>
     </div>
@@ -48,7 +48,7 @@
     <%= error_span(@student[:cpf]) %>
   </div>
   <div class="form-group">
-    <%= f.label :sanguine_type, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Tipo Sanguíneo", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.select(:sanguine_type, 
             [['A+', 'A+'],['A-', 'A-'],
@@ -61,35 +61,35 @@
     <%= error_span(@student[:sanguine_type]) %>
   </div>
   <div class="form-group">
-    <%= f.label :has_badge, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Possui Crachá", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.check_box :has_badge, :class => 'form-control', :style=> 'max-width: 34px' %>
     </div>
     <%= error_span(@student[:has_badge]) %>
   </div>
   <div class="form-group">
-    <%= f.label :badge_observation, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Observação Crachá", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :badge_observation, :class => 'form-control', :style=> 'max-width: 600px'  %>
     </div>
     <%= error_span(@student[:badge_observation]) %>
   </div>
   <div class="form-group">
-    <%= f.label :birthday, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Data Nascimento", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :birthday, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
     </div>
     <%= error_span(@student[:birthday]) %>
   </div>
   <div class="form-group">
-    <%= f.label :address, :class => 'col-sm-2 control-label' %>
+    <%= f.label "Endereço", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :address, :class => 'form-control', :style=> 'max-width: 600px'  %>
     </div>
     <%= error_span(@student[:address]) %>
   </div>
   <div class="form-group">
-    <%= f.label :city, :class => 'col-sm-2 control-label' %>
+    <%= f.label :cidade, :class => 'col-sm-2 control-label' %>
     <div class="controls" style="max-width:300px; display: -webkit-box;">
 
       <%= f.input :city_name, 
@@ -110,8 +110,7 @@
 
   <br>
 
-  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            students_path, :class => 'btn btn-default' %>
+  <%= f.submit "Salvar Aluno", :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to "Cancelar", students_path, :class => 'btn btn-default' %>
 
 <% end %>

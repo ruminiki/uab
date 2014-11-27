@@ -30,7 +30,7 @@ class CitiesController < ApplicationController
   end
 
   def update
-    @city.update(city_pa rams)
+    @city.update(city_params)
     redirect_to action: "index"
   end
 

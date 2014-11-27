@@ -7,4 +7,10 @@ class DocumentCategory < ActiveRecord::Base
 	def upper_case
 		self.name.upcase!
 	end
+
+	def self.search(session)
+		name = session["search_document_category_name"]
+		where("document_categories.name like ?", "%#{name}%")
+	end
+
 end

@@ -1,12 +1,15 @@
 class DocumentCategoriesController < ApplicationController
+ 
   before_action :set_document_category, only: [:show, :edit, :update, :destroy]
   respond_to :html
   
-  def index
-    @document_categories = DocumentCategory.all
-    respond_with(@document_categories)
-  end
+  include ModelSearchHelper
 
+  def index
+    @document_categories = self.search(params, DocumentCategory)
+    respond_with(@document_categories)
+  end  
+  
   def show
     respond_with(@document_category)
   end
@@ -37,6 +40,11 @@ class DocumentCategoriesController < ApplicationController
   def destroy
     @document_category.destroy
     respond_with(@document_category)
+  end
+
+  def clear_search
+    session.delete :search_document_category_name
+    redirect_to action: "index"
   end
 
   private

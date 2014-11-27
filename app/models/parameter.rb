@@ -9,5 +9,9 @@ class Parameter < ActiveRecord::Base
 		self.name.upcase!
 	end
 
+	def self.search(session)
+		name = session["search_parameter_name"]
+		where("parameters.name like ?", "%#{name}%")
+	end
 
 end

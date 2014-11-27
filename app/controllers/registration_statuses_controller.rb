@@ -2,11 +2,13 @@ class RegistrationStatusesController < ApplicationController
   before_action :set_registration_status, only: [:show, :edit, :update, :destroy]
   respond_to :html
   
-  def index
-    @registration_statuses = RegistrationStatus.all
-    respond_with(@registration_statuses)
-  end
+  include ModelSearchHelper
 
+  def index
+    @registration_statuses = self.search(params, RegistrationStatus)
+    respond_with(@registration_statuses)
+  end  
+  
   def show
     respond_with(@registration_status)
   end
@@ -14,9 +16,6 @@ class RegistrationStatusesController < ApplicationController
   def new
     @registration_status = RegistrationStatus.new
     respond_with(@registration_status)
-  end
-
-  def edit
   end
 
   def create
@@ -33,6 +32,11 @@ class RegistrationStatusesController < ApplicationController
   def destroy
     @registration_status.destroy
     respond_with(@registration_status)
+  end
+
+  def clear_search
+    session.delete :search_registration_status_name
+    redirect_to action: "index"
   end
 
   private

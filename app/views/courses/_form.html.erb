@@ -1,9 +1,6 @@
 <%= simple_form_for @course, :html => { :class => 'form-horizontal course' } do |f| %>
     <% if @course.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h3>
-      </div>
       <div class="panel-body">
         <ul>
         <% @course.errors.full_messages.each do |msg| %>
@@ -15,7 +12,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
     </div>
@@ -23,7 +20,7 @@
   </div>
 
    <div class="form-group">
-    <%= f.label :acronym, :class => 'col-sm-2 control-label' %>
+    <%= f.label :sigla, :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :acronym, :class => 'form-control', :style=> 'max-width: 100px' %>
     </div>
@@ -32,8 +29,7 @@
 
   <br>
 
-  <%= f.submit nil, :class => 'col-sm-offset-2 btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            courses_path, :class => 'btn btn-default' %>
+  <%= f.submit "Salvar Curso", :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to "Cancelar", courses_path, :class => 'btn btn-default' %>
 
 <% end %>

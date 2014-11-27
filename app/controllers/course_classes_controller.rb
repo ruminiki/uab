@@ -8,8 +8,10 @@ class CourseClassesController < ApplicationController
 
   helper_method :add_student, :remove_student
 
+  include ModelSearchHelper
+
   def index
-    @course_classes = CourseClass.search(params[:name], params[:institution], params[:course])
+    @course_classes = self.search(params, CourseClass)
     respond_with(@course_classes)
   end
 
@@ -39,6 +41,13 @@ class CourseClassesController < ApplicationController
   def destroy
     @course_class.destroy
     respond_with(@course_class)
+  end
+
+  def clear_search
+    session.delete :search_course_class_institution_name
+    session.delete :search_course_class_course_name
+    session.delete :search_course_class_name
+    redirect_to action: "index"
   end
 
 =begin

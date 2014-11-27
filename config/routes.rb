@@ -6,14 +6,13 @@ Rails.application.routes.draw do
 	  get "course_classes/add_student" => "course_classes#add_student"	
 	  get "course_classes/remove_student" => "course_classes#remove_student"  
 	  get "course_classes/redirect_to_edit_student_course_class" => "course_classes#redirect_to_edit_student_course_class"  
-
 	  get "course_classes/employees" => "course_classes#employees"	
 	  get "course_classes/add_employee" => "course_classes#add_employee"	
 	  get "course_classes/remove_employee" => "course_classes#remove_employee"  
-
 	  get "course_classes/documents" => "course_classes#documents"	
 	  post "course_classes/add_document" => "course_classes#add_document"
 	  get "course_classes/remove_document" => "course_classes#remove_document"  
+	  get "course_classes/clear_search" => "course_classes#clear_search"  
 
 	  get "documents/download_file" => "documents#download_file"
 
@@ -30,6 +29,12 @@ Rails.application.routes.draw do
       get "courses/clear_search" => "courses#clear_search"
 
  	  get "employee_categories/clear_search" => "employee_categories#clear_search"     
+
+ 	  get "registration_statuses/clear_search" => "registration_statuses#clear_search"   
+
+ 	  get "document_categories/clear_search" => "document_categories#clear_search"  
+
+ 	  get "parameters/clear_search" => "parameters#clear_search"  
 
 	  resources :documents
 	  resources :employee_categories

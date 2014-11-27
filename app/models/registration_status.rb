@@ -7,4 +7,9 @@ class RegistrationStatus < ActiveRecord::Base
 		self.name.upcase!
 	end
 
+	def self.search(session)
+		name = session["search_registration_status_name"]
+		where("registration_statuses.name like ?", "%#{name}%")
+	end
+
 end
