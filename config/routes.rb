@@ -36,13 +36,13 @@ Rails.application.routes.draw do
 
  	  get "parameters/clear_search" => "parameters#clear_search"  
 
-	  #resources :accounts
+	  resources :accounts
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories
 	  resources :parameters	  
 	  resources :registration_statuses
-	  resources :registrations
+	  #resources :registrations
 	  resources :institutions
 	  resources :courses
 	  
@@ -63,7 +63,17 @@ Rails.application.routes.draw do
 
 	end
 
-	devise_for :users, :controllers => {:users => "users"}
-		
+	
+	devise_for :users
+
+=begin
+	
+	devise_scope :user do
+	   get "signup", to: "users/registrations#new"
+	   get "login", to: "users/sessions#new"
+	   get "logout", to: "users/sessions#destroy"
+	end
+	match '/users', to: 'users#index', via: :post
+=end
 	root to: 'visitors#index'
 end

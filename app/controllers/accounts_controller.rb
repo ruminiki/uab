@@ -1,4 +1,4 @@
-class UsersController < Devise::RegistrationsController
+class AccountsController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   respond_to :html
@@ -38,7 +38,7 @@ class UsersController < Devise::RegistrationsController
 
   def destroy
     @user.destroy
-    respond_with(@user)
+    redirect_to action: "index"
   end
 
   private
@@ -47,7 +47,7 @@ class UsersController < Devise::RegistrationsController
 	  end
 	 
 	  def user_params
-	    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
+	    params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	  end
 
 end
