@@ -32,8 +32,9 @@ class AccountsController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to action: "index"
+    @user = User.new(user_params)
+    @user.save
+    render :json => user_params
   end
 
   def destroy

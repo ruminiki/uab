@@ -66,7 +66,7 @@
         <td><%= link_to student.name, edit_student_path(student) %></td>
         <td><%= student.phone_number %></td>
         <td><%= student.email %></td>
-        <td><%= student.has_badge %></td>
+        <td><%= (student.has_badge ? "SIM" : "NÃO") %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
                       edit_student_path(student), :class => 'btn btn-default btn-xs' %>
