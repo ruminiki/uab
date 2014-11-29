@@ -4,7 +4,6 @@ class AccountsController < ApplicationController
   respond_to :html
 
   def index
-    #@users = self.search(params, User)
     @users = User.all
     respond_with(@users)
   end
@@ -25,17 +24,31 @@ class AccountsController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
-      redirect_to action: "index", :notice => "user saved with success" 
+      redirect_to action: "index"
     else
       respond_with(@user)  
     end
   end
 
+  #FIXME Fazer validações para edicao de usuario
+  #
   def update
     @user = User.new(user_params)
-    @user.save
-    render :json => user_params
+    @user.update(:name => params[:name])
+    redirect_to action: "index"
   end
+
+  def activate_user
+    @user = User.find(params[:id])
+    @user.update(:active => true)
+    redirect_to action: "index"
+  end 
+
+  def inactivate_user
+    @user = User.find(params[:id])
+    @user.update(:active => false)
+    redirect_to action: "index"
+  end   
 
   def destroy
     @user.destroy
@@ -48,7 +61,7 @@ class AccountsController < ApplicationController
 	  end
 	 
 	  def user_params
-	    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+	    params.require(:user).permit(:id, :name, :email, :password, :password_confirmation)
 	  end
 
 end

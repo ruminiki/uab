@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127235536) do
+ActiveRecord::Schema.define(version: 20141129134526) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141127235536) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
+    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -153,6 +154,7 @@ ActiveRecord::Schema.define(version: 20141127235536) do
     t.datetime "updated_at"
     t.string   "name"
     t.boolean  "admin"
+    t.boolean  "active"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
