@@ -12,6 +12,7 @@
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name("Último Login") %></th>
       <th><%= model_class.human_attribute_name("Papéis") %></th>
+      <th><%=t '.actions', :default => "Ativar/Inativar" %></th>
       <th><%=t '.actions', :default => "Ações" %></th>
     </tr>
   </thead>
@@ -26,19 +27,19 @@
           <%= link_to "Papéis", edit_account_path(user), :class => 'btn btn-success btn-xs' %>        
         </td>
         <td>
-          
-          <!--<%= link_to t('.edit', :default => "Editar"),
-                      edit_account_path(user), :class => 'btn btn-default btn-xs' %>-->
-
           <%= 
-          if user.active?
-            link_to "Inativar", accounts_inactivate_user_path(:id => user.id), :class => 'btn btn-default btn-xs',
-              :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja inativar o usuário?') }
-          else
-            link_to "Ativar", accounts_activate_user_path(:id => user.id), :class => 'btn btn-default btn-xs',
-              :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja ativar o usuário?') }
-          end
+            if user.active?
+              link_to "Inativar", accounts_inactivate_user_path(:id => user.id), :class => 'btn btn-default btn-xs',
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja inativar o usuário?') }
+            else
+              link_to "Ativar  ", accounts_activate_user_path(:id => user.id), :class => 'btn btn-default btn-xs',
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja ativar o usuário?') }
+            end
           %>
+        </td>
+        <td>
+          <%= link_to t('.edit', :default => "Editar"),
+                      edit_account_path(user), :class => 'btn btn-default btn-xs' %>
 
           <%= link_to t('.destroy', :default => "Remover"),
                       account_path(user),

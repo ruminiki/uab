@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
  	  get "parameters/clear_search" => "parameters#clear_search"  
 
- 	  post "accounts/update_user_account" => "accounts#update"  
+ 	  post "accounts/update_user_account" => "accounts#update_user_account"  
  	  get "accounts/activate_user" => "accounts#activate_user"  
  	  get "accounts/inactivate_user" => "accounts#inactivate_user"  
 

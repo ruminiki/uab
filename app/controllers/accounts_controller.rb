@@ -22,20 +22,51 @@ class AccountsController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    
+    @user.active = true
+    @user.admin = false
+
     if @user.valid?
       @user.save
       redirect_to action: "index"
     else
       respond_with(@user)  
     end
+
   end
 
-  #FIXME Fazer validações para edicao de usuario
-  #
-  def update
+  def update_user_account
+
+    @user = User.find(params[:id])
+
+=begin
     @user = User.new(user_params)
-    @user.update(:name => params[:name])
+    if @user.password == @user.password_confirmation && !@user.password.blank?
+
+      if @user.valid?
+        @aux.update(:name => @user.password, :password => @user.password)
+      else
+        respond_with(@user)
+        return
+      end
+
+    else
+      
+      if @user.password != @user.password_confirmation && !@user.password.blank?
+        @user.errors.add(:INFO, "A confirmação de senha falhou. Por favor tente novamente.")
+        respond_with(@user)
+        return
+      else
+         @aux.update(:name => @user.name)
+      end
+
+    end
+=end
+
+    @user.update(:name => params[:user][:name])
+    
     redirect_to action: "index"
+
   end
 
   def activate_user
