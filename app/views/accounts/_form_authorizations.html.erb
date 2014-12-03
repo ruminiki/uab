@@ -1,0 +1,72 @@
+<%= simple_form_for @user, 
+    :html => { :class => "form-horizontal user"},
+    :url => url_for(accounts_update_authorization_path),
+    :method => 'get' do |f| %>
+
+  <div class="page-header">
+    <h3>Autorizações [<%= @user.name %>] </h3>
+  </div>
+
+  <% if @user.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- use_cases -->
+  <div role="tabpanel" class="tab-pane active" id="use_cases">
+      <%- model_class = UseCase -%>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= model_class.human_attribute_name(:caso_de_uso) %></th>
+            <th><%= model_class.human_attribute_name(:adicionar) %></th>
+            <th><%= model_class.human_attribute_name(:editar) %></th>
+            <th><%= model_class.human_attribute_name(:visualizar) %></th>
+            <th><%= model_class.human_attribute_name(:remover) %></th>
+            <th><%=t '.actions', :default => "Ações" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.authorizations.each do |authorization| %>
+            <%= form_tag(accounts_update_authorization_path, :method => "get", id: "update-authorization") do %>
+              <%= hidden_field_tag :user_id, @user.id %>
+              <%= hidden_field_tag :authorization_id, authorization.id %>
+              <tr>
+                <td><%= authorization.use_case.name %></td>
+                <td style="width:20px; text-align:center; text-align: -moz-center;">
+                  <%= check_box_tag :add, 'yes', authorization.add, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                </td>
+
+                <td style="width:20px; text-align:center; text-align: -moz-center;">
+                  <%= check_box_tag :edit, 'yes', authorization.edit, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                </td>
+
+                <td style="width:20px; text-align:center; text-align: -moz-center;">
+                  <%= check_box_tag :view, 'yes', authorization.view, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                </td>
+
+                <td style="width:20px; text-align:center; text-align: -moz-center;">
+                  <%= check_box_tag :remove, 'yes', authorization.remove, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                </td>
+                <td>
+                  <%= submit_tag "Salvar", :class => 'btn btn-default btn-xs'%>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+
+  </div>
+
+  <%= link_to "Voltar", accounts_path, :class => 'btn btn-default' %>                      
+
+ 
+<% end %>

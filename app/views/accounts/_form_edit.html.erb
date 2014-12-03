@@ -35,12 +35,26 @@
       </div>
   </div>
 
-
   <div class="form-group">
       <%= f.label "Confirmação Senha", class: 'col-sm-2 control-label' %>
       <div class="col-sm-6">
           <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
       </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label "Administrador", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.check_box :admin, :class => 'form-control', :style=> 'max-width: 34px' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Ativo", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.check_box :active, :class => 'form-control', :style=> 'max-width: 34px' %>
+    </div>
   </div>
 
   <%= f.submit "Salvar Usuário", :class => 'col-sm-offset-2 btn btn-primary' %>

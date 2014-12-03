@@ -1,0 +1,61 @@
+<%- model_class = UseCase -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => "Casos de Uso" %></h3>
+</div>
+<!-- FORM SEARCH -->
+<%= form_tag(use_cases_path, :method => "get", id: "search-form", :class => "form-inline use_case") do %>
+
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Pesquisa</legend>
+    <div class="form-group">
+      <%= label_tag :nome %>
+      <div class="controls">
+        <%= text_field_tag :search_use_case_name, session[:search_use_case_name], :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+
+    <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
+    <%= link_to "Limpar", use_cases_clear_search_path, 
+          :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
+
+  </fieldset>
+
+<% end %>
+
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:classe) %></th>
+      <th><%=t '.actions', :default => "Ações" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @use_cases.each do |use_case| %>
+      <tr>
+        <td><%= use_case.id%></td>
+        <td style="width:50%"><%= link_to use_case.name, edit_use_case_path(use_case) %></td>
+        <td><%= use_case.class_name %></td>
+        <td>
+          <%= link_to t('.edit', :default => "Editar"),
+                      edit_use_case_path(use_case), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => "Remover"),
+                      use_case_path(use_case),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= 
+  if current_user.admin?
+    link_to t('.new', :default => "Novo"),
+            new_use_case_path,
+            :class => 'btn btn-primary' 
+  end
+%>

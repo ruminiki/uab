@@ -1,0 +1,37 @@
+<%= form_for @use_case, :html => { :class => "form-horizontal use_case" } do |f| %>
+
+    <% if @use_case.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @use_case.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@use_case[:name]) %>
+  </div>
+
+ <div class="form-group">
+    <%= f.label :classe, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :class_name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@use_case[:class_name]) %>
+  </div>
+
+
+  <br>
+
+  <%= f.submit "Salvar Caso de Uso", :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to "Cancelar", use_cases_path, :class => 'btn btn-default' %>
+
+<% end %>

@@ -1,0 +1,35 @@
+<h1>Listing authorizations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Use case</th>
+      <th>Add</th>
+      <th>Edit</th>
+      <th>View</th>
+      <th>Delete</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authorizations.each do |authorization| %>
+      <tr>
+        <td><%= authorization.user_id %></td>
+        <td><%= authorization.use_case_id %></td>
+        <td><%= authorization.add %></td>
+        <td><%= authorization.edit %></td>
+        <td><%= authorization.view %></td>
+        <td><%= authorization.delete %></td>
+        <td><%= link_to 'Show', authorization %></td>
+        <td><%= link_to 'Edit', edit_authorization_path(authorization) %></td>
+        <td><%= link_to 'Destroy', authorization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Authorization', new_authorization_path %>

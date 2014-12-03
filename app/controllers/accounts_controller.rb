@@ -1,11 +1,9 @@
 class AccountsController < ApplicationController
 
-  #before_action :set_user, only: [:show, :edit, :update, :destroy]
   respond_to :html
 
   def index
-    @users = User.where.not(id: current_user.id)
-    #respond_with(@users)
+    @users = User.all
   end
 
   def show
@@ -20,12 +18,12 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     @user.admin = false
     @user.active = true
     if @user.save
       flash[:notice] = "Successfully created User." 
-      redirect_to root_path
+      redirect_to :action => 'index'
     else
       render :action => 'new'
     end
@@ -77,13 +75,61 @@ class AccountsController < ApplicationController
     redirect_to action: "index"
   end   
 
+  def authorizations
+    @user = User.find(params[:id])
+    @use_cases = UseCase.all
+
+    #verifica se o usuario já possui a autorização
+    @use_cases.each do |use_case|
+
+      if !has_use_case_authorization(use_case.id, @user.id)
+
+        auth = Authorization.new
+        auth.use_case = use_case
+        auth.user = @user
+
+        @user.authorizations << auth
+
+        @user.save
+            
+      end
+      
+    end
+
+    render '_form_authorizations'
+
+  end
+
+  def has_use_case_authorization(use_case_id, user_id)
+    authorization = User.joins(:authorizations)
+    .where('authorizations.use_case_id = ? and authorizations.user_id = ?', use_case_id, user_id)
+
+    !authorization.nil? && authorization.length > 0
+  end
+
+  def update_authorization
+    @auth = Authorization.find(params[:authorization_id])
+
+    add    = params[:add].nil? ? false : true
+    edit   = params[:edit].nil? ? false : true
+    view   = params[:view].nil? ? false : true
+    remove = params[:remove].nil? ? false : true
+
+    @auth.update(:add => add, :edit => edit, :view => view, :remove => remove)
+
+    #recupera o usuário para recarregar o form
+    @user = User.joins(:authorizations).find(params[:user_id])
+
+    render '_form_authorizations'
+  end
+
   private
 	  def set_user
 	    @user = User.find(params[:id])
 	  end
 	 
 	  def user_params
-	    params.require(:user).permit(:id, :name, :email, :password, :password_confirmation)
+	    params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, :admin, :active)
 	  end
 
 end

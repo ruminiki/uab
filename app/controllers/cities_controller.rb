@@ -23,7 +23,7 @@ class CitiesController < ApplicationController
     @city = City.new(city_params)
     if @city.valid?
       @city.save
-      redirect_to action: "index", :notice => "City saved with success" 
+      redirect_to action: "index", :notice => "Cidade salva com sucesso!" 
     else
       respond_with(@city)  
     end

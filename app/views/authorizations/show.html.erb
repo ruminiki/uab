@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @authorization.user_id %>
+</p>
+
+<p>
+  <strong>Use case:</strong>
+  <%= @authorization.use_case_id %>
+</p>
+
+<p>
+  <strong>Add:</strong>
+  <%= @authorization.add %>
+</p>
+
+<p>
+  <strong>Edit:</strong>
+  <%= @authorization.edit %>
+</p>
+
+<p>
+  <strong>View:</strong>
+  <%= @authorization.view %>
+</p>
+
+<p>
+  <strong>Delete:</strong>
+  <%= @authorization.delete %>
+</p>
+
+<%= link_to 'Edit', edit_authorization_path(@authorization) %> |
+<%= link_to 'Back', authorizations_path %>

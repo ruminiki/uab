@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @use_case.name %>
+</p>
+
+<p>
+  <strong>Class name:</strong>
+  <%= @use_case.class_name %>
+</p>
+
+<%= link_to 'Edit', edit_use_case_path(@use_case) %> |
+<%= link_to 'Back', use_cases_path %>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129134526) do
+ActiveRecord::Schema.define(version: 20141203181253) do
+
+  create_table "authorizations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "use_case_id"
+    t.boolean  "add",         default: false
+    t.boolean  "edit",        default: false
+    t.boolean  "view",        default: false
+    t.boolean  "remove",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -23,7 +34,6 @@ ActiveRecord::Schema.define(version: 20141129134526) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
-    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -137,6 +147,24 @@ ActiveRecord::Schema.define(version: 20141129134526) do
     t.string   "rg"
     t.string   "cpf"
     t.string   "sanguine_type"
+  end
+
+  create_table "use_case_user_access", force: true do |t|
+    t.integer  "use_case_id"
+    t.integer  "user_id"
+    t.boolean  "add"
+    t.boolean  "edit"
+    t.boolean  "delete"
+    t.boolean  "view"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "use_cases", force: true do |t|
+    t.string   "name"
+    t.string   "class_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
