@@ -1,34 +1,36 @@
 
-<h3>Entrar</h3>
+<h3>Por favor, identifique-se para acessar o sistema</h3><br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
-<div class="form-group">
-    <%= f.label :email, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
-        <%= f.email_field :email, autofocus: true , class: "form-control" %>
+<fieldset class="well the-fieldset"
+    style="width: 50%;border: 1px #ccc solid;background: #fff;margin-left: 25%;">
+    <div class="form-group" style="margin-left: 11%;">
+        <%= f.label :email, class: "col-sm-2 control-label" %>
+        <div class="col-sm-6">
+            <%= f.email_field :email, autofocus: true , class: "form-control", style: "max-width:300px" %>
+        </div>
     </div>
-</div>
 
-<div class="form-group">
-    <%= f.label :senha, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <div class="form-group" style="margin-left: 11%;">
+        <%= f.label :senha, class: "col-sm-2 control-label" %>
+        <div class="col-sm-6">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", style: "max-width:300px" %>
+        </div>
     </div>
-</div>
 
-<% if devise_mapping.rememberable? -%>
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= f.check_box :remember_me %> <%= f.label :lembrar_me %>
+    <% if devise_mapping.rememberable? -%>
+    <div class="form-group" style="margin-left: 11%;">
+        <div class="col-sm-6 col-sm-offset-2">
+            <%= f.check_box :remember_me %> <%= f.label :lembrar_me %>
+        </div>
     </div>
-</div>
-<% end -%>
+    <% end -%>
 
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= f.submit "Entrar", class: 'btn btn-primary' %>
-        <%= link_to "Esqueçeu sua senha?", new_password_path(resource_name), class: 'btn btn-default' %><br />
+    <div class="form-group" style="margin-left: 11%;">
+        <div class="col-sm-6 col-sm-offset-2">
+            <%= f.submit "Entrar", class: 'btn btn-primary' %>
+            <%= link_to "Esqueçeu sua senha?", new_password_path(resource_name), class: 'btn btn-default' %><br />
+        </div>
     </div>
-</div>
-
+</fieldset>
 <% end %>

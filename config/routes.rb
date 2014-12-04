@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 	
-  resources :authorizations
 
-  resources :accesses
 
   	authenticate :user do
 	  #invoke add student to classes
@@ -44,18 +42,18 @@ Rails.application.routes.draw do
  	  get  "accounts/activate_user" => "accounts#activate_user"  
  	  get  "accounts/inactivate_user" => "accounts#inactivate_user"  
  	  get  "accounts/authorizations" => "accounts#authorizations"	
- 	  get  "accounts/update_authorization" => "accounts#update_authorization"	
+ 	  get  "accounts/update_authorization" => "accounts#update_authorization"
 
  	  get  "use_cases/clear_search" => "use_cases#clear_search"  
 
-	  resources :use_cases
 	  resources :accounts
+	  resources :authorizations
+	  resources :use_cases
 	  resources :documents
 	  resources :employee_categories
 	  resources :document_categories
 	  resources :parameters	  
 	  resources :registration_statuses
-	  #resources :registrations
 	  resources :institutions
 	  resources :courses
 	  
@@ -78,15 +76,16 @@ Rails.application.routes.draw do
 
 	
 	devise_for :users
-
-=begin
-	
 	devise_scope :user do
-	   get "signup", to: "users/registrations#new"
-	   get "login", to: "users/sessions#new"
-	   get "logout", to: "users/sessions#destroy"
+	  authenticated :user do
+	    root 'visitors#index', as: :authenticated_root
+	  end
+
+	  unauthenticated do
+	    root 'devise/sessions#new', as: :unauthenticated_root
+	  end
 	end
-	match '/users', to: 'users#index', via: :post
-=end
-	root to: 'visitors#index'
+
+
+	root :to => "visitors#index"
 end

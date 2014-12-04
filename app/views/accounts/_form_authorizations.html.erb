@@ -1,5 +1,5 @@
 <%= simple_form_for @user, 
-    :html => { :class => "form-horizontal user"},
+    :html => { :class => "form-horizontal authorization"},
     :url => url_for(accounts_update_authorization_path),
     :method => 'get' do |f| %>
 
@@ -39,22 +39,43 @@
               <%= hidden_field_tag :user_id, @user.id %>
               <%= hidden_field_tag :authorization_id, authorization.id %>
               <tr>
-                <td><%= authorization.use_case.name %></td>
-                <td style="width:20px; text-align:center; text-align: -moz-center;">
-                  <%= check_box_tag :add, 'yes', authorization.add, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                <td width="50%"><%= authorization.use_case.name %></td>
+                <td style="align:center">
+                  <div class="form-group">
+                    <div class="controls">
+                      <%= check_box_tag :add, 'yes', authorization.add, 
+                        :class => 'form-control check-box' %>
+                    </div>
+                  </div>
                 </td>
 
-                <td style="width:20px; text-align:center; text-align: -moz-center;">
-                  <%= check_box_tag :edit, 'yes', authorization.edit, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                <td>
+                  <div class="form-group">
+                    <div class="controls">
+                      <%= check_box_tag :edit, 'yes', authorization.edit, 
+                        :class => 'form-control check-box' %>
+                    </div>
+                  </div>
                 </td>
 
-                <td style="width:20px; text-align:center; text-align: -moz-center;">
-                  <%= check_box_tag :view, 'yes', authorization.view, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
+                <td>
+                  <div class="form-group">
+                    <div class="controls">
+                      <%= check_box_tag :view, 'yes', authorization.view, 
+                        :class => 'form-control check-box' %>
+                    </div>
+                  </div>
                 </td>
 
-                <td style="width:20px; text-align:center; text-align: -moz-center;">
-                  <%= check_box_tag :remove, 'yes', authorization.remove, :class => 'form-control', :style=> 'max-width: 34px; height:10px' %>
-                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="controls">
+                      <%= check_box_tag :remove, 'yes', authorization.remove, 
+                         :class => 'form-control check-box' %>
+                    </div>
+                  </div>
+                </td>                
+
                 <td>
                   <%= submit_tag "Salvar", :class => 'btn btn-default btn-xs'%>
                 </td>

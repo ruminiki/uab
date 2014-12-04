@@ -4,7 +4,12 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
   <ul class="dropdown-menu">
 
-	<li><%= link_to "Cidades", "/cities" %></li>
+	<li>
+		<%= 
+			#if user_signed_in? && current_user.authorizations
+				link_to "Cidades", "/cities" 
+		%>
+	</li>
 	
 	<li class="divider"></li>
 
@@ -47,8 +52,8 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
   <ul class="dropdown-menu">
 	<li><%= link_to "Usuários", "/accounts" %></li>		
-	<li><%= link_to "Casos de Uso", "/use_cases" %></li>		
 	<li><%= link_to "Parâmetros", "/parameters" %></li>
+	<li><%= link_to "Casos de Uso", "/use_cases" %></li>	
   </ul>
 </li>
 

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141203181253) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
+    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -147,17 +148,6 @@ ActiveRecord::Schema.define(version: 20141203181253) do
     t.string   "rg"
     t.string   "cpf"
     t.string   "sanguine_type"
-  end
-
-  create_table "use_case_user_access", force: true do |t|
-    t.integer  "use_case_id"
-    t.integer  "user_id"
-    t.boolean  "add"
-    t.boolean  "edit"
-    t.boolean  "delete"
-    t.boolean  "view"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "use_cases", force: true do |t|
