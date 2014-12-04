@@ -9,7 +9,7 @@ module ModelAddForSelectHelper
 
   def close_window
     render 'window.close' if session[self.class.to_s.downcase  + "_is_adding_for_select"]
-	session[self.class.to_s.downcase  + "_is_adding_for_select"] = false
+  	session[self.class.to_s.downcase  + "_is_adding_for_select"] = false
   end
 
 end

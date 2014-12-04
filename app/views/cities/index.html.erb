@@ -35,21 +35,36 @@
     <% @cities.each do |city| %>
       <tr>
         <td><%= city.id%></td>
-        <td style="width:50%"><%= link_to city.name, edit_city_path(city) %></td>
+        <td style="width:50%"><%= city.name %></td>
+      
         <td>
-          <%= link_to t('.edit', :default => "Editar"),
-                      edit_city_path(city), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => "Remover"),
+
+          <%= 
+                 link_to t('.edit', :default => "Editar"),
+                      edit_city_path(city), 
+                      :disabled => !current_user.auth_to_edit('city'),
+                      :class => 'btn btn-default btn-xs'
+          %>
+
+          <%= 
+              link_to t('.destroy', :default => "Remover"),
                       city_path(city),
+                      :disabled => !current_user.auth_to_remove('city'),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn btn-xs btn-danger' 
+          %>
+
         </td>
+      
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => "Novo"),
+<%= 
+    link_to t('.new', :default => "Novo"),
             new_city_path,
-            :class => 'btn btn-primary' %>
+            :disabled => !current_user.auth_to_add('city'),
+            :class => 'btn btn-primary' 
+%>
