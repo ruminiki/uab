@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 	  resources :document_categories
 	  resources :parameters	  
 	  resources :registration_statuses
+	  resources :registrations
 	  resources :institutions
 	  resources :courses
 	  
