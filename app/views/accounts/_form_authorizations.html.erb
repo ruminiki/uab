@@ -40,44 +40,28 @@
               <%= hidden_field_tag :authorization_id, authorization.id %>
               <tr>
                 <td width="50%"><%= authorization.use_case.name %></td>
-                <td style="align:center">
-                  <div class="form-group">
-                    <div class="controls">
+                <td style="text-align:center">
                       <%= check_box_tag :add, 'yes', authorization.add, 
                         :class => 'form-control check-box' %>
-                    </div>
-                  </div>
                 </td>
 
-                <td>
-                  <div class="form-group">
-                    <div class="controls">
+               <td style="text-align:center">
                       <%= check_box_tag :edit, 'yes', authorization.edit, 
                         :class => 'form-control check-box' %>
-                    </div>
-                  </div>
                 </td>
 
-                <td>
-                  <div class="form-group">
-                    <div class="controls">
+                <td style="text-align:center">
                       <%= check_box_tag :view, 'yes', authorization.view, 
                         :class => 'form-control check-box' %>
-                    </div>
-                  </div>
                 </td>
 
-                <td>
-                  <div class="form-group">
-                    <div class="controls">
+                <td style="text-align:center">
                       <%= check_box_tag :remove, 'yes', authorization.remove, 
                          :class => 'form-control check-box' %>
-                    </div>
-                  </div>
                 </td>                
 
                 <td>
-                  <%= submit_tag "Salvar", :class => 'btn btn-default btn-xs'%>
+                  <%= submit_tag "Salvar", :class => 'btn btn-success btn-xs'%>
                 </td>
               </tr>
             <% end %>

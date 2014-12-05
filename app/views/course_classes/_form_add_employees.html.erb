@@ -32,9 +32,14 @@
 
         <br>
 
-        <%= f.submit 'Adicionar Tutor', :class => 'col-sm-offset-2 btn btn-primary' %>
-        <%= link_to "Cadastrar Novo", employees_add_for_select_path, :class => 'btn btn-success', 
-            :target => "blank" %> 
+        <%= f.submit 'Adicionar Tutor', 
+              :disabled => !current_user.auth_to_edit('course_class'),
+              :class => 'col-sm-offset-2 btn btn-primary' %>
+        <%= link_to "Cadastrar Novo", 
+              employees_add_for_select_path, 
+              :disabled => !current_user.auth_to_add('employee'),
+              :class => 'btn btn-success', 
+              :target => "blank" %> 
         
     </div>
   </fieldset>
@@ -61,6 +66,7 @@
 
               <%= link_to "Remove", 
                     course_classes_remove_employee_path(:id => @course_class.id, :employee_id => employee.id),:data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o tutor dessa turma?') },
+                    :disabled => !current_user.auth_to_edit('registration'),
                     :class=>'btn btn-xs btn btn-danger' %>
 
               </td>

@@ -36,16 +36,20 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= link_to course.id, course_path(course) %></td>
-        <td style="width:50%"><%= link_to course.name, edit_course_path(course) %></td>
+        <td style="width:50%"><%= course.name %></td>
         <td><%= course.acronym %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_course_path(course), :class => 'btn btn-default btn-xs' %>
+              edit_course_path(course),
+              :disabled => !current_user.auth_to_edit('course'), 
+              :class => 'btn btn-default btn-xs' %>
+
           <%= link_to t('.destroy', :default => "Remover"),
-                      course_path(course),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                course_path(course),
+                :disabled => !current_user.auth_to_remove('course'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -53,5 +57,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_course_path,
-            :class => 'btn btn-primary' %>
+      new_course_path,
+      :disabled => !current_user.auth_to_add('course'),
+      :class => 'btn btn-primary' %>

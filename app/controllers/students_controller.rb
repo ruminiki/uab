@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   before_action :close_window, only: [:index]
   respond_to :html
   
-  autocomplete :student, :name
+  autocomplete :city, :name
 
   include ModelSearchHelper
   include ModelAddForSelectHelper

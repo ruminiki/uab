@@ -34,16 +34,19 @@
   <tbody>
     <% @registration_statuses.each do |registration_status| %>
       <tr>
-        <td><%= link_to registration_status.id, registration_status_path(registration_status) %></td>
-        <td><%= link_to registration_status.name, edit_registration_status_path(registration_status) %></td>
+        <td><%= registration_status.id %></td>
+        <td><%= registration_status.name %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_registration_status_path(registration_status), :class => 'btn btn-default btn-xs' %>
+                edit_registration_status_path(registration_status),
+                :disabled => !current_user.auth_to_edit('registration_status'), 
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      registration_status_path(registration_status),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                registration_status_path(registration_status),
+                :disabled => !current_user.auth_to_remove('registration_status'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -51,5 +54,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_registration_status_path,
-            :class => 'btn btn-primary' %>
+      new_registration_status_path,
+      :disabled => !current_user.auth_to_add('registration_status'),
+      :class => 'btn btn-primary' %>

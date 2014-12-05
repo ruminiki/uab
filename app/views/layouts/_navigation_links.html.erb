@@ -1,60 +1,118 @@
-<%# add navigation links to this file %>
-
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
   <ul class="dropdown-menu">
 
 	<li>
 		<%= 
-			#if user_signed_in? && current_user.authorizations
+			if user_signed_in? && current_user.auth_to_view('city')
 				link_to "Cidades", "/cities" 
+			end
 		%>
 	</li>
 	
 	<li class="divider"></li>
 
-	<li><%= link_to "Instituições", "/institutions" %></li>    
-	<li><%= link_to "Cursos", "/courses" %></li>
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('institution')
+				link_to "Instituições", "/institutions" 
+			end
+		%>
+	</li>    
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('course')
+				link_to "Cursos", "/courses" 
+			end
+		%>
+	</li>
 
-<!--
 	<li class="divider"></li>
 
-	<li><%= link_to "Documentos", "/documents" %></li>	
--->
-	<li class="divider"></li>
-
-	<li><%= link_to "Alunos", "/students" %></li>	
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('student')
+				link_to "Alunos", "/students" 
+			end
+		%>
+	</li>	
 
 	<li class="divider"></li>
 	
-	<li><%= link_to "Categoria Colaborador", "/employee_categories" %></li>
-	<li><%= link_to "Colaboradores", "/employees" %></li>
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('employee_category')
+				link_to "Categoria Colaborador", "/employee_categories" 
+			end
+		%>
+	</li>
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('employee')
+				link_to "Colaboradores", "/employees" 
+			end
+		%>
+	</li>
 	
 	<li class="divider"></li>
 
-	<li><%= link_to "Status Matricula", "/registration_statuses" %></li>
-	<li><%= link_to "Categoria Documento", "/document_categories" %></li>
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('registration_status')
+				link_to "Status Matricula", "/registration_statuses"
+			end 
+		%>
+	</li>
+	<li>
+		<%= 
+			if user_signed_in? && current_user.auth_to_view('document_category')
+				link_to "Categoria Documento", "/document_categories" 
+			end
+		%>
+	</li>
 
   </ul>
 </li>
-<!--
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matrículas <b class="caret"></b></a>
-  <ul class="dropdown-menu">
-	<li><%= link_to "Turmas", "/course_classes" %></li>		
-	<li><%= link_to "Matriculas", "/registrations" %></li>
-  </ul>
+
+<li>
+	<%= 
+		if user_signed_in? && current_user.auth_to_view('course_class')
+			link_to "Turmas", "/course_classes" 
+		end
+	%>
 </li>
--->
-<li><%= link_to "Turmas", "/course_classes" %></li>
-<li><%= link_to "Matriculas", "/registrations" %></li>
+<li>
+	<%= 
+		if user_signed_in? && current_user.auth_to_view('registration')
+			link_to "Matriculas", "/registrations" 
+		end
+	%>
+</li>
 
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
   <ul class="dropdown-menu">
-	<li><%= link_to "Usuários", "/accounts" %></li>		
-	<li><%= link_to "Parâmetros", "/parameters" %></li>
-	<li><%= link_to "Casos de Uso", "/use_cases" %></li>	
+	<li>
+		<%= 
+			if user_signed_in? && current_user.admin?
+				link_to "Usuários", "/accounts"
+			end 
+		%>
+	</li>
+	<li>
+		<%= 
+			if user_signed_in? && current_user.super?
+				link_to "Parâmetros", "/parameters"
+			end 
+		%>
+	</li>	
+	<li>
+		<%= 
+			if user_signed_in? && current_user.super?
+				link_to "Casos de Uso", "/use_cases"
+			end 
+		%>
+	</li>			
   </ul>
 </li>
 

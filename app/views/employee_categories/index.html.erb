@@ -38,12 +38,15 @@
         <td style="width:50%"><%= link_to employee_category.name, edit_employee_category_path(employee_category) %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_employee_category_path(employee_category), :class => 'btn btn-default btn-xs' %>
+                edit_employee_category_path(employee_category), 
+                :disabled => !current_user.auth_to_edit('employee_category'),
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      employee_category_path(employee_category),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                employee_category_path(employee_category),
+                :disabled => !current_user.auth_to_remove('employee_category'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -51,5 +54,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_employee_category_path,
-            :class => 'btn btn-primary' %>
+      new_employee_category_path,
+      :disabled => !current_user.auth_to_add('employee_category'),
+      :class => 'btn btn-primary' %>

@@ -14,26 +14,30 @@ class User < ActiveRecord::Base
 	  "Desculpe, essa conta foi desativada. Por favor contate o administrador."
 	end
 
-	def auth_to_add(class_name)
-		auth = self.authorizations.select { |a| a.use_case.class_name == class_name }
+	def auth_to_add(key)
+		auth = self.authorizations.select { |a| a.use_case.key == key }
+		return true if self.admin?
 		return false if auth.nil? || auth.first.nil?
 		return auth.first.add?
 	end
 
-	def auth_to_edit(class_name)
-		auth = self.authorizations.select { |a| a.use_case.class_name == class_name }
+	def auth_to_edit(key)
+		auth = self.authorizations.select { |a| a.use_case.key == key }
+		return true if self.admin?
 		return false if auth.nil? || auth.first.nil?
 		return auth.first.edit?
 	end
 
-	def auth_to_view(class_name)
-		auth = self.authorizations.select { |a| a.use_case.class_name == class_name }
+	def auth_to_view(key)
+		auth = self.authorizations.select { |a| a.use_case.key == key }
+		return true if self.admin?
 		return false if auth.nil? || auth.first.nil?
 		return auth.first.view?
 	end
 
-	def auth_to_remove(class_name)
-		auth = self.authorizations.select { |a| a.use_case.class_name == class_name }
+	def auth_to_remove(key)
+		auth = self.authorizations.select { |a| a.use_case.key == key }
+		return true if self.admin?
 		return false if auth.nil? || auth.first.nil?
 		return auth.first.remove?
 	end

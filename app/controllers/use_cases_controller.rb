@@ -48,6 +48,6 @@ class UseCasesController < ApplicationController
     end
 
     def use_case_params
-      params.require(:use_case).permit(:name, :class_name)
+      params.require(:use_case).permit(:name, :key)
     end
 end

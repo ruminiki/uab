@@ -60,20 +60,29 @@
         <td><%= course_class.course.acronym %></td>
         <td>
         <%= link_to 'Matrículas', 
-            course_classes_registrations_path(:id=>course_class.id), :class => 'btn btn-success btn-xs' %>
+              course_classes_registrations_path(:id=>course_class.id), 
+              :disabled => !current_user.auth_to_view('registration'),
+              :class => 'btn btn-success btn-xs' %>
         <%= link_to 'Tutores', 
-            course_classes_employees_path(:id=>course_class.id), :class => 'btn btn-primary btn-xs' %>
+              course_classes_employees_path(:id=>course_class.id), 
+              :disabled => !current_user.auth_to_view('employee'),
+              :class => 'btn btn-primary btn-xs' %>
         <%= link_to 'Documentos', 
-            course_classes_documents_path(:id=>course_class.id), :class => 'btn btn-default btn-xs' %>
+              course_classes_documents_path(:id=>course_class.id), 
+              :disabled => !current_user.auth_to_view('document'),
+              :class => 'btn btn-default btn-xs' %>
         </td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_course_class_path(course_class), :class => 'btn btn-default btn-xs' %>
+                edit_course_class_path(course_class), 
+                :disabled => !current_user.auth_to_edit('course_class'),
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      course_class_path(course_class),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                course_class_path(course_class),
+                :disabled => !current_user.auth_to_remove('course_class'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -81,5 +90,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_course_class_path,
-            :class => 'btn btn-primary' %>
+      new_course_class_path,
+      :disabled => !current_user.auth_to_add('course_class'),
+      :class => 'btn btn-primary' %>

@@ -37,21 +37,27 @@
     <% @institutions.each do |institution| %>
       <tr>
         <td><%= institution.id %></td>
-        <td><%= link_to institution.name, edit_institution_path(institution)%></td>
+        <td><%= institution.name %></td>
         <td><%= institution.phone_number %></td>
         <td><%= institution.email %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_institution_path(institution), :class => 'btn btn-default btn-xs' %>
+                edit_institution_path(institution), 
+                :disabled => !current_user.auth_to_edit('institution'),
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      institution_path(institution),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                institution_path(institution),
+                :disabled => !current_user.auth_to_remove('institution'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => "Novo"),new_institution_path,:class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => "Novo"),
+      new_institution_path,
+      :disabled => !current_user.auth_to_add('institution'),
+      :class => 'btn btn-primary' %>

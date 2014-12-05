@@ -34,15 +34,18 @@
     <% @document_categories.each do |document_category| %>
       <tr>
         <td><%= document_category.id%></td>
-        <td style="width:50%"><%= link_to document_category.name, edit_document_category_path(document_category) %></td>
+        <td style="width:50%"><%= document_category.name %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_document_category_path(document_category), :class => 'btn btn-default btn-xs' %>
+                edit_document_category_path(document_category), 
+                :disabled => !current_user.auth_to_edit('document_category'),
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      document_category_path(document_category),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                document_category_path(document_category),
+                :disabled => !current_user.auth_to_remove('document_category'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -50,5 +53,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_document_category_path,
-            :class => 'btn btn-primary' %>
+      new_document_category_path,
+      :disabled => !current_user.auth_to_add('document_category'),
+      :class => 'btn btn-primary' %>

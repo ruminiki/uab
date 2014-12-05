@@ -1,1 +1,1 @@
-json.extract! @use_case, :id, :name, :class_name, :created_at, :updated_at
+json.extract! @use_case, :id, :name, :key, :created_at, :updated_at

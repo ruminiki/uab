@@ -52,7 +52,9 @@
         <br>
 
         <%= hidden_field_tag :course_class_id, @course_class.id %>
-        <%= f.submit "Adicionar Documento", :class => 'col-sm-offset-2 btn btn-primary' %>
+        <%= f.submit "Adicionar Documento", 
+            :disabled => !current_user.auth_to_add('document'),
+            :class => 'col-sm-offset-2 btn btn-primary' %>
 
       </div>
     </fieldset>
@@ -78,9 +80,15 @@
               <td><%= document.original_file_name %></td>
               <td><%= document.extension %></td>
               <td>
-                <%= link_to "Download", documents_download_file_path(:id => document.id), :class => 'btn btn-success btn-xs' %>
+
+                <%= link_to "Download", 
+                    documents_download_file_path(:id => document.id),
+                    :disabled => !current_user.auth_to_view('document'), 
+                    :class => 'btn btn-success btn-xs' %>
+
                 <%= link_to "Remove", 
                       course_classes_remove_document_path(:id => @course_class.id, :document_id => document.id),:data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir o arquivo?') },
+                      :disabled => !current_user.auth_to_remove('document'),
                       :class=>'btn btn-xs btn btn-danger' %>
               </td>
             </tr>

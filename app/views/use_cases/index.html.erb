@@ -28,7 +28,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
-      <th><%= model_class.human_attribute_name(:classe) %></th>
+      <th><%= model_class.human_attribute_name(:chave) %></th>
       <th><%=t '.actions', :default => "Ações" %></th>
     </tr>
   </thead>
@@ -36,26 +36,26 @@
     <% @use_cases.each do |use_case| %>
       <tr>
         <td><%= use_case.id%></td>
-        <td style="width:50%"><%= link_to use_case.name, edit_use_case_path(use_case) %></td>
-        <td><%= use_case.class_name %></td>
+        <td style="width:50%"><%= use_case.name %></td>
+        <td><%= use_case.key %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_use_case_path(use_case), :class => 'btn btn-default btn-xs' %>
+                edit_use_case_path(use_case), 
+                :disabled => !current_user.super?,
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      use_case_path(use_case),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                use_case_path(use_case),
+                :disabled => !current_user.super?,
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= 
-  if current_user.admin?
-    link_to t('.new', :default => "Novo"),
-            new_use_case_path,
-            :class => 'btn btn-primary' 
-  end
-%>
+<%= link_to t('.new', :default => "Novo"),
+      new_use_case_path,
+      :disabled => !current_user.super?,
+      :class => 'btn btn-primary' %>

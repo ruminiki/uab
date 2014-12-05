@@ -36,17 +36,20 @@
     <% @parameters.each do |parameter| %>
       <tr>
         <td><%= parameter.id%></td>
-        <td><%= link_to parameter.name, edit_parameter_path(parameter) %></td>
+        <td><%= parameter.name %></td>
         <td><%= parameter.description %></td>
         <th><%= parameter.value %></th>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_parameter_path(parameter), :class => 'btn btn-default btn-xs' %>
+                edit_parameter_path(parameter),
+                :disabled => !current_user.super?, 
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      parameter_path(parameter),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?')},
-                      :class => 'btn btn-xs btn-danger' %>
+                parameter_path(parameter),
+                :disabled => !current_user.super?,
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?')},
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -54,5 +57,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_parameter_path,
-            :class => 'btn btn-primary' %>
+      new_parameter_path,
+      :disabled => !current_user.super?,
+      :class => 'btn btn-primary' %>

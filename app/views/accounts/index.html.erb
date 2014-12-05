@@ -24,28 +24,39 @@
         <td><%= user.email%></td>
         <td><%= user.last_sign_in_at%></td>
         <td>
-          <%= link_to "Papéis", accounts_authorizations_path(:id => user.id), :class => 'btn btn-success btn-xs' %>        
+          <%= 
+            link_to "Papéis", 
+              accounts_authorizations_path(:id => user.id), 
+              :disabled => !current_user.admin?,
+              :class => 'btn btn-success btn-xs' %>        
         </td>
         <td>
           <%= 
             if user.active?
-              link_to "Inativar", accounts_inactivate_user_path(:id => user.id), :class => 'btn btn-default btn-xs',
+              link_to "Inativar", 
+                accounts_inactivate_user_path(:id => user.id), 
+                :class => 'btn btn-default btn-xs',
+                :disabled => !current_user.admin?,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja inativar o usuário?') }
             else
               link_to "Ativar  ", accounts_activate_user_path(:id => user.id), :class => 'btn btn-default btn-xs',
-                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja ativar o usuário?') }
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja ativar o usuário?') },
+                :disabled => !current_user.admin?
             end
           %>
         </td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_account_path(user), :class => 'btn btn-default btn-xs' %>
+                edit_account_path(user), 
+                :disabled => !current_user.admin?,
+                :class => 'btn btn-default btn-xs' %>
 
-          <%= link_to t('.destroy', :default => "Remover"),
-                      account_path(user),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+            <%= link_to t('.destroy', :default => "Remover"),
+                account_path(user),
+                :disabled => !current_user.admin?,
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -53,5 +64,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_account_path,
-            :class => 'btn btn-primary' %>
+      new_account_path,
+      :disabled => !current_user.admin?,
+      :class => 'btn btn-primary' %>

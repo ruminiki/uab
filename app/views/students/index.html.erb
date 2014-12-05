@@ -69,12 +69,15 @@
         <td><%= (student.has_badge ? "SIM" : "NÃO") %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_student_path(student), :class => 'btn btn-default btn-xs' %>
+                edit_student_path(student), 
+                :disabled => !current_user.auth_to_edit('student'),
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      student_path(student),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                student_path(student),
+                :disabled => !current_user.auth_to_remove('student'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -82,5 +85,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_student_path,
-            :class => 'btn btn-primary' %>
+      new_student_path,
+      :disabled => !current_user.auth_to_add('student'),
+      :class => 'btn btn-primary' %>

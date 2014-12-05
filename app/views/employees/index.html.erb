@@ -46,19 +46,22 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= link_to employee.id, employee_path(employee) %></td>
-        <td><%= link_to employee.name, edit_employee_path(employee) %></td>
+        <td><%= employee.id %></td>
+        <td><%= employee.name %></td>
         <td><%= employee.phone_number %></td>
         <td><%= (employee.employee_category.nil? ? "" : employee.employee_category.name) %></td>
         <td><%= employee.email %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
-                      edit_employee_path(employee), :class => 'btn btn-default btn-xs' %>
+                edit_employee_path(employee), 
+                :disabled => !current_user.auth_to_edit('employee'),  
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
-                      employee_path(employee),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' %>
+                employee_path(employee),
+                :disabled => !current_user.auth_to_remove('employee'),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -66,5 +69,6 @@
 </table>
 
 <%= link_to t('.new', :default => "Novo"),
-            new_employee_path,
-            :class => 'btn btn-primary' %>
+      new_employee_path,
+      :disabled => !current_user.auth_to_add('employee'),
+      :class => 'btn btn-primary' %>
