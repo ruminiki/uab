@@ -1,0 +1,74 @@
+<%- model_class = Role -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => "Papéis" %></h3>
+</div>
+<!-- FORM SEARCH -->
+<%= form_tag(roles_path, :method => "get", id: "search-form", :class => "form-inline role") do %>
+
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Pesquisa</legend>
+    <div class="form-group">
+      <%= label_tag :nome %>
+      <div class="controls">
+        <%= text_field_tag :search_role_name, session[:search_role_name], :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+
+    <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
+    <%= link_to "Limpar", roles_clear_search_path, 
+          :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
+
+  </fieldset>
+
+<% end %>
+
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%=t '.actions', :default => "Ações" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @roles.each do |role| %>
+      <tr>
+        <td><%= role.id%></td>
+        <td><%= role.name %></td>
+        <td>
+          <%= 
+            link_to "Permissões", 
+              roles_authorizations_path(:id => role.id), 
+              :disabled => !current_user.admin?,
+              :class => 'btn btn-success btn-xs' %>        
+           
+          <%= 
+                 link_to t('.edit', :default => "Editar"),
+                      edit_role_path(role), 
+                      :disabled => !current_user.admin?,
+                      :class => 'btn btn-default btn-xs'
+          %>
+
+          <%= 
+              link_to t('.destroy', :default => "Remover"),
+                      role_path(role),
+                      :disabled => !current_user.admin?,
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+                      :class => 'btn btn-xs btn-danger' 
+          %>
+
+        </td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= 
+    link_to t('.new', :default => "Novo"),
+            new_role_path,
+            :disabled => !current_user.admin?,
+            :class => 'btn btn-primary' 
+%>

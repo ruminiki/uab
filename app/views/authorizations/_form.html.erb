@@ -1,16 +1,77 @@
-<%= simple_form_for(@authorization) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @role, 
+    :html => { :class => "form-horizontal authorization"},
+    :url => url_for(roles_update_authorization_path),
+    :method => 'get' do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :user_id %>
-    <%= f.input :use_case_id %>
-    <%= f.input :add %>
-    <%= f.input :edit %>
-    <%= f.input :view %>
-    <%= f.input :delete %>
+  <div class="page-header">
+    <h3><%= @role.name %> </h3>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <% if @role.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @role.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- use_cases -->
+  <div role="tabpanel" class="tab-pane active" id="use_cases">
+      <%- model_class = UseCase -%>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= model_class.human_attribute_name(:caso_de_uso) %></th>
+            <th><%= model_class.human_attribute_name(:adicionar) %></th>
+            <th><%= model_class.human_attribute_name(:editar) %></th>
+            <th><%= model_class.human_attribute_name(:visualizar) %></th>
+            <th><%= model_class.human_attribute_name(:remover) %></th>
+            <th><%=t '.actions', :default => "Ações" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @role.authorizations.each do |authorization| %>
+            <%= form_tag(roles_update_authorization_path, :method => "get", id: "update-authorization") do %>
+              <%= hidden_field_tag :role_id, @role.id %>
+              <%= hidden_field_tag :authorization_id, authorization.id %>
+              <tr>
+                <td width="50%"><%= authorization.use_case.name %></td>
+                <td style="text-align:center">
+                      <%= check_box_tag :add, 'yes', authorization.add, 
+                        :class => 'form-control check-box' %>
+                </td>
+
+               <td style="text-align:center">
+                      <%= check_box_tag :edit, 'yes', authorization.edit, 
+                        :class => 'form-control check-box' %>
+                </td>
+
+                <td style="text-align:center">
+                      <%= check_box_tag :view, 'yes', authorization.view, 
+                        :class => 'form-control check-box' %>
+                </td>
+
+                <td style="text-align:center">
+                      <%= check_box_tag :remove, 'yes', authorization.remove, 
+                         :class => 'form-control check-box' %>
+                </td>                
+
+                <td>
+                  <%= submit_tag "Salvar", :class => 'btn btn-success btn-xs'%>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+
   </div>
+
+  <%= link_to "Voltar", url_for(:back), :class => 'btn btn-default' %>                      
+
+ 
 <% end %>

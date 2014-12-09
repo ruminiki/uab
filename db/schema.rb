@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204233441) do
+ActiveRecord::Schema.define(version: 20141209171147) do
 
   create_table "authorizations", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "role_id"
     t.integer  "use_case_id"
     t.boolean  "add",         default: false
     t.boolean  "edit",        default: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20141204233441) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
-    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,6 +129,19 @@ ActiveRecord::Schema.define(version: 20141204233441) do
     t.date     "date_conclusion"
     t.float    "end_note",               limit: 24
     t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

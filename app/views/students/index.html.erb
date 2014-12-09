@@ -63,7 +63,7 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.id %></td>
-        <td><%= link_to student.name, edit_student_path(student) %></td>
+        <td><%= student.name %></td>
         <td><%= student.phone_number %></td>
         <td><%= student.email %></td>
         <td><%= (student.has_badge ? "SIM" : "NÃO") %></td>

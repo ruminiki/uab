@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 	
-
-
   	authenticate :user do
 	  #invoke add student to classes
 	  get  "course_classes/registrations" => "course_classes#registrations"	
@@ -41,12 +39,18 @@ Rails.application.routes.draw do
  	  post "accounts/update_user_account" => "accounts#update_user_account"  
  	  get  "accounts/activate_user" => "accounts#activate_user"  
  	  get  "accounts/inactivate_user" => "accounts#inactivate_user"  
- 	  get  "accounts/authorizations" => "accounts#authorizations"	
- 	  get  "accounts/update_authorization" => "accounts#update_authorization"
+ 	  get  "accounts/roles" => "accounts#roles"	
+	  get  "accounts/add_role" => "accounts#add_role"	
+	  get  "accounts/remove_role" => "accounts#remove_role"    
 
  	  get  "use_cases/clear_search" => "use_cases#clear_search"  
 
-	  resources :accounts
+ 	  get  "roles/clear_search" => "roles#clear_search"
+ 	  get  "roles/authorizations" => "roles#authorizations"	
+ 	  get  "roles/update_authorization" => "roles#update_authorization"
+ 	  get  "roles/add_for_select" => "roles#add_for_select"
+
+	  resources :roles
 	  resources :authorizations
 	  resources :use_cases
 	  resources :documents
@@ -57,7 +61,12 @@ Rails.application.routes.draw do
 	  resources :registrations
 	  resources :institutions
 	  resources :courses
+	  resources :cities
 	  
+	  resources :accounts do 
+	  	get :autocomplete_role_name, :on => :collection
+	  end
+
   	  resources :employees do
   	  	get :autocomplete_city_name, :on => :collection
   	  end
@@ -71,12 +80,9 @@ Rails.application.routes.draw do
 	  	get :autocomplete_employee_name, :on => :collection
 	  end
 
-	  resources :cities
-
 	end
 
-	
-	devise_for :users
+	devise_for :users 
 	devise_scope :user do
 	  authenticated :user do
 	    root 'visitors#index', as: :authenticated_root
@@ -86,7 +92,6 @@ Rails.application.routes.draw do
 	    root 'devise/sessions#new', as: :unauthenticated_root
 	  end
 	end
-
 
 	root :to => "visitors#index"
 end

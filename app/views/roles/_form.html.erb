@@ -1,0 +1,28 @@
+<%= form_for @role, :html => { :class => "form-horizontal role" } do |f| %>
+
+    <% if @role.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @role.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@role[:name]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit "Salvar Papel", :class => 'col-sm-offset-2 btn btn-primary' %>
+  <%= link_to "Cancelar", roles_path, :class => 'btn btn-default' %>
+
+<% end %>
