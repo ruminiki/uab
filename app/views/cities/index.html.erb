@@ -40,19 +40,19 @@
         <td>
 
           <%= 
-                 link_to t('.edit', :default => "Editar"),
-                      edit_city_path(city), 
-                      :disabled => !current_user.auth_to_edit('city'),
-                      :class => 'btn btn-default btn-xs'
+            link_to t('.edit', :default => "Editar"),
+              current_user.auth_to_edit('city') ? edit_city_path(city) : "", 
+              :disabled => !current_user.auth_to_edit('city'),
+              :class => 'btn btn-default btn-xs'
           %>
 
           <%= 
-              link_to t('.destroy', :default => "Remover"),
-                      city_path(city),
-                      :disabled => !current_user.auth_to_remove('city'),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
-                      :class => 'btn btn-xs btn-danger' 
+            link_to t('.destroy', :default => "Remover"),
+              current_user.auth_to_remove('city') ? city_path(city) : "", 
+              :disabled => !current_user.auth_to_remove('city'),
+              :method => :delete,
+              :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+              :class => 'btn btn-xs btn-danger' 
           %>
 
         </td>
@@ -64,7 +64,7 @@
 
 <%= 
     link_to t('.new', :default => "Novo"),
-            new_city_path,
-            :disabled => !current_user.auth_to_add('city'),
-            :class => 'btn btn-primary' 
+      current_user.auth_to_add('city') ? new_city_path : "",
+      :disabled => !current_user.auth_to_add('city'),
+      :class => 'btn btn-primary' 
 %>

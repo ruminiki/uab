@@ -28,7 +28,7 @@ class RolesController < ApplicationController
      @role = Role.new(role_params)
     if @role.valid?
       @role.save
-      redirect_to action: "index", :alert => "Papel salvo com sucesso!" 
+      redirect_to action: "authorizations", :id => @role.id
     else
       respond_with(@role)
     end
@@ -70,6 +70,10 @@ class RolesController < ApplicationController
       
     end
 
+    session["url_back_authorizations"] = request.referrer
+    #se o usuario esta na tela de manutencao de roles habilita a edicao do contrario desabilita
+    @edit = (request.referrer.end_with? "/roles") || (request.referrer.end_with? "/roles/new")
+
     render 'authorizations/_form'
 
   end
@@ -82,19 +86,33 @@ class RolesController < ApplicationController
   end
 
   def update_authorization
-    @auth = Authorization.find(params[:authorization_id])
+    #lista todos os use_cases para fazer a atualização de todos de uma só vez
+    @use_cases = UseCase.all
 
-    add    = params[:add].nil? ? false : true
-    edit   = params[:edit].nil? ? false : true
-    view   = params[:view].nil? ? false : true
-    remove = params[:remove].nil? ? false : true
+    #percorre os use_cases
+    @use_cases.each do |use_case|
+      #verifica se para o use_case corrent existe alguma autorização
+      param = params[use_case.key + 'authorization_id']
+      if !param.nil?
+        #carrega a autorização salva para o use case corrente
+        @auth = Authorization.find(param)
 
-    @auth.update(:add => add, :edit => edit, :view => view, :remove => remove)
+        #recupera os parâmetros da requisição
+        add    = params[use_case.key + '_add'].nil? ? false : true
+        edit   = params[use_case.key + '_edit'].nil? ? false : true
+        view   = params[use_case.key + '_view'].nil? ? false : true
+        remove = params[use_case.key + '_remove'].nil? ? false : true
+
+        #atualiza o use_case
+        @auth.update(:add => add, :edit => edit, :view => view, :remove => remove)
+      end
+
+    end
 
     #recupera a role para recarregar o form
-    @role = Role.joins(:authorizations).find(params[:role_id])
-
-    render 'authorizations/_form'
+    #@role = Role.joins(:authorizations).find(params[:role_id])  
+    
+    redirect_to roles_path
   end 
 
   private

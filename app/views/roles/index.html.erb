@@ -28,6 +28,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name("Permissões") %></th>
       <th><%=t '.actions', :default => "Ações" %></th>
     </tr>
   </thead>
@@ -36,13 +37,14 @@
       <tr>
         <td><%= role.id%></td>
         <td><%= role.name %></td>
-        <td>
+        <td width="50px">
           <%= 
             link_to "Permissões", 
               roles_authorizations_path(:id => role.id), 
               :disabled => !current_user.admin?,
               :class => 'btn btn-success btn-xs' %>        
-           
+        </td>
+        <td>
           <%= 
                  link_to t('.edit', :default => "Editar"),
                       edit_role_path(role), 

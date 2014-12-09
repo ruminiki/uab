@@ -10,8 +10,6 @@
 		%>
 	</li>
 	
-	<li class="divider"></li>
-
 	<li>
 		<%= 
 			if user_signed_in? && current_user.auth_to_view('institution')
@@ -99,24 +97,25 @@
 	<li>
 		<%= 
 			if user_signed_in? && current_user.super?
-				link_to "Parâmetros", "/parameters"
+				link_to "Papéis", "/roles"
 			end 
 		%>
 	</li>	
 	<li>
 		<%= 
 			if user_signed_in? && current_user.super?
-				link_to "Papéis", "/roles"
+				link_to "Parâmetros", "/parameters"
 			end 
 		%>
-	</li>		
+	</li>	
+	
 	<li>
 		<%= 
 			if user_signed_in? && current_user.super?
 				link_to "Casos de Uso", "/use_cases"
 			end 
 		%>
-	</li>			
+	</li>	
   </ul>
 </li>
 <% end -%>

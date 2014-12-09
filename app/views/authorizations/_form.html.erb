@@ -26,52 +26,49 @@
         <thead>
           <tr>
             <th><%= model_class.human_attribute_name(:caso_de_uso) %></th>
+            <th><%= model_class.human_attribute_name(:visualizar) %></th>
             <th><%= model_class.human_attribute_name(:adicionar) %></th>
             <th><%= model_class.human_attribute_name(:editar) %></th>
-            <th><%= model_class.human_attribute_name(:visualizar) %></th>
             <th><%= model_class.human_attribute_name(:remover) %></th>
-            <th><%=t '.actions', :default => "Ações" %></th>
           </tr>
         </thead>
         <tbody>
           <% @role.authorizations.each do |authorization| %>
-            <%= form_tag(roles_update_authorization_path, :method => "get", id: "update-authorization") do %>
-              <%= hidden_field_tag :role_id, @role.id %>
-              <%= hidden_field_tag :authorization_id, authorization.id %>
-              <tr>
-                <td width="50%"><%= authorization.use_case.name %></td>
-                <td style="text-align:center">
-                      <%= check_box_tag :add, 'yes', authorization.add, 
-                        :class => 'form-control check-box' %>
-                </td>
 
-               <td style="text-align:center">
-                      <%= check_box_tag :edit, 'yes', authorization.edit, 
-                        :class => 'form-control check-box' %>
-                </td>
+            <%= hidden_field_tag :role_id, @role.id %>
+            <%= hidden_field_tag authorization.use_case.key + 'authorization_id', authorization.id %>
+            <tr>
+              <td width="50%"><%= authorization.use_case.name %></td>
+              <td style="text-align:center">
+                    <%= check_box_tag (authorization.use_case.key + '_view'), 'yes', authorization.view, 
+                      :class => 'form-control check-box' %>
+              </td>
 
-                <td style="text-align:center">
-                      <%= check_box_tag :view, 'yes', authorization.view, 
-                        :class => 'form-control check-box' %>
-                </td>
+              <td style="text-align:center">
+                    <%= check_box_tag (authorization.use_case.key + '_add'), 'yes', authorization.add, 
+                      :class => 'form-control check-box' %>
+              </td>
 
-                <td style="text-align:center">
-                      <%= check_box_tag :remove, 'yes', authorization.remove, 
-                         :class => 'form-control check-box' %>
-                </td>                
+              <td style="text-align:center">
+                    <%= check_box_tag (authorization.use_case.key + '_edit'), 'yes', authorization.edit, 
+                      :class => 'form-control check-box' %>
+              </td>
 
-                <td>
-                  <%= submit_tag "Salvar", :class => 'btn btn-success btn-xs'%>
-                </td>
-              </tr>
-            <% end %>
+              <td style="text-align:center">
+                    <%= check_box_tag (authorization.use_case.key + '_remove'), 'yes', authorization.remove, 
+                       :class => 'form-control check-box' %>
+              </td>                
+            </tr>
+
           <% end %>
         </tbody>
       </table>
 
   </div>
 
-  <%= link_to "Voltar", url_for(:back), :class => 'btn btn-default' %>                      
+  <%= submit_tag "Salvar", :class => 'btn btn-success' if @edit == true %>
+
+  <%= link_to "Voltar", session["url_back_authorizations"], :class => 'btn btn-default' %>                      
 
  
 <% end %>

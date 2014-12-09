@@ -84,11 +84,17 @@
   def add_role
 
     @user = User.find(params[:id])
+    #impede que uma mesma role seja adicinada mais de uma vez para o mesmo usuário
+    if role_already_added(params[:user][:role_id], params[:id])
+      render '_form_roles'
+      return
+    end
+
     #limpa os erros que podem existir da requisição anterior
     @user.errors.clear
 
     begin
-      @role = Role.find(params[:role_id])
+      @role = Role.find(params[:user][:role_id])
     rescue
       @user.errors.add(:info, "Papel não encontrado. Por favor selecione um papel válido. ")
     end
@@ -104,7 +110,12 @@
     @user.save
 
     redirect_to :back, :notice => "Papel adicionado com sucesso!"  
-    
+ 
+  end
+
+  def role_already_added(role_id, user_id)
+    role = User.joins(:roles).where('roles.id = ? and users.id = ?', role_id, user_id)
+    !role.nil? && role.length > 0
   end
 
   def remove_role

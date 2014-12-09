@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 		self.roles.each do |role|
 			auth = role.authorizations.select { |a| !a.use_case.nil? && a.use_case.key == key }
 			return false if auth.nil? || auth.first.nil?
-			return auth.first.edit?	
+			return auth.first.add?	
 		end
 		return false
 	end

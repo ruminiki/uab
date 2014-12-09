@@ -21,35 +21,19 @@
 
   <!--GROUP FIND ROLE -->
   <fieldset class="well the-fieldset">
-    <div class="form-group">
+    <div class="form-inline">
         <%= f.label :papel, :class => 'col-sm-2 control-label' %>
-        <div class="controls">
 
-            <%= f.input :role, 
-                        :url => autocomplete_role_name_accounts_path, 
-                        :as => :autocomplete,
-                        :label=> false,
-                        :input_html => { 
-                          :class => 'form-control', 
-                          :style => 'max-width: 600px;',
-                          :id_element=>'#role_id'
-                        } 
-            %>
+        <%= f.select(:role_id, Role.all.map{ |r| [r.name, r.id]}, 
+            {:value => :role_id}, 
+            {:class =>'form-control', :style => "width:300px"})%>
 
-            <%= hidden_field_tag :role_id, :id => "role_id", :name => "role_id" %>
-            <%= f.hidden_field :id, :id => "id", :name => "id" %>
-
-        </div>
-
-        <br>
+        <%= f.hidden_field :id, :id => "id", :name => "id" %>
 
         <%= f.submit 'Adicionar Papel ao Usuário', 
               :disabled => !current_user.admin?,
-              :class => 'col-sm-offset-2 btn btn-primary' %>
-        <%= link_to "Cadastrar Novo", 
-              roles_add_for_select_path, 
-              :disabled => !current_user.admin?,
-              :class => 'btn btn-success', :target => "blank" %>
+              :class => 'col-sm-offset-2 btn btn-primary',
+              :style => 'margin-left: 0px;' %>
         
     </div>
   </fieldset>
@@ -75,10 +59,10 @@
                   link_to "Permissões", 
                     roles_authorizations_path(:id => role.id), 
                     :disabled => !current_user.admin?,
-                    :class => 'btn btn-success btn-xs' %>        
+                    :class => 'btn btn-default btn-xs' %>        
 
                 <%= 
-                  link_to t('.destroy', :default => "Remover"),
+                  link_to t('.destroy', :default => "Remover Papel"),
                     accounts_remove_role_path(:id => @user.id, :role_id => role.id),
                     :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o papel do usuário?') },
                     :disabled => !current_user.admin?,
