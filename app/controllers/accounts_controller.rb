@@ -1,6 +1,7 @@
-class AccountsController < ApplicationController
+  class AccountsController < ApplicationController
 
   respond_to :html
+  autocomplete :role, :name
 
   def index
     @users = User.all
@@ -75,52 +76,42 @@ class AccountsController < ApplicationController
     redirect_to action: "index"
   end   
 
-  def authorizations
+  def roles
     @user = User.find(params[:id])
-    @use_cases = UseCase.all
+    render '_form_roles'
+  end
 
-    #verifica se o usuario já possui a autorização
-    @use_cases.each do |use_case|
+  def add_role
 
-      if !has_use_case_authorization(use_case.id, @user.id)
+    @user = User.find(params[:id])
+    #limpa os erros que podem existir da requisição anterior
+    @user.errors.clear
 
-        auth = Authorization.new
-        auth.use_case = use_case
-        auth.user = @user
-
-        @user.authorizations << auth
-
-        @user.save
-            
-      end
-      
+    begin
+      @role = Role.find(params[:role_id])
+    rescue
+      @user.errors.add(:info, "Papel não encontrado. Por favor selecione um papel válido. ")
+    end
+    
+    #if occurred any erros, back to page
+    if @user.errors.any?
+      render '_form_roles'
+      return
     end
 
-    render '_form_authorizations'
+    @user.roles << @role
+    #@role.users << @user
+    @user.save
 
+    redirect_to :back, :notice => "Papel adicionado com sucesso!"  
+    
   end
 
-  def has_use_case_authorization(use_case_id, user_id)
-    authorization = User.joins(:authorizations)
-    .where('authorizations.use_case_id = ? and authorizations.user_id = ?', use_case_id, user_id)
-
-    !authorization.nil? && authorization.length > 0
-  end
-
-  def update_authorization
-    @auth = Authorization.find(params[:authorization_id])
-
-    add    = params[:add].nil? ? false : true
-    edit   = params[:edit].nil? ? false : true
-    view   = params[:view].nil? ? false : true
-    remove = params[:remove].nil? ? false : true
-
-    @auth.update(:add => add, :edit => edit, :view => view, :remove => remove)
-
-    #recupera o usuário para recarregar o form
-    @user = User.joins(:authorizations).find(params[:user_id])
-
-    render '_form_authorizations'
+  def remove_role
+    @user = User.find(params[:id])
+    @user.roles.delete(params[:role_id])
+    @user.save
+    redirect_to :back, :notice => "Papel removido com sucesso!"
   end
 
   private

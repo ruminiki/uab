@@ -27,7 +27,7 @@
 		%>
 	</li>
 
-	<li class="divider"></li>
+	<!--<li class="divider"></li>-->
 
 	<li>
 		<%= 
@@ -37,8 +37,6 @@
 		%>
 	</li>	
 
-	<li class="divider"></li>
-	
 	<li>
 		<%= 
 			if user_signed_in? && current_user.auth_to_view('employee_category')
@@ -54,8 +52,6 @@
 		%>
 	</li>
 	
-	<li class="divider"></li>
-
 	<li>
 		<%= 
 			if user_signed_in? && current_user.auth_to_view('registration_status')
@@ -89,6 +85,7 @@
 	%>
 </li>
 
+<% if user_signed_in? && (current_user.super? || current_user.admin?) %>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
   <ul class="dropdown-menu">
@@ -109,11 +106,19 @@
 	<li>
 		<%= 
 			if user_signed_in? && current_user.super?
+				link_to "Papéis", "/roles"
+			end 
+		%>
+	</li>		
+	<li>
+		<%= 
+			if user_signed_in? && current_user.super?
 				link_to "Casos de Uso", "/use_cases"
 			end 
 		%>
 	</li>			
   </ul>
 </li>
+<% end -%>
 
 <li><%= link_to 'Sobre', page_path('about') %></li>

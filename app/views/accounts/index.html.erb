@@ -26,7 +26,7 @@
         <td>
           <%= 
             link_to "Papéis", 
-              accounts_authorizations_path(:id => user.id), 
+              accounts_roles_path(:id => user.id), 
               :disabled => !current_user.admin?,
               :class => 'btn btn-success btn-xs' %>        
         </td>
