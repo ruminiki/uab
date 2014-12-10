@@ -4,7 +4,7 @@ class CreateCourseClasses < ActiveRecord::Migration
       t.string :name
       t.integer :institution_id
       t.integer :course_id
-      t.date :begin
+      t.string :begin
       t.timestamps
     end
   end

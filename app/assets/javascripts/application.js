@@ -29,12 +29,10 @@ require_tree .
 
 
 jQuery(function($){
-
-	$('.dropdown-toggle').dropdown();
 	$(".phone_number").mask("(999) 9999-9999");
 	$(".date").mask("99/99/9999");
 	$(".rg").mask("9.999.999-9");
 	$(".cpf").mask("999.999.999-99");
-
+	$('.dropdown-toggle').dropdown();
 });
 

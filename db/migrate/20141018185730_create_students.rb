@@ -6,9 +6,12 @@ class CreateStudents < ActiveRecord::Migration
       t.string :email
       t.boolean :has_badge
       t.string :badge_observation
-      t.date :birthday
+      t.string :birthday
       t.string :address
       t.integer :city_id
+      t.string :rg
+      t.string :cpf
+      t.string :sanguine_type
 
       t.timestamps
     end

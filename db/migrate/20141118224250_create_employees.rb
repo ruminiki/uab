@@ -5,7 +5,7 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :phone_number
       t.string :rg
       t.string :cpf
-      t.date :birthday
+      t.string :birthday
       t.integer :employee_category_id
       t.integer :city_id
       t.string :address

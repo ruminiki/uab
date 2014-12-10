@@ -6,6 +6,8 @@ class CreateDocuments < ActiveRecord::Migration
       t.string :path
       t.string :extension
       t.string :size
+      t.string :original_file_name
+      t.string :disc_file_name
 
       t.timestamps
     end

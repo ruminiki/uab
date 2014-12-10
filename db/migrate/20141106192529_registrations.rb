@@ -4,8 +4,8 @@ class Registrations < ActiveRecord::Migration
       t.integer :student_id
       t.integer :course_class_id
       t.integer :registration_status_id
-      t.date :date_abandonment
-      t.date :date_conclusion
+      t.string :date_abandonment
+      t.string :date_conclusion
       t.float :end_note
       t.string :note
       t.timestamps
