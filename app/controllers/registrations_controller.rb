@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
   respond_to :html
 
   def index
-    @registrations = Registration.all
+    @registrations = Registration.joins(:course_class)
     respond_with(@registrations)
   end
 
@@ -28,7 +28,7 @@ class RegistrationsController < ApplicationController
 
   def update
     @registration.update(registration_params)
-    redirect_to action: "index"
+    redirect_to session["url_back_registration"]
   end
 
   def destroy

@@ -64,26 +64,27 @@
             <th><%= model_class.human_attribute_name(:nome) %></th>
             <th><%= model_class.human_attribute_name(:telefone) %></th>
             <th><%= model_class.human_attribute_name(:email) %></th>
-            <th><%= model_class.human_attribute_name("Possui Crachá") %></th>
+            <th><%= model_class.human_attribute_name(:status) %></th>
             <th><%=t '.actions', :default => "Ações" %></th>
           </tr>
         </thead>
         <tbody>
-          <% @course_class.students.each do |student| %>
+          <% @course_class.registrations.each do |registration| %>
             <tr>
-              <td><%= student.name %></td>
-              <td><%= student.phone_number %></td>
-              <td><%= student.email %></td>
-              <td><%= (student.has_badge ? "SIM" : "NÃO") %></td>
+              <td><%= registration.student.name %></td>
+              <td><%= registration.student.phone_number %></td>
+              <td><%= registration.student.email %></td>
+              <td><%= (registration.registration_status.nil? ? "" : registration.registration_status.name) %></td>
               <td>
 
               <%= link_to "Editar Matricula",
-                    course_classes_redirect_to_edit_student_course_class_path(:course_class_id => @course_class.id, :student_id => student.id), 
+                    course_classes_registration_path(:registration_id => registration.id), 
                     :disabled => !current_user.auth_to_edit('registration'),
                     :class=>'btn btn-xs btn btn-primary' %>
               
               <%= link_to "Remover", 
-                    course_classes_remove_student_path(:id => @course_class.id, :student_id => student.id),:data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir a matrícula?') },
+                    course_classes_remove_registration_path(:id => @course_class.id, :registration_id => registration.id),
+                    :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir a matrícula?') },
                     :disabled => !current_user.auth_to_remove('registration'),
                     :class=>'btn btn-xs btn btn-danger' %>
 

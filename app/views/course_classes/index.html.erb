@@ -54,8 +54,8 @@
   <tbody>
     <% @course_classes.each do |course_class| %>
       <tr>
-        <td><%= link_to course_class.id, course_class_path(course_class) %></td>
-        <td><%= link_to course_class.name, edit_course_class_path(course_class) %></td>
+        <td><%= course_class.id %></td>
+        <td><%= course_class.name %></td>
         <td><%= course_class.institution.name %></td>
         <td><%= course_class.course.acronym %></td>
         <td>

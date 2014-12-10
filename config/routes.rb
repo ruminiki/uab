@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 	  #invoke add student to classes
 	  get  "course_classes/registrations" => "course_classes#registrations"	
 	  get  "course_classes/add_student" => "course_classes#add_student"	
-	  get  "course_classes/remove_student" => "course_classes#remove_student"  
-	  get  "course_classes/redirect_to_edit_student_course_class" => "course_classes#redirect_to_edit_student_course_class"  
+	  get  "course_classes/remove_registration" => "course_classes#remove_registration"  
+	  get  "course_classes/registration" => "course_classes#registration"  
 	  get  "course_classes/employees" => "course_classes#employees"	
 	  get  "course_classes/add_employee" => "course_classes#add_employee"	
 	  get  "course_classes/remove_employee" => "course_classes#remove_employee"  

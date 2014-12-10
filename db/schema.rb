@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209171147) do
+ActiveRecord::Schema.define(version: 20141210131758) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "role_id"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20141209171147) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
-    t.integer  "course_class_student_id"
     t.date     "begin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,13 +154,15 @@ ActiveRecord::Schema.define(version: 20141209171147) do
     t.string   "badge_observation"
     t.date     "birthday"
     t.string   "address"
-    t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "rg"
     t.string   "cpf"
     t.string   "sanguine_type"
+    t.integer  "city_id"
   end
+
+  add_index "students", ["city_id"], name: "index_students_on_city_id", using: :btree
 
   create_table "use_cases", force: true do |t|
     t.string   "name"

@@ -9,6 +9,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( autocomplete-rails.js )
 Rails.application.config.assets.precompile += %w( jquery-ui.min.css )
 Rails.application.config.assets.precompile += %w( jquery-ui.theme.min.css )
+Rails.application.config.assets.precompile += %w( jquery.maskedinput.min.js )
 
 
 

@@ -58,8 +58,11 @@ class CourseClassesController < ApplicationController
     render '_form_add_students'
   end
 
-  def redirect_to_edit_student_course_class
-    @registration = Registration.where(course_class_id: params[:course_class_id], student_id: params[:student_id]).first
+  def registration
+    @registration = Registration.find(params[:registration_id])
+
+    session["url_back_registration"] = request.referrer
+    
     redirect_to edit_registration_path(@registration)
   end
 
@@ -74,7 +77,7 @@ class CourseClassesController < ApplicationController
     begin
       @student = Student.find(params[:student_id])
     rescue
-      @course_class.errors.add(:info, "Estudante não encontrado. Por favor selecione um estudante válido.")
+      @course_class.errors.add(:info, "Aluno não encontrado. Por favor selecione um aluno válido.")
     end
     
     id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
@@ -98,19 +101,17 @@ class CourseClassesController < ApplicationController
 
     @registration.registration_status = @registration_status
     @registration.student = @student
-    #@registration.course_class = @course_class
     @course_class.registrations = Array.new if nil
     @course_class.registrations << @registration
-    @course_class.save
-    redirect_to :back, :notice => "Student added with success!"  
+    redirect_to :back, :notice => "Aluno matriculado com sucesso!"  
     
   end
 
-  def remove_student
+  def remove_registration
     @course_class = CourseClass.find(params[:id])
-    @course_class.students.delete(params[:student_id])
-    @course_class.save
-    redirect_to :back, :notice => "Student removed with success!"
+    @course_class.registrations.delete(params[:registration_id])
+    #@course_class.save
+    redirect_to :back, :notice => "Matrícula removida com sucesso!"
   end
 
 =begin

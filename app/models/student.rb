@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
 
-	belongs_to :city, :autosave => true
+	belongs_to :city, foreign_key: :city_id
 	has_many :registrations
 	has_many :course_classes, :through => :registrations
 
