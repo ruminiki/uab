@@ -28,5 +28,6 @@ jQuery(function($){
 	$(".rg").mask("9.999.999-9");
 	$(".cpf").mask("999.999.999-99");
 	$('.dropdown-toggle').dropdown();
+	$(".decimal").mask("99.99");
 });
 

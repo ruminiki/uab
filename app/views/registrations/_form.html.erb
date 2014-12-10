@@ -60,7 +60,7 @@
   <div class="form-group">
     <%= f.label "Nota Final", :class => 'col-sm-2 control-label' %>
     <div class="controls">
-      <%= f.text_field :end_note, :class => 'form-control', :style=> 'max-width: 80px'  %>
+      <%= f.text_field :end_note, :class => 'form-control decimal', :style=> 'max-width: 80px'  %>
     </div>
     <%= error_span(@registration[:end_note]) %>
   </div>

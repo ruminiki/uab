@@ -76,27 +76,34 @@ class CourseClassesController < ApplicationController
     
     begin
       @student = Student.find(params[:student_id])
+      @course_class.registrations.each do |registration|
+        if registration.student.id == @student.id
+          @course_class.errors.add(:info, "O aluno já está matriculado.")
+          render '_form_add_students'
+          return
+        end
+      end
     rescue
       @course_class.errors.add(:info, "Aluno não encontrado. Por favor selecione um aluno válido.")
+      render '_form_add_students'
+      return
     end
     
     id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
     if id_status_inicial.nil? || id_status_inicial.value.nil?
       @course_class.errors.add(:info, "Param ID_STATUS_INICIAL_MATRICULA is not defined. Please contact the system administrator.")
+      render '_form_add_students'
+      return      
     else
       #rescue exception
       begin
         @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
       rescue
         @course_class.errors.add(:info, "Registration Status not found with ID: " + id_status_inicial.value + ". Please insert the register.")
+        render '_form_add_students'
+        return
       end
 
-    end
-
-    #if occurred any erros, back to page
-    if @course_class.errors.any?
-      render '_form_add_students'
-      return
     end
 
     @registration.registration_status = @registration_status
@@ -110,7 +117,7 @@ class CourseClassesController < ApplicationController
   def remove_registration
     @course_class = CourseClass.find(params[:id])
     @course_class.registrations.delete(params[:registration_id])
-    #@course_class.save
+    @course_class.save
     redirect_to :back, :notice => "Matrícula removida com sucesso!"
   end
 
@@ -130,6 +137,11 @@ class CourseClassesController < ApplicationController
 
     begin
       @employee = Employee.find(params[:employee_id])
+      @course_class.employees.each do |employee|
+        if employee.id == @employee.id
+          @course_class.errors.add(:info, "O tutor já está cadastrado na turma.")
+        end
+      end
     rescue
       @course_class.errors.add(:info, "Tutor não encontrado. Por favor selecione um tutor válido. ")
     end
@@ -141,7 +153,6 @@ class CourseClassesController < ApplicationController
     end
 
     @course_class.employees << @employee
-    #@employee.course_classes << @course_class
     @course_class.save
 
     redirect_to :back, :notice => "Tutor adicionado com sucesso!"  
