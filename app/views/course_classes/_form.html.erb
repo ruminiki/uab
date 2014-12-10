@@ -51,7 +51,7 @@ jQuery(function($){
   <div class="form-group">
     <%= f.label "Data Início", :class => 'col-sm-2 control-label' %>
     <div class="controls">
-      <%= f.text_field :begin, :class => 'form-control datepicker', :style=> 'max-width: 200px'  %>
+      <%= f.text_field :begin, :class => 'form-control date', :style=> 'max-width: 200px'  %>
     </div>
     <%= error_span(@course_class[:begin]) %>
   </div>

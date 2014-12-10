@@ -40,6 +40,13 @@
     </div>
     <%= error_span(@institution[:site]) %>
   </div>
+  <div class="form-group">
+    <%= f.label :contato, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :contact, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@institution[:contact]) %>
+  </div>
 
   <br>
 
