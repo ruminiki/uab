@@ -18,15 +18,9 @@
 //= require autocomplete-rails
 //= require jquery.maskedinput.min.js
 
-/*
-
-require turbolinks
-require bootstrap-sprockets
-require bootstrap
-require_tree .
-
-*/
-
+// Set the cache size
+Turbolinks.pagesCached(50);
+Turbolinks.enableTransitionCache();
 
 jQuery(function($){
 	$(".phone_number").mask("(999) 9999-9999");
