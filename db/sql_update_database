@@ -1,0 +1,5 @@
+alter table institutions add contact varchar(100);
+alter table students modify birthday varchar(10);
+alter table employees modify birthday varchar(10);
+alter table registrations modify date_conclusion varchar(10);
+alter table registrations modify date_abandonment varchar(10);
