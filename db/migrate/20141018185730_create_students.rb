@@ -12,6 +12,8 @@ class CreateStudents < ActiveRecord::Migration
       t.string :rg
       t.string :cpf
       t.string :sanguine_type
+      t.string :badge_end_date
+      t.string :badge_number
 
       t.timestamps
     end

@@ -61,20 +61,6 @@
     <%= error_span(@student[:sanguine_type]) %>
   </div>
   <div class="form-group">
-    <%= f.label "Possui Crachá", :class => 'col-sm-2 control-label' %>
-    <div class="controls">
-      <%= f.check_box :has_badge, :class => 'form-control', :style=> 'max-width: 34px' %>
-    </div>
-    <%= error_span(@student[:has_badge]) %>
-  </div>
-  <div class="form-group">
-    <%= f.label "Observação Crachá", :class => 'col-sm-2 control-label' %>
-    <div class="controls">
-      <%= f.text_field :badge_observation, :class => 'form-control', :style=> 'max-width: 600px'  %>
-    </div>
-    <%= error_span(@student[:badge_observation]) %>
-  </div>
-  <div class="form-group">
     <%= f.label "Data Nascimento", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :birthday, :class => 'form-control date', :style=> 'max-width: 200px'  %>
@@ -107,7 +93,37 @@
     </div>
     <%= error_span(@student[:city]) %>
   </div>
-
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Crachá</legend>
+    <div class="form-group">
+      <%= f.label "Possui Crachá", :class => 'col-sm-2 control-label' %>
+      <div class="controls">
+        <%= f.check_box :has_badge, :class => 'form-control', :style=> 'max-width: 34px' %>
+      </div>
+      <%= error_span(@student[:has_badge]) %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Número", :class => 'col-sm-2 control-label' %>
+      <div class="controls">
+        <%= f.text_field :badge_number, :class => 'form-control', :style=> 'max-width: 200px' %>
+      </div>
+      <%= error_span(@student[:badge_number]) %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Vencimento", :class => 'col-sm-2 control-label' %>
+      <div class="controls">
+        <%= f.text_field :badge_end_date, :class => 'form-control date', :style=> 'max-width: 200px' %>
+      </div>
+      <%= error_span(@student[:badge_number]) %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Observação", :class => 'col-sm-2 control-label' %>
+      <div class="controls">
+        <%= f.text_field :badge_observation, :class => 'form-control', :style=> 'max-width: 600px'  %>
+      </div>
+      <%= error_span(@student[:badge_observation]) %>
+    </div>
+  </fieldset>
   <br>
 
   <%= f.submit "Salvar Aluno", :class => 'col-sm-offset-2 btn btn-primary' %>

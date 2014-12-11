@@ -1,3 +1,5 @@
+alter table students add badge_number varchar(15);
+alter table students add badge_end_date varchar(10);
 alter table institutions add contact varchar(100);
 alter table students modify birthday varchar(10);
 alter table employees modify birthday varchar(10);
