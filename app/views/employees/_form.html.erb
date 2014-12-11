@@ -1,15 +1,3 @@
-<script type="text/javascript">
-  
-jQuery(function($){
-
-    $(".datepicker").datepicker({
-                dateFormat : "dd/mm/yy",
-                yearRange : "c-20:c+5"
-            })
-
-});
-
-</script>
 <%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
  
   <% if @employee.errors.any? %>
@@ -85,7 +73,7 @@ jQuery(function($){
   </div>
   <div class="form-group">
     <%= f.label :cidade, :class => 'col-sm-2 control-label' %>
-    <div class="controls" style="max-width:300px; display: -webkit-box;">
+    <div class="controls">
 
       <%= f.input :city_name, 
                   :url => autocomplete_city_name_employees_path, 
