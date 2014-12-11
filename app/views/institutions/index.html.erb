@@ -56,7 +56,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @institutions %>
+<br>
 <%= link_to t('.new', :default => "Novo"),
       new_institution_path,
       :disabled => !current_user.auth_to_add('institution'),

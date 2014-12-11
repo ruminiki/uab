@@ -52,7 +52,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @registration_statuses %>
+<br>
 <%= link_to t('.new', :default => "Novo"),
       new_registration_status_path,
       :disabled => !current_user.auth_to_add('registration_status'),

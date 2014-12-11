@@ -67,7 +67,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @roles %>
+<br>
 <%= 
     link_to t('.new', :default => "Novo"),
             new_role_path,

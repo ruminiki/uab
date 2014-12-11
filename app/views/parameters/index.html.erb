@@ -55,7 +55,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @parameters %>
+<br>
 <%= link_to t('.new', :default => "Novo"),
       new_parameter_path,
       :disabled => !current_user.super?,

@@ -67,7 +67,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @employees %>
+<br>
 <%= link_to t('.new', :default => "Novo"),
       new_employee_path,
       :disabled => !current_user.auth_to_add('employee'),

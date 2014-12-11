@@ -36,7 +36,9 @@ class CitiesController < ApplicationController
 
   def destroy
     @city.destroy
-    respond_with(@city)
+    respond_to do |format|
+     format.js { head :ok }
+   end
   end
 
   def clear_search

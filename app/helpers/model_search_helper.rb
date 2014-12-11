@@ -8,7 +8,7 @@ module ModelSearchHelper
 	      end	
 	    end
 
-		model.search(session)
+		model.search(session).page(params[:page]).per(10)
 	   
 	end
 

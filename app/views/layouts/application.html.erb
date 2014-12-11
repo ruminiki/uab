@@ -29,6 +29,9 @@
          <p class="alert alert-danger"><%= alert %></p>
        <% end %>
        <%= content_for?(:content) ? yield(:content) : yield %> 
+       <script>
+         <%= yield :js %>
+       </script>
     </main>
     <footer>
       <div class="container">

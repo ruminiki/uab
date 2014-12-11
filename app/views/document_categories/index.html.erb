@@ -51,7 +51,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @document_categories %>
+<br>
 <%= link_to t('.new', :default => "Novo"),
       new_document_category_path,
       :disabled => !current_user.auth_to_add('document_category'),

@@ -50,6 +50,8 @@
             link_to t('.destroy', :default => "Remover"),
               current_user.auth_to_remove('city') ? city_path(city) : "", 
               :disabled => !current_user.auth_to_remove('city'),
+              :id =>"city_#{city.id}",
+              :remote => true,
               :method => :delete,
               :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
               :class => 'btn btn-xs btn-danger' 
@@ -58,10 +60,19 @@
         </td>
       
       </tr>
+      <% content_for :js do %>
+         $('#remove_<%= city.id %>').bind('ajax:success',
+           function(){
+             $('#city_<%=city.id%>').remove();
+           }
+         );
+      <% end %>
     <% end %>
+
   </tbody>
 </table>
-
+<%= paginate @cities %>
+<br>
 <%= 
     link_to t('.new', :default => "Novo"),
       current_user.auth_to_add('city') ? new_city_path : "",
