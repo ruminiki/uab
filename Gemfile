@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'rails3-jquery-autocomplete'
 gem 'bootstrap-datepicker-rails'
 gem 'kaminari'
+gem 'prawn'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

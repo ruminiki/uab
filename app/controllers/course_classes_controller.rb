@@ -1,7 +1,9 @@
 class CourseClassesController < ApplicationController
   
+  require "prawn"
+
   before_action :set_course_class, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :js, :json
+  respond_to :html, :js, :json, :pdf
 
   autocomplete :student, :name, :full => true, :extra_data => [:id]
   autocomplete :employee, :name, :full => true, :extra_data => [:id]
@@ -207,6 +209,26 @@ class CourseClassesController < ApplicationController
     FileUtils.remove_file(@course_class.document.path, force = true)
     render 'destroy_document'
   end  
+
+=begin
+  PDF LIST OF PRESENCE
+=end  
+  def list_of_presence
+    @course_class = CourseClass.find(params[:id])
+  
+    #pdf = ListOfPresencePDF.new
+    #pdf.pdf
+    #pdf.save
+
+    respond_with @course_class do |format|
+      format.pdf { render :layour => false }
+    end
+
+    #Prawn::Document.generate("hello.pdf") do
+    #  text "Hello World!"
+    #end    
+
+  end
 
   private
     def set_course_class

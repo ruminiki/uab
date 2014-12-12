@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	  post "course_classes/add_document" => "course_classes#add_document"
 	  get  "course_classes/remove_document" => "course_classes#remove_document"  
 	  get  "course_classes/clear_search" => "course_classes#clear_search"  
+	  get  "course_classes/list_of_presence" => "course_classes#list_of_presence"  
 
 	  get  "documents/download_file" => "documents#download_file"
 

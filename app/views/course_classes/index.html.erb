@@ -73,6 +73,10 @@
               :class => 'btn btn-default btn-xs' %>
         </td>
         <td>
+          <%= link_to 'Lista de Presença',
+                course_classes_list_of_presence_path(:id => course_class.id), 
+                :disabled => !current_user.auth_to_view('registration'),
+                :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => "Editar"),
                 edit_course_class_path(course_class), 
                 :disabled => !current_user.auth_to_edit('course_class'),
