@@ -2,7 +2,7 @@ class RolesController < ApplicationController
   
   before_action :set_role, only: [:show, :edit, :update, :destroy]
   before_action :close_window, only: [:index]
-  respond_to :html, :xml, :json
+  respond_to :html, :js, :json
 
   include ModelSearchHelper
   include ModelAddForSelectHelper
@@ -41,7 +41,6 @@ class RolesController < ApplicationController
 
   def destroy
     @role.destroy
-    respond_with(@role)
   end
 
   def clear_search

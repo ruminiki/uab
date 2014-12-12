@@ -4,7 +4,7 @@
 </div>
 
 <!-- FORM SEARCH -->
-<%= form_tag(employee_categories_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
+<%= form_tag(employee_categories_path, :method => "get", id: "search-form", :class => "form-inline employee_category") do %>
 
   <fieldset class="well the-fieldset">
     <legend class="the-legend">Pesquisa</legend>
@@ -33,7 +33,7 @@
   </thead>
   <tbody>
     <% @employee_categories.each do |employee_category| %>
-      <tr>
+      <tr id="employee_category_<%=employee_category.id%>">
         <td><%= employee_category.id%></td>
         <td style="width:50%"><%= link_to employee_category.name, edit_employee_category_path(employee_category) %></td>
         <td>
@@ -44,6 +44,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 employee_category_path(employee_category),
                 :disabled => !current_user.auth_to_remove('employee_category'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

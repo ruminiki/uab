@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <% @roles.each do |role| %>
-      <tr>
+      <tr id="role_<%=role.id%>">
         <td><%= role.id%></td>
         <td><%= role.name %></td>
         <td width="50px">
@@ -56,6 +56,7 @@
               link_to t('.destroy', :default => "Remover"),
                       role_path(role),
                       :disabled => !current_user.admin?,
+                      :remote => true,
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                       :class => 'btn btn-xs btn-danger' 

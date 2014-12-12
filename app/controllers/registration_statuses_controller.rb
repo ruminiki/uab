@@ -1,6 +1,6 @@
 class RegistrationStatusesController < ApplicationController
   before_action :set_registration_status, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
   
   include ModelSearchHelper
 
@@ -31,7 +31,6 @@ class RegistrationStatusesController < ApplicationController
 
   def destroy
     @registration_status.destroy
-    respond_with(@registration_status)
   end
 
   def clear_search

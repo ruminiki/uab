@@ -1,6 +1,6 @@
 class ParametersController < ApplicationController
   before_action :set_parameter, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
   
   include ModelSearchHelper
 
@@ -34,7 +34,6 @@ class ParametersController < ApplicationController
 
   def destroy
     @parameter.destroy
-    respond_with(@parameter)
   end
 
   def clear_search

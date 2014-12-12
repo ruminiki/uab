@@ -1,6 +1,6 @@
 class InstitutionsController < ApplicationController
   before_action :set_institution, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :xml, :json
+  respond_to :html, :js, :json
 
   before_filter :authenticate_user!
   
@@ -33,7 +33,6 @@ class InstitutionsController < ApplicationController
 
   def destroy
     @institution.destroy
-    respond_with(@institution)
   end
 
   def clear_search

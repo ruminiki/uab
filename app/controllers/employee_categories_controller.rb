@@ -1,6 +1,6 @@
 class EmployeeCategoriesController < ApplicationController
   before_action :set_employee_category, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :xml, :json
+  respond_to :html, :js, :json
   
   include ModelSearchHelper
 
@@ -34,7 +34,6 @@ class EmployeeCategoriesController < ApplicationController
 
   def destroy
     @employee_category.destroy
-    respond_with(@employee_category)
   end
 
   def clear_search

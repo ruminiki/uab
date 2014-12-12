@@ -1,12 +1,11 @@
 class UseCasesController < ApplicationController
   before_action :set_use_case, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js, :json
 
   include ModelSearchHelper
 
   def index
     @use_cases = self.search(params, UseCase)
-    respond_with(@use_cases)
   end
 
   def show
@@ -34,7 +33,6 @@ class UseCasesController < ApplicationController
 
   def destroy
     @use_case.destroy
-    respond_with(@use_case)
   end
 
   def clear_search

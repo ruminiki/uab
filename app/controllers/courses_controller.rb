@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
   
   include ModelSearchHelper
 
@@ -31,7 +31,6 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    respond_with(@course)
   end
 
   def clear_search

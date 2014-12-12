@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% @registrations.each do |registration| %>
-      <tr>
+      <tr id="registration_<%=registration.id%>">
         <td><%= registration.id %></td>
         <td><%= registration.student.name %></td>
         <td><%= registration.course_class.name %></td>
@@ -27,6 +27,7 @@
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                 registration_path(registration),
                 :disabled => !current_user.auth_to_remove('registration'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                 :class => 'btn btn-xs btn-danger' %>

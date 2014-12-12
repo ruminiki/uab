@@ -31,7 +31,6 @@ class AuthorizationsController < ApplicationController
 
   def destroy
     @authorization.destroy
-    respond_with(@authorization)
   end
 
   private

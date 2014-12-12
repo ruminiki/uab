@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <% @documents.each do |document| %>
-      <tr>
+      <tr id="document_<%=document.id%>">
         <td><%= document.id%></td>
         <td width="30%"><%= document.name %></td>
         <td><%= document.original_file_name %></td>
@@ -27,6 +27,7 @@
           <%= link_to "Download", documents_download_file_path(:id => document.id), :class => 'btn btn-success btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       document_path(document),
+                      :remote => true,
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>

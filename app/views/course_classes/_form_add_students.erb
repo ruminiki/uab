@@ -70,7 +70,7 @@
         </thead>
         <tbody>
           <% @course_class.registrations.each do |registration| %>
-            <tr>
+            <tr id="registration_<%=registration.id%>">
               <td><%= registration.student.name %></td>
               <td><%= registration.student.phone_number %></td>
               <td><%= registration.student.email %></td>
@@ -85,6 +85,7 @@
               <%= link_to "Remover", 
                     course_classes_remove_registration_path(:id => @course_class.id, :registration_id => registration.id),
                     :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir a matrícula?') },
+                    :remote => true,
                     :disabled => !current_user.auth_to_remove('registration'),
                     :class=>'btn btn-xs btn btn-danger' %>
 

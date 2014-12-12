@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :close_window, only: [:index]
-  respond_to :html
+  respond_to :html, :js
   
   autocomplete :city, :name
 
@@ -40,7 +40,6 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
-    respond_with(@student)
   end
 
   def clear_search

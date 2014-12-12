@@ -87,7 +87,9 @@
                     :class => 'btn btn-success btn-xs' %>
 
                 <%= link_to "Remove", 
-                      course_classes_remove_document_path(:id => @course_class.id, :document_id => document.id),:data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir o arquivo?') },
+                      course_classes_remove_document_path(:id => @course_class.id, :document_id => document.id),
+                      :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir o arquivo?') },
+                      :remote => true,
                       :disabled => !current_user.auth_to_remove('document'),
                       :class=>'btn btn-xs btn btn-danger' %>
               </td>

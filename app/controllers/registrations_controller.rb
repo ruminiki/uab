@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @registrations = Registration.joins(:course_class)
@@ -33,7 +33,6 @@ class RegistrationsController < ApplicationController
 
   def destroy
     @registration.destroy
-    respond_with(@registration)
   end
 
   private

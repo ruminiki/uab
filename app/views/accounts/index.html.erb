@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr id="user_<%=user.id%>">
         <td><%= user.id%></td>
         <td><%= user.name%></td>
         <td><%= user.email%></td>
@@ -54,6 +54,7 @@
             <%= link_to t('.destroy', :default => "Remover"),
                 account_path(user),
                 :disabled => !current_user.admin?,
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

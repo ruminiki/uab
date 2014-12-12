@@ -1,13 +1,12 @@
 class CitiesController < ApplicationController
   
   before_action :set_city, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :xml, :json
+  respond_to :html, :js, :json
 
   include ModelSearchHelper
 
   def index
     @cities = self.search(params, City)
-    respond_with(@cities)
   end
 
   def show
@@ -36,9 +35,6 @@ class CitiesController < ApplicationController
 
   def destroy
     @city.destroy
-    respond_to do |format|
-     format.js { head :ok }
-   end
   end
 
   def clear_search

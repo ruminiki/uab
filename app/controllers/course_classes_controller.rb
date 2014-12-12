@@ -1,7 +1,7 @@
 class CourseClassesController < ApplicationController
   
   before_action :set_course_class, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js, :json
 
   autocomplete :student, :name, :full => true, :extra_data => [:id]
   autocomplete :employee, :name, :full => true, :extra_data => [:id]
@@ -40,7 +40,6 @@ class CourseClassesController < ApplicationController
 
   def destroy
     @course_class.destroy
-    respond_with(@course_class)
   end
 
   def clear_search
@@ -110,7 +109,7 @@ class CourseClassesController < ApplicationController
     @registration.student = @student
     @course_class.registrations = Array.new if nil
     @course_class.registrations << @registration
-    redirect_to :back, :notice => "Aluno matriculado com sucesso!"  
+    redirect_to :back
     
   end
 
@@ -118,7 +117,7 @@ class CourseClassesController < ApplicationController
     @course_class = CourseClass.find(params[:id])
     @course_class.registrations.delete(params[:registration_id])
     @course_class.save
-    redirect_to :back, :notice => "Matrícula removida com sucesso!"
+    render "destroy_registration"
   end
 
 =begin
@@ -155,7 +154,7 @@ class CourseClassesController < ApplicationController
     @course_class.employees << @employee
     @course_class.save
 
-    redirect_to :back, :notice => "Tutor adicionado com sucesso!"  
+    redirect_to :back
     
   end
 
@@ -163,7 +162,7 @@ class CourseClassesController < ApplicationController
     @course_class = CourseClass.find(params[:id])
     @course_class.employees.delete(params[:employee_id])
     @course_class.save
-    redirect_to :back, :notice => "Tutor removido com sucesso!"
+    render "destroy_employee"
   end
 
 =begin
@@ -193,7 +192,7 @@ class CourseClassesController < ApplicationController
     @course_class.documents << @course_class.document
     @course_class.save
 
-    render '_form_add_documents', :notice => "Documento adicionado com sucesso!"  
+    render '_form_add_documents'
     
   end
 
@@ -206,7 +205,7 @@ class CourseClassesController < ApplicationController
     @course_class.document.destroy
 
     FileUtils.remove_file(@course_class.document.path, force = true)
-    render '_form_add_documents', :notice => "Documento removido com sucesso!"
+    render 'destroy_document'
   end  
 
   private

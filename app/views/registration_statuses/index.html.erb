@@ -4,7 +4,7 @@
 </div>
 
 <!-- FORM SEARCH -->
-<%= form_tag(registration_statuses_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
+<%= form_tag(registration_statuses_path, :method => "get", id: "search-form", :class => "form-inline registration_status") do %>
 
   <fieldset class="well the-fieldset">
     <legend class="the-legend">Pesquisa</legend>
@@ -33,7 +33,7 @@
   </thead>
   <tbody>
     <% @registration_statuses.each do |registration_status| %>
-      <tr>
+      <tr id="registration_status_<%=registration_status.id%>">
         <td><%= registration_status.id %></td>
         <td><%= registration_status.name %></td>
         <td>
@@ -44,6 +44,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 registration_status_path(registration_status),
                 :disabled => !current_user.auth_to_remove('registration_status'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

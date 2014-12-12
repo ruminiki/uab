@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <% @use_cases.each do |use_case| %>
-      <tr>
+      <tr id="use_case_<%=use_case.id%>">
         <td><%= use_case.id%></td>
         <td style="width:50%"><%= use_case.name %></td>
         <td><%= use_case.key %></td>
@@ -46,6 +46,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 use_case_path(use_case),
                 :disabled => !current_user.super?,
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

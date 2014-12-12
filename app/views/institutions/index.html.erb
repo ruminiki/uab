@@ -4,7 +4,7 @@
 </div>
 
 <!-- FORM SEARCH -->
-<%= form_tag(institutions_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
+<%= form_tag(institutions_path, :method => "get", id: "search-form", :class => "form-inline institution") do %>
 
   <fieldset class="well the-fieldset">
     <legend class="the-legend">Pesquisa</legend>
@@ -35,7 +35,7 @@
   </thead>
   <tbody>
     <% @institutions.each do |institution| %>
-      <tr>
+      <tr id="institution_<%=institution.id%>">
         <td><%= institution.id %></td>
         <td><%= institution.name %></td>
         <td><%= institution.phone_number %></td>
@@ -48,6 +48,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 institution_path(institution),
                 :disabled => !current_user.auth_to_remove('institution'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

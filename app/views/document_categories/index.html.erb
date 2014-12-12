@@ -3,7 +3,7 @@
   <h3><%=t '.title', :default => "Categoria de Documento" %></h3>
 </div>
 <!-- FORM SEARCH -->
-<%= form_tag(document_categories_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
+<%= form_tag(document_categories_path, :method => "get", id: "search-form", :class => "form-inline document_category") do %>
 
   <fieldset class="well the-fieldset">
     <legend class="the-legend">Pesquisa</legend>
@@ -32,7 +32,7 @@
   </thead>
   <tbody>
     <% @document_categories.each do |document_category| %>
-      <tr>
+      <tr id="document_category_<%=document_category.id%>">
         <td><%= document_category.id%></td>
         <td style="width:50%"><%= document_category.name %></td>
         <td>
@@ -43,6 +43,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 document_category_path(document_category),
                 :disabled => !current_user.auth_to_remove('document_category'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

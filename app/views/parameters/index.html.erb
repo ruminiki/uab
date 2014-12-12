@@ -3,7 +3,7 @@
   <h3><%=t '.title', :default => "Parâmetros"%></h3>
 </div>
 <!-- FORM SEARCH -->
-<%= form_tag(parameters_path, :method => "get", id: "search-form", :class => "form-inline city") do %>
+<%= form_tag(parameters_path, :method => "get", id: "search-form", :class => "form-inline parameter") do %>
 
   <fieldset class="well the-fieldset">
     <legend class="the-legend">Pesquisa</legend>
@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <% @parameters.each do |parameter| %>
-      <tr>
+      <tr id="parameter_<%=parameter.id%>">
         <td><%= parameter.id%></td>
         <td><%= parameter.name %></td>
         <td><%= parameter.description %></td>
@@ -47,6 +47,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 parameter_path(parameter),
                 :disabled => !current_user.super?,
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?')},
                 :class => 'btn btn-xs btn-danger' %>

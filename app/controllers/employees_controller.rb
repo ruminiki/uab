@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
 
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :close_window, only: [:index]
-  respond_to :html, :xml, :json
+  respond_to :html, :js, :json
   autocomplete :city, :name
   
   include ModelSearchHelper
@@ -35,7 +35,6 @@ class EmployeesController < ApplicationController
 
   def destroy
     @employee.destroy
-    respond_with(@employee)
   end
 
   def clear_search

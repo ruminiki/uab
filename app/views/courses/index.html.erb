@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <% @courses.each do |course| %>
-      <tr>
+      <tr id="course_<%=course.id%>">
         <td><%= link_to course.id, course_path(course) %></td>
         <td style="width:50%"><%= course.name %></td>
         <td><%= course.acronym %></td>
@@ -47,6 +47,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 course_path(course),
                 :disabled => !current_user.auth_to_remove('course'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>

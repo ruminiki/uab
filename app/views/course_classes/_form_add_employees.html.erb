@@ -58,15 +58,17 @@
         </thead>
         <tbody>
           <% @course_class.employees.each do |employee| %>
-            <tr>
+            <tr id="employee_<%=employee.id%>">
               <td><%= employee.name %></td>
               <td><%= employee.phone_number %></td>
               <td><%= employee.email %></td>
               <td>
 
               <%= link_to "Remove", 
-                    course_classes_remove_employee_path(:id => @course_class.id, :employee_id => employee.id),:data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o tutor dessa turma?') },
+                    course_classes_remove_employee_path(:id => @course_class.id, :employee_id => employee.id),
+                    :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o tutor dessa turma?') },
                     :disabled => !current_user.auth_to_edit('registration'),
+                    :remote => true,
                     :class=>'btn btn-xs btn btn-danger' %>
 
               </td>

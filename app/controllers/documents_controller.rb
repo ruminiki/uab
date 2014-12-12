@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @documents = Document.all
@@ -29,7 +29,6 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     FileUtils.remove_file(@document.path, force = true)
-    respond_with(@document)
   end
 
   private

@@ -1,6 +1,6 @@
   class AccountsController < ApplicationController
 
-  respond_to :html
+  respond_to :html, :js
   autocomplete :role, :name
 
   def index
@@ -49,10 +49,9 @@
   end
 
   def destroy
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     if @user.destroy
       flash[:notice] = "Usuário removido com sucesso!"
-      redirect_to :action => 'index'
     end
   end 
 

@@ -1,7 +1,7 @@
 class DocumentCategoriesController < ApplicationController
  
   before_action :set_document_category, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
   
   include ModelSearchHelper
 
@@ -39,7 +39,6 @@ class DocumentCategoriesController < ApplicationController
 
   def destroy
     @document_category.destroy
-    respond_with(@document_category)
   end
 
   def clear_search

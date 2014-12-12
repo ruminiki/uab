@@ -45,7 +45,7 @@
   </thead>
   <tbody>
     <% @employees.each do |employee| %>
-      <tr>
+      <tr id="employee_<%=employee.id%>">
         <td><%= employee.id %></td>
         <td><%= employee.name %></td>
         <td><%= employee.phone_number %></td>
@@ -59,6 +59,7 @@
           <%= link_to t('.destroy', :default => "Remover"),
                 employee_path(employee),
                 :disabled => !current_user.auth_to_remove('employee'),
+                :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
                 :class => 'btn btn-xs btn-danger' %>
