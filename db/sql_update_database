@@ -17,3 +17,4 @@ alter table authorizations add foreign key(use_case_id) references use_cases(id)
 alter table authorizations add foreign key(role_id) references roles(id);
 alter table roles_users add foreign key(role_id) references roles(id);
 alter table roles_users add foreign key(user_id) references users(id);
+

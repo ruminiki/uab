@@ -50,6 +50,8 @@ Rails.application.routes.draw do
  	  get  "roles/update_authorization" => "roles#update_authorization"
  	  get  "roles/add_for_select" => "roles#add_for_select"
 
+ 	  get  "registrations/clear_search" => "registrations#clear_search"
+
 	  resources :roles
 	  resources :authorizations
 	  resources :use_cases
@@ -58,10 +60,13 @@ Rails.application.routes.draw do
 	  resources :document_categories
 	  resources :parameters	  
 	  resources :registration_statuses
-	  resources :registrations
 	  resources :institutions
 	  resources :courses
 	  resources :cities
+
+	  resources :registrations do
+	  	get :autocomplete_course_class_name, :on => :collection
+	  end
 	  
 	  resources :accounts do 
 	  	get :autocomplete_role_name, :on => :collection

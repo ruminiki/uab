@@ -1,7 +1,39 @@
 <%- model_class = Registration -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
 </div>
+
+<!-- FORM SEARCH -->
+<%= form_tag(registrations_path, :method => "get", id: "search-form", :class => "form-inline registration") do %>
+
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Pesquisa</legend>
+    <div class="form-group">
+      <%= label_tag :turma %>
+      <div class="controls">
+        <%= text_field_tag :search_course_class_name_in_registration, session[:search_course_class_name_in_registration], 
+            :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+   
+    <div class="form-group">
+      <%= label_tag :aluno %>
+      <div class="controls">
+        <%= text_field_tag :search_student_name_in_registration, session[:search_student_name_in_registration], 
+        :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+
+    <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
+    <%= link_to "Limpar", registrations_clear_search_path, 
+          :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
+
+  </fieldset>
+
+<% end %>
+
+<br>
+
 <table class="table table-striped">
   <thead>
     <tr>

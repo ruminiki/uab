@@ -1,10 +1,17 @@
 class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :js
+  respond_to :html, :js, :json
+
+  autocomplete :course_class, :name
+
+  include ModelSearchHelper
 
   def index
-    @registrations = Registration.joins(:course_class)
-    respond_with(@registrations)
+    @registrations = self.search(params, Registration)
+    @registration = Registration.new #para ser usado no form de pesquisa  no index
+
+    #render :json => params
+
   end
 
   def show
@@ -33,6 +40,12 @@ class RegistrationsController < ApplicationController
 
   def destroy
     @registration.destroy
+  end
+
+  def clear_search
+    session.delete :search_course_class_name_in_registration
+    session.delete :search_student_name_in_registration
+    redirect_to action: "index"
   end
 
   private
