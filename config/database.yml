@@ -8,7 +8,7 @@ default: &default
   adapter: mysql2
   database: uab
   username: root
-  password: dust25
+  password: dust258
   host: localhost
   #socket: /tmp/mysql.sock
 

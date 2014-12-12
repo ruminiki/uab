@@ -19,6 +19,16 @@
     <%= error_span(@registration_status[:name]) %>
   </div>
 
+  <div class="form-group">
+    <%= f.label "Gera Lista de Presença", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.select(:show_list_of_presence, [['SIM', true], ['NÃO', false]], 
+          {:value => :show_list_of_presence}, 
+          {:class =>'form-control', :style=> 'max-width: 75px'}) %>
+    </div>
+    <%= error_span(@registration_status[:show_list_of_presence]) %>
+  </div>
+
   <%= error_span(@registration_status[:name]) %>
 
   <%= f.submit "Salvar Status", :class => 'col-sm-offset-2 btn btn-primary' %>

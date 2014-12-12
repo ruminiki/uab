@@ -28,6 +28,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= "Gera Lista Presença" %></th>
       <th><%=t '.actions', :default => "Ações" %></th>
     </tr>
   </thead>
@@ -36,6 +37,7 @@
       <tr id="registration_status_<%=registration_status.id%>">
         <td><%= registration_status.id %></td>
         <td><%= registration_status.name %></td>
+        <td><%= (registration_status.show_list_of_presence? ? "SIM" : "NÃO") %></td>
         <td>
           <%= link_to t('.edit', :default => "Editar"),
                 edit_registration_status_path(registration_status),

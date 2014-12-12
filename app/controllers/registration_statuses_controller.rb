@@ -44,6 +44,6 @@ class RegistrationStatusesController < ApplicationController
     end
 
     def registration_status_params
-      params.require(:registration_status).permit(:name)
+      params.require(:registration_status).permit(:name, :show_list_of_presence)
     end
 end

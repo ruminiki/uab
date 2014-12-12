@@ -18,3 +18,5 @@ alter table authorizations add foreign key(role_id) references roles(id);
 alter table roles_users add foreign key(role_id) references roles(id);
 alter table roles_users add foreign key(user_id) references users(id);
 
+alter table registration_statuses add show_list_of_presence boolean default false;
+
