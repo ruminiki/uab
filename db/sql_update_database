@@ -5,3 +5,15 @@ alter table students modify birthday varchar(10);
 alter table employees modify birthday varchar(10);
 alter table registrations modify date_conclusion varchar(10);
 alter table registrations modify date_abandonment varchar(10);
+
+alter table students add foreign key(city_id) references cities(id);
+alter table employees add foreign key(city_id) references cities(id);
+alter table employees add foreign key(employee_category_id) references employee_categories(id);
+alter table course_classes add foreign key(institution_id) references institutions(id);
+alter table course_classes add foreign key(course_id) references courses(id);
+alter table registrations add foreign key(student_id) references students(id);
+alter table registrations add foreign key(course_class_id) references course_classes(id);
+alter table authorizations add foreign key(use_case_id) references use_cases(id);
+alter table authorizations add foreign key(role_id) references roles(id);
+alter table roles_users add foreign key(role_id) references roles(id);
+alter table roles_users add foreign key(user_id) references users(id);

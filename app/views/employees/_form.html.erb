@@ -1,3 +1,13 @@
+<script type="text/javascript">
+
+$(document).ready(function() { 
+  $(".phone_number").mask("(99) 9999-9999");
+  $(".date").mask("99/99/9999");
+  $(".cpf").mask("999.999.999-99");
+});
+
+</script>
+
 <%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
  
   <% if @employee.errors.any? %>
