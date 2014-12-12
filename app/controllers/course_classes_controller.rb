@@ -1,16 +1,13 @@
 class CourseClassesController < ApplicationController
   
-  require "prawn"
-
   before_action :set_course_class, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json, :pdf
 
   autocomplete :student, :name, :full => true, :extra_data => [:id]
   autocomplete :employee, :name, :full => true, :extra_data => [:id]
 
-  helper_method :add_student, :remove_student
-
   include ModelSearchHelper
+  include ListOfPresencePdfHelper
 
   def index
     @course_classes = self.search(params, CourseClass)
@@ -92,7 +89,7 @@ class CourseClassesController < ApplicationController
     
     id_status_inicial = Parameter.where(name: Parameter::ID_STATUS_INICIAL_MATRICULA).first
     if id_status_inicial.nil? || id_status_inicial.value.nil?
-      @course_class.errors.add(:info, "Param ID_STATUS_INICIAL_MATRICULA is not defined. Please contact the system administrator.")
+      @course_class.errors.add(:info, "Parâmetro ID_STATUS_INICIAL_MATRICULA não está definido.")
       render '_form_add_students'
       return      
     else
@@ -100,7 +97,7 @@ class CourseClassesController < ApplicationController
       begin
         @registration_status = RegistrationStatus.find(id_status_inicial.value.to_i)
       rescue
-        @course_class.errors.add(:info, "Registration Status not found with ID: " + id_status_inicial.value + ". Please insert the register.")
+        @course_class.errors.add(:info, "Status não encontrado com ID: " + id_status_inicial.value + ".")
         render '_form_add_students'
         return
       end
@@ -210,26 +207,6 @@ class CourseClassesController < ApplicationController
     render 'destroy_document'
   end  
 
-=begin
-  PDF LIST OF PRESENCE
-=end  
-  def list_of_presence
-    @course_class = CourseClass.find(params[:id])
-  
-    #pdf = ListOfPresencePDF.new
-    #pdf.pdf
-    #pdf.save
-
-    respond_with @course_class do |format|
-      format.pdf { render :layour => false }
-    end
-
-    #Prawn::Document.generate("hello.pdf") do
-    #  text "Hello World!"
-    #end    
-
-  end
-
   private
     def set_course_class
       @course_class = CourseClass.find(params[:id]) if params[:id].to_i > 0
@@ -242,4 +219,5 @@ class CourseClassesController < ApplicationController
     def document_params
       params.require(:document).permit(:name, :document_category_id, :path, :extension, :size)
     end
+
 end

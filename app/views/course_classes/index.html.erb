@@ -74,7 +74,7 @@
         </td>
         <td>
           <%= link_to 'Lista de Presença',
-                course_classes_list_of_presence_path(:id => course_class.id), 
+                course_classes_generate_list_of_presence_path(:id => course_class.id), 
                 :disabled => !current_user.auth_to_view('registration'),
                 :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => "Editar"),

@@ -1,9 +1,0 @@
-<%=
-
-require 'prawn'
-
-pdf = Prawn::Document.new(:page_size => 'LETTER', :page_layout => :landscape, :margin => 50, :top_margin => 20, :bottom_margin => 50)
-
-render_file("foo.pdf")
-
-%>
