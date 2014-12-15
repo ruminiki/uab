@@ -32,8 +32,6 @@
 
 <% end %>
 
-<br>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -69,8 +67,3 @@
   </tbody>
 </table>
 <%= paginate @registrations %>
-<br>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-      new_registration_path,
-      :disabled => !current_user.auth_to_add('registration'),
-      :class => 'btn btn-primary' %>

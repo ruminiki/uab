@@ -23,6 +23,11 @@
 
 <% end %>
 
+<%= link_to t('.new', :default => "Novo"),
+      new_institution_path,
+      :disabled => !current_user.auth_to_add('institution'),
+      :class => 'btn btn-primary' %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -58,8 +63,3 @@
   </tbody>
 </table>
 <%= paginate @institutions %>
-<br>
-<%= link_to t('.new', :default => "Novo"),
-      new_institution_path,
-      :disabled => !current_user.auth_to_add('institution'),
-      :class => 'btn btn-primary' %>

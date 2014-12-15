@@ -22,7 +22,12 @@
 
 <% end %>
 
-<br>
+<%= link_to t('.new', :default => "Novo"),
+      new_use_case_path,
+      :disabled => !current_user.super?,
+      :class => 'btn btn-primary' 
+%>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -56,8 +61,4 @@
   </tbody>
 </table>
 <%= paginate @use_cases %>
-<br>
-<%= link_to t('.new', :default => "Novo"),
-      new_use_case_path,
-      :disabled => !current_user.super?,
-      :class => 'btn btn-primary' %>
+

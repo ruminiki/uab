@@ -23,6 +23,11 @@
 
 <% end %>
 
+<%= link_to t('.new', :default => "Novo"),
+      new_course_path,
+      :disabled => !current_user.auth_to_add('course'),
+      :class => 'btn btn-primary' %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -57,8 +62,3 @@
   </tbody>
 </table>
 <%= paginate @courses %>
-<br>
-<%= link_to t('.new', :default => "Novo"),
-      new_course_path,
-      :disabled => !current_user.auth_to_add('course'),
-      :class => 'btn btn-primary' %>

@@ -3,7 +3,11 @@
   <h3><%=t '.title', :default => "Usuários" %></h3>
 </div>
 
-<br>
+<%= link_to t('.new', :default => "Novo"),
+      new_account_path,
+      :disabled => !current_user.admin?,
+      :class => 'btn btn-primary' %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -63,8 +67,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => "Novo"),
-      new_account_path,
-      :disabled => !current_user.admin?,
-      :class => 'btn btn-primary' %>

@@ -22,7 +22,13 @@
 
 <% end %>
 
-<br>
+<%= 
+    link_to t('.new', :default => "Novo"),
+      current_user.auth_to_add('city') ? new_city_path : "",
+      :disabled => !current_user.auth_to_add('city'),
+      :class => 'btn btn-primary' 
+%>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -64,10 +70,3 @@
   </tbody>
 </table>
 <%= paginate @cities %>
-<br>
-<%= 
-    link_to t('.new', :default => "Novo"),
-      current_user.auth_to_add('city') ? new_city_path : "",
-      :disabled => !current_user.auth_to_add('city'),
-      :class => 'btn btn-primary' 
-%>

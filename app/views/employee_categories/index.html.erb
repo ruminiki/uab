@@ -23,6 +23,11 @@
 
 <% end %>
 
+<%= link_to t('.new', :default => "Novo"),
+      new_employee_category_path,
+      :disabled => !current_user.auth_to_add('employee_category'),
+      :class => 'btn btn-primary' %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -54,8 +59,3 @@
   </tbody>
 </table>
 <%= paginate @employee_categories %>
-<br>
-<%= link_to t('.new', :default => "Novo"),
-      new_employee_category_path,
-      :disabled => !current_user.auth_to_add('employee_category'),
-      :class => 'btn btn-primary' %>
