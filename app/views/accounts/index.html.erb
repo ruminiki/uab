@@ -3,6 +3,35 @@
   <h3><%=t '.title', :default => "Usuários" %></h3>
 </div>
 
+<!-- FORM SEARCH -->
+<%= form_tag(accounts_path, :method => "get", id: "search-form", :class => "form-inline user") do %>
+
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Pesquisa</legend>
+    <div class="form-group">
+      <%= label_tag :nome %>
+      <div class="controls">
+        <%= text_field_tag :search_user_name, session[:search_user_name], :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :status %>
+      <div class="controls">
+        <%= select_tag :search_user_status, 
+            options_for_select([["TODOS", "all"], ["ATIVO","active"], ["INATIVO", "inactive"]], session[:search_user_status]),
+            :class => 'form-control', :style=> 'width: 120px' %>
+      </div>
+    </div>
+
+    <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
+    <%= link_to "Limpar", accounts_clear_search_path, 
+          :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
+
+  </fieldset>
+
+<% end %>
+
 <%= link_to t('.new', :default => "Novo"),
       new_account_path,
       :disabled => !current_user.admin?,

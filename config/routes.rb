@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 	  get  "course_classes/remove_document" => "course_classes#remove_document"  
 	  get  "course_classes/clear_search" => "course_classes#clear_search"  
 	  get  "course_classes/generate_list_of_presence" => "course_classes#generate_list_of_presence"  
+	  get  "course_classes/close_course_class" => "course_classes#close_course_class"  
+	  get  "course_classes/reopen_course_class" => "course_classes#reopen_course_class"  
 
 	  get  "documents/download_file" => "documents#download_file"
 
@@ -43,6 +45,7 @@ Rails.application.routes.draw do
  	  get  "accounts/roles" => "accounts#roles"	
 	  get  "accounts/add_role" => "accounts#add_role"	
 	  get  "accounts/remove_role" => "accounts#remove_role"    
+	  get  "accounts/clear_search" => "accounts#clear_search"
 
  	  get  "use_cases/clear_search" => "use_cases#clear_search"  
 
@@ -53,6 +56,7 @@ Rails.application.routes.draw do
 
  	  get  "registrations/clear_search" => "registrations#clear_search"
 
+	  resources :accounts
 	  resources :roles
 	  resources :authorizations
 	  resources :use_cases
@@ -69,10 +73,6 @@ Rails.application.routes.draw do
 	  	get :autocomplete_course_class_name, :on => :collection
 	  end
 	  
-	  resources :accounts do 
-	  	get :autocomplete_role_name, :on => :collection
-	  end
-
   	  resources :employees do
   	  	get :autocomplete_city_name, :on => :collection
   	  end

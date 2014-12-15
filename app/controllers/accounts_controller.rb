@@ -124,7 +124,7 @@
 
   def clear_search
     session.delete :search_user_name
-    session.delete :search_user_active
+    session.delete :search_user_status
     redirect_to action: "index"
   end
 
