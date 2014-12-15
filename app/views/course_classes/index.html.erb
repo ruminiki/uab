@@ -50,17 +50,37 @@
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name("Instituição") %></th>
       <th><%= model_class.human_attribute_name(:curso) %></th>
+      <% if current_user.admin? %>
+      <th><%= model_class.human_attribute_name(:fechar) %></th>
+      <%end%>
       <th><%= model_class.human_attribute_name("Informações da Turma") %></th>
       <th><%=t '.actions', :default => "Ações" %></th>
     </tr>
   </thead>
   <tbody>
     <% @course_classes.each do |course_class| %>
-      <tr id="course_class_<%=course_class.id%>">
+      <tr id="course_class_<%=course_class.id%>" style="<%= (course_class.closed? ? 'color: #999;' : '')%>">
         <td><%= course_class.id %></td>
         <td><%= course_class.name %></td>
         <td><%= course_class.institution.acronym %></td>
         <td><%= course_class.course.acronym %></td>
+        <% if current_user.admin? %>
+        <td>
+          <%= 
+            if course_class.closed?
+              link_to "Reabrir", 
+                course_classes_reopen_course_class_path(:id => course_class.id), 
+                :class => 'btn btn-default btn-xs',
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja reabrir a turma?') }
+            else
+              link_to "Fechar  ", 
+                course_classes_close_course_class_path(:id => course_class.id), 
+                :class => 'btn btn-default btn-xs',
+                :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja fechar a turma?') }
+            end
+          %>
+        </td>
+        <%end%>
         <td>
         <%= link_to 'Matrículas', 
               course_classes_registrations_path(:id=>course_class.id), 
@@ -82,11 +102,11 @@
         <td>
           <%= link_to t('.edit', :default => "Editar"),
                 edit_course_class_path(course_class), 
-                :disabled => !current_user.auth_to_edit('course_class'),
+                :disabled => !current_user.auth_to_edit('course_class') || course_class.closed,
                 :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => "Remover"),
                 course_class_path(course_class),
-                :disabled => !current_user.auth_to_remove('course_class'),
+                :disabled => !current_user.auth_to_remove('course_class') || course_class.closed,
                 :remote => true,
                 :method => :delete,
                 :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },

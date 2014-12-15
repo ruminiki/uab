@@ -24,5 +24,6 @@ alter table registration_statuses add show_list_of_presence boolean default fals
 alter table course_classes modify begin varchar(10);
 alter table institutions add acronym varchar(20);
 alter table course_classes add end varchar(10);
+alter table course_classes add closed boolean not null default false;
 
 

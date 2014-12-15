@@ -53,7 +53,7 @@
 
         <%= hidden_field_tag :course_class_id, @course_class.id %>
         <%= f.submit "Salvar Documento", 
-            :disabled => !current_user.auth_to_add('document'),
+            :disabled => !current_user.auth_to_add('document') || @course_class.closed,
             :class => 'col-sm-offset-2 btn btn-primary' %>
 
       </div>
@@ -90,7 +90,7 @@
                       course_classes_remove_document_path(:id => @course_class.id, :document_id => document.id),
                       :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir o arquivo?') },
                       :remote => true,
-                      :disabled => !current_user.auth_to_remove('document'),
+                      :disabled => !current_user.auth_to_remove('document') || @course_class.closed,
                       :class=>'btn btn-xs btn btn-danger' %>
               </td>
             </tr>

@@ -207,13 +207,25 @@ class CourseClassesController < ApplicationController
     render 'destroy_document'
   end  
 
+  def close_course_class
+    @course_class = CourseClass.find(params[:id])
+    @course_class.update(:closed => true)
+    redirect_to action: "index"
+  end 
+
+  def reopen_course_class
+    @course_class = CourseClass.find(params[:id])
+    @course_class.update(:closed => false)
+    redirect_to action: "index"
+  end   
+
   private
     def set_course_class
       @course_class = CourseClass.find(params[:id]) if params[:id].to_i > 0
     end
 
     def course_class_params
-      params.require(:course_class).permit(:name, :institution_id, :course_id, :begin, :end)
+      params.require(:course_class).permit(:name, :institution_id, :course_id, :begin, :end, :closed)
     end
 
     def document_params

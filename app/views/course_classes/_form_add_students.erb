@@ -45,11 +45,11 @@
         <br>
 
         <%= f.submit 'Matricular Aluno', 
-              :disabled => !current_user.auth_to_add('registration'),
+              :disabled => !current_user.auth_to_add('registration') || @course_class.closed,
               :class => 'col-sm-offset-2 btn btn-primary' %>
         <%= link_to "Cadastrar Novo", 
               students_add_for_select_path, 
-              :disabled => !current_user.auth_to_add('student'),
+              :disabled => !current_user.auth_to_add('student') || @course_class.closed,
               :class => 'btn btn-success', :target => "blank" %>
         
     </div>
@@ -79,14 +79,14 @@
 
               <%= link_to "Editar Matricula",
                     course_classes_registration_path(:registration_id => registration.id), 
-                    :disabled => !current_user.auth_to_edit('registration'),
+                    :disabled => !current_user.auth_to_edit('registration') || @course_class.closed,
                     :class=>'btn btn-xs btn btn-primary' %>
               
               <%= link_to "Remover", 
                     course_classes_remove_registration_path(:id => @course_class.id, :registration_id => registration.id),
                     :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir a matrícula?') },
                     :remote => true,
-                    :disabled => !current_user.auth_to_remove('registration'),
+                    :disabled => !current_user.auth_to_remove('registration') || @course_class.closed,
                     :class=>'btn btn-xs btn btn-danger' %>
 
               </td>

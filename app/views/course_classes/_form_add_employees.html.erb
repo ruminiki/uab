@@ -33,11 +33,11 @@
         <br>
 
         <%= f.submit 'Adicionar Tutor', 
-              :disabled => !current_user.auth_to_edit('course_class'),
+              :disabled => !current_user.auth_to_edit('course_class') || @course_class.closed,
               :class => 'col-sm-offset-2 btn btn-primary' %>
         <%= link_to "Cadastrar Novo", 
               employees_add_for_select_path, 
-              :disabled => !current_user.auth_to_add('employee'),
+              :disabled => !current_user.auth_to_add('employee') || @course_class.closed,
               :class => 'btn btn-success', 
               :target => "blank" %> 
         
@@ -67,7 +67,7 @@
               <%= link_to "Remove", 
                     course_classes_remove_employee_path(:id => @course_class.id, :employee_id => employee.id),
                     :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o tutor dessa turma?') },
-                    :disabled => !current_user.auth_to_edit('registration'),
+                    :disabled => !current_user.auth_to_edit('registration') || @course_class.closed,
                     :remote => true,
                     :class=>'btn btn-xs btn btn-danger' %>
 
