@@ -11,15 +11,25 @@ class PdfReport < Prawn::Document
   end
 
   def header(title=nil)
-    #image "#{Rails.root}/public/logo.png", height: 30
-    text "POLO UAB DARCI RIBEIRO", size: 18, style: :bold, align: :center
-    if title
-      text title, size: 14, style: :bold_italic, align: :center
+
+    bounding_box([0,750], :width => 550, :height => 70) do
+      stroke_color '000000'
+      stroke_bounds
+      image "#{Rails.root}/public/assets/images/logo_uab.jpeg", height: 50  
+      draw_text "POLO DARCI RIBEIRO", size: 18, style: :bold, at: [200,740]
+      #if title
+      #  text title, size: 14, style: :bold_italic, align: :center
+      #end
     end
+
   end
 
   def footer
-    # ...
+    bounding_box([0,750], :width => 550, :height => 750) do
+      stroke_color '000000'
+      stroke_bounds
+      text_box ""
+    end    
   end
 
   # ... More helpers
