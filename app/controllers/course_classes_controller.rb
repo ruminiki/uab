@@ -213,7 +213,7 @@ class CourseClassesController < ApplicationController
     end
 
     def course_class_params
-      params.require(:course_class).permit(:name, :institution_id, :course_id, :begin)
+      params.require(:course_class).permit(:name, :institution_id, :course_id, :begin, :end)
     end
 
     def document_params

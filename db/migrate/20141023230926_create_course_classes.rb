@@ -5,6 +5,7 @@ class CreateCourseClasses < ActiveRecord::Migration
       t.integer :institution_id
       t.integer :course_id
       t.string :begin
+      t.string :end
       t.timestamps
     end
     add_index :course_classes, :name, :unique => true

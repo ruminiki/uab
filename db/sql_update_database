@@ -5,9 +5,6 @@ alter table students modify birthday varchar(10);
 alter table employees modify birthday varchar(10);
 alter table registrations modify date_conclusion varchar(10);
 alter table registrations modify date_abandonment varchar(10);
-alter table course_classes modify begin varchar(10);
-
-alter table institutions add acronym varchar(20);
 
 alter table students add foreign key(city_id) references cities(id);
 alter table employees add foreign key(city_id) references cities(id);
@@ -21,5 +18,11 @@ alter table authorizations add foreign key(role_id) references roles(id);
 alter table roles_users add foreign key(role_id) references roles(id);
 alter table roles_users add foreign key(user_id) references users(id);
 
+
 alter table registration_statuses add show_list_of_presence boolean default false;
+
+alter table course_classes modify begin varchar(10);
+alter table institutions add acronym varchar(20);
+alter table course_classes add end varchar(10);
+
 

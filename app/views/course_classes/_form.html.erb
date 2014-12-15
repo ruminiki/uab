@@ -44,11 +44,19 @@ $(document).ready(function() {
   </div>
 
   <div class="form-group">
-    <%= f.label "Data Início", :class => 'col-sm-2 control-label' %>
+    <%= f.label "Início", :class => 'col-sm-2 control-label' %>
     <div class="controls">
       <%= f.text_field :begin, :class => 'form-control date', :style=> 'max-width: 200px'  %>
     </div>
     <%= error_span(@course_class[:begin]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Término", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :end, :class => 'form-control date', :style=> 'max-width: 200px'  %>
+    </div>
+    <%= error_span(@course_class[:end]) %>
   </div>
 
   <br><br>
