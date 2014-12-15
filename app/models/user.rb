@@ -22,8 +22,7 @@ class User < ActiveRecord::Base
 		return true if self.admin?
 		self.roles.each do |role|
 			auth = role.authorizations.select { |a| !a.use_case.nil? && a.use_case.key == key }
-			return false if auth.nil? || auth.first.nil?
-			return auth.first.add?	
+			return true if auth && auth.first && auth.first.add?
 		end
 		return false
 	end
@@ -32,8 +31,7 @@ class User < ActiveRecord::Base
 		return true if self.admin?
 		self.roles.each do |role|
 			auth = role.authorizations.select { |a| !a.use_case.nil? && a.use_case.key == key }
-			return false if auth.nil? || auth.first.nil?
-			return auth.first.edit?	
+			return true if auth && auth.first && auth.first.edit?
 		end
 		return false	
 	end
@@ -42,8 +40,7 @@ class User < ActiveRecord::Base
 		return true if self.admin?
 		self.roles.each do |role|
 			auth = role.authorizations.select { |a| !a.use_case.nil? && a.use_case.key == key }
-			return false if auth.nil? || auth.first.nil?
-			return auth.first.view?	
+			return true if auth && auth.first && auth.first.view?
 		end
 		return false
 	end
@@ -52,8 +49,7 @@ class User < ActiveRecord::Base
 		return true if self.admin?
 		self.roles.each do |role|
 			auth = role.authorizations.select { |a| !a.use_case.nil? && a.use_case.key == key }
-			return false if auth.nil? || auth.first.nil?
-			return auth.first.remove?	
+			return true if auth && auth.first && auth.first.remove?
 		end
 		return false
 	end
