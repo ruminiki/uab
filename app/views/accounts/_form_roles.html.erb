@@ -44,14 +44,14 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th><%= model_class.human_attribute_name(:nome) %></th>
-            <th><%= model_class.human_attribute_name("Permissões") %></th>
+            <th><%= model_class.human_attribute_name(:id) %></th>
+            <th><%= model_class.human_attribute_name(:papel) %></th>
             <th><%=t '.actions', :default => "Ações" %></th>
           </tr>
         </thead>
         <tbody>
           <% @user.roles.each do |role| %>
-            <tr>
+            <tr id="role_<%=role.id%>">
               <td><%= role.id%></td>
               <td><%= role.name %></td>
               <td>
@@ -66,6 +66,7 @@
                     accounts_remove_role_path(:id => @user.id, :role_id => role.id),
                     :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o papel do usuário?') },
                     :disabled => !current_user.admin?,
+                    :remote => true,
                     :class=>'btn btn-xs btn btn-danger'
                 %>
 
