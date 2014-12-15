@@ -1,3 +1,12 @@
+<script type="text/javascript">
+
+$(document).ready(function() { 
+  $(".date").mask("99/99/9999");
+  $(".decimal").mask("99.99");
+});
+
+</script>
+
 <%= simple_form_for @registration, :html => { :class => "form-horizontal registration" } do |f| %>
 
   <% if @registration.errors.any? %>
