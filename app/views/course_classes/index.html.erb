@@ -59,7 +59,7 @@
       <tr id="course_class_<%=course_class.id%>">
         <td><%= course_class.id %></td>
         <td><%= course_class.name %></td>
-        <td><%= course_class.institution.name %></td>
+        <td><%= course_class.institution.acronym %></td>
         <td><%= course_class.course.acronym %></td>
         <td>
         <%= link_to 'Matrículas', 
@@ -73,13 +73,13 @@
         <%= link_to 'Documentos', 
               course_classes_documents_path(:id=>course_class.id), 
               :disabled => !current_user.auth_to_view('document'),
-              :class => 'btn btn-default btn-xs' %>
-        </td>
-        <td>
+              :class => 'btn btn-warning btn-xs' %>
           <%= link_to 'Lista de Presença',
                 course_classes_generate_list_of_presence_path(:id => course_class.id), 
                 :disabled => !current_user.auth_to_view('registration'),
                 :class => 'btn btn-default btn-xs' %>
+        </td>
+        <td>
           <%= link_to t('.edit', :default => "Editar"),
                 edit_course_class_path(course_class), 
                 :disabled => !current_user.auth_to_edit('course_class'),

@@ -33,6 +33,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:sigla) %></th>
       <th><%= model_class.human_attribute_name(:telefone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%=t '.actions', :default => "Ações" %></th>
@@ -43,6 +44,7 @@
       <tr id="institution_<%=institution.id%>">
         <td><%= institution.id %></td>
         <td><%= institution.name %></td>
+        <td><%= institution.acronym %></td>
         <td><%= institution.phone_number %></td>
         <td><%= institution.email %></td>
         <td>

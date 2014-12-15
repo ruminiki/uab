@@ -6,6 +6,7 @@ class CreateInstitutions < ActiveRecord::Migration
       t.string :email
       t.string :site
       t.string :contact
+      t.string :acronym
       t.timestamps
     end
   end

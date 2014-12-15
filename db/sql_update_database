@@ -5,6 +5,7 @@ alter table students modify birthday varchar(10);
 alter table employees modify birthday varchar(10);
 alter table registrations modify date_conclusion varchar(10);
 alter table registrations modify date_abandonment varchar(10);
+alter table institutions add acronym varchar(20);
 
 alter table students add foreign key(city_id) references cities(id);
 alter table employees add foreign key(city_id) references cities(id);
