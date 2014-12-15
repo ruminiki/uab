@@ -47,7 +47,7 @@ class ListOfPresenceReport < PdfReport
   end
 
   def table_data
-    @table_data ||= @course_class.students.map{ |e| [e.id, e.name, ""] }
+    @table_data ||= @course_class.registrations.map{ |r| [r.id, r.student.name, ""] }
   end
 
 end
