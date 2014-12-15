@@ -24,17 +24,19 @@ class DocumentCategoriesController < ApplicationController
 
   def create
     @document_category = DocumentCategory.new(document_category_params)
-    if @document_category.valid?
-      @document_category.save
-      redirect_to action: "index", :notice => "Category saved with success" 
+    if @document_category.save
+      redirect_to action: "index"
     else
       respond_with(@document_category)  
     end
   end
 
   def update
-    @document_category.update(document_category_params)
-    redirect_to action: "index"
+    if @document_category.update(document_category_params)
+      redirect_to action: "index"
+    else
+      respond_with(@document_category)  
+    end
   end
 
   def destroy

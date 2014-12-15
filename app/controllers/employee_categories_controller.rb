@@ -23,13 +23,19 @@ class EmployeeCategoriesController < ApplicationController
 
   def create
     @employee_category = EmployeeCategory.new(employee_category_params)
-    @employee_category.save
-    redirect_to action: "index"
+    if @employee_category.save
+      redirect_to action: "index"
+    else
+      respond_with(@employee_category)  
+    end
   end
 
   def update
-    @employee_category.update(employee_category_params)
-    redirect_to action: "index"
+    if @employee_category.update(employee_category_params)
+      redirect_to action: "index"
+    else
+      respond_with(@employee_category)  
+    end
   end
 
   def destroy

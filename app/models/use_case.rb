@@ -5,6 +5,8 @@ class UseCase < ActiveRecord::Base
 	before_save :upper_case
 	before_update :upper_case
 
+	validates :name, presence: true
+
 	def upper_case
 		self.name.upcase!
 	end

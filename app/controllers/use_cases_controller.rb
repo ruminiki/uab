@@ -17,18 +17,21 @@ class UseCasesController < ApplicationController
     respond_with(@use_case)
   end
 
-  def edit
-  end
-
   def create
     @use_case = UseCase.new(use_case_params)
-    @use_case.save
-    redirect_to action: "index"
+    if @use_case.save
+      redirect_to action: "index"
+    else
+      respond_with(@use_case)  
+    end
   end
 
   def update
-    @use_case.update(use_case_params)
-    redirect_to action: "index"
+    if @use_case.update(use_case_params)
+      redirect_to action: "index"
+    else
+      respond_with(@use_case)  
+    end
   end
 
   def destroy

@@ -29,8 +29,11 @@ class CitiesController < ApplicationController
   end
 
   def update
-    @city.update(city_params)
-    redirect_to action: "index"
+    if @city.update(city_params)
+      redirect_to action: "index"
+    else
+      respond_with(@city)   
+    end
   end
 
   def destroy

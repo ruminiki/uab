@@ -21,13 +21,9 @@ class RolesController < ApplicationController
     respond_with(@role)
   end
 
-  def edit
-  end
-
   def create
-     @role = Role.new(role_params)
-    if @role.valid?
-      @role.save
+    @role = Role.new(role_params)
+    if @role.save
       redirect_to action: "authorizations", :id => @role.id
     else
       respond_with(@role)
@@ -35,8 +31,11 @@ class RolesController < ApplicationController
   end
 
   def update
-    @role.update(role_params)
-    redirect_to action: "index"
+    if @role.update(role_params)
+      redirect_to action: "authorizations", :id => @role.id
+    else
+      respond_with(@role)
+    end
   end
 
   def destroy

@@ -5,6 +5,8 @@ class Parameter < ActiveRecord::Base
 	before_save :upper_case
 	before_update :upper_case
 
+	validates :name, :value, :description, presence: true
+
 	def upper_case
 		self.name.upcase!
 	end

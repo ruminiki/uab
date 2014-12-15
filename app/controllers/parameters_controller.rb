@@ -23,13 +23,19 @@ class ParametersController < ApplicationController
 
   def create
     @parameter = Parameter.new(parameter_params)
-    @parameter.save
-    redirect_to action: "index"
+    if @parameter.save
+      redirect_to action: "index"  
+    else
+      respond_with(@parameter)  
+    end
   end
   
   def update
-    @parameter.update(parameter_params)
-    redirect_to action: "index"
+    if @parameter.update(parameter_params)
+      redirect_to action: "index"  
+    else
+      respond_with(@parameter)  
+    end
   end
 
   def destroy

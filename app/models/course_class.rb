@@ -9,6 +9,8 @@ class CourseClass < ActiveRecord::Base
 
 	before_save :upper_case
 	before_update :upper_case
+
+	validates :name, :course_class, :instituition, :begin, presence: true
 	
 	#selected student
 	attr_accessor :student

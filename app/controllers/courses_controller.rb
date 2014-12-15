@@ -20,13 +20,19 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    @course.save
-    redirect_to action: "index"
+    if @course.save
+      redirect_to action: "index"
+    else
+      respond_with(@course)  
+    end
   end
 
   def update
-    @course.update(course_params)
-    redirect_to action: "index"
+    if @course.update(course_params)
+      redirect_to action: "index"
+    else
+      respond_with(@course)  
+    end
   end
 
   def destroy

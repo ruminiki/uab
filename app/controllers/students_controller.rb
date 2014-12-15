@@ -25,17 +25,19 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    if @student.valid?
-      @student.save
-      redirect_to action: "index", :notice => "Student saved with success" 
+    if @student.save
+      redirect_to action: "index"
     else
       respond_with(@student)
     end
   end
 
   def update
-    @student.update(student_params)
-    redirect_to action: "index"
+    if @student.update(student_params)
+      redirect_to action: "index"
+    else
+      respond_with(@student)
+    end
   end
 
   def destroy

@@ -24,13 +24,19 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-    @employee.save
-    redirect_to action: "index"
+    if @employee.save
+      redirect_to action: "index"
+    else
+      respond_with(@employee)  
+    end
   end
 
   def update
-    @employee.update(employee_params)
-    redirect_to action: "index"
+    if @employee.update(employee_params)
+      redirect_to action: "index"
+    else
+      respond_with(@employee)  
+    end
   end
 
   def destroy

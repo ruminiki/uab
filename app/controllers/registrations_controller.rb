@@ -23,10 +23,6 @@ class RegistrationsController < ApplicationController
     respond_with(@registration)
   end
 
-  def edit
-
-  end
-
   def create
     @registration = Registration.new(registration_params)
     @registration.save

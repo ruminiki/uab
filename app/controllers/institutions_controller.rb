@@ -22,13 +22,19 @@ class InstitutionsController < ApplicationController
 
   def create
     @institution = Institution.new(institution_params)
-    @institution.save
-    redirect_to action: "index"
+    if @institution.save
+      redirect_to action: "index"  
+    else
+      respond_with(@institution)  
+    end
   end
 
   def update
-    @institution.update(institution_params)
-    redirect_to action: "index"
+    if @institution.update(institution_params)
+      redirect_to action: "index"  
+    else
+      respond_with(@institution)  
+    end
   end
 
   def destroy

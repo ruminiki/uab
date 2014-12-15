@@ -1,10 +1,13 @@
   class AccountsController < ApplicationController
 
   respond_to :html, :js
-  autocomplete :role, :name
+
+  include ModelSearchHelper
 
   def index
-    @users = User.all
+    #@users = Array.new
+    #@users << User.where("super = ? ", true) if current_user.super?
+    @users = self.search(params, User)
   end
 
   def show
@@ -23,7 +26,6 @@
     @user.admin = false
     @user.active = true
     if @user.save
-      flash[:notice] = "Successfully created User." 
       redirect_to :action => 'index'
     else
       render :action => 'new'
@@ -40,7 +42,6 @@
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(user_params)
-      flash[:error] = "Usuário atualizado com sucesso!"
       redirect_to :action => 'index'
     else
       render :action => 'edit'
@@ -50,9 +51,7 @@
 
   def destroy
     #@user = User.find(params[:id])
-    if @user.destroy
-      flash[:notice] = "Usuário removido com sucesso!"
-    end
+    @user.destroy
   end 
 
   def activate_user
@@ -108,7 +107,7 @@
     #@role.users << @user
     @user.save
 
-    redirect_to :back, :notice => "Papel adicionado com sucesso!"  
+    redirect_to :back
  
   end
 
@@ -120,8 +119,13 @@
   def remove_role
     @user = User.find(params[:id])
     @user.roles.delete(params[:role_id])
-    @user.save
-    redirect_to :back, :notice => "Papel removido com sucesso!"
+    render "destroy_role"
+  end
+
+  def clear_search
+    session.delete :search_user_name
+    session.delete :search_user_active
+    redirect_to action: "index"
   end
 
   private

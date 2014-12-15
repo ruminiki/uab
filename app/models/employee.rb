@@ -6,6 +6,8 @@ class Employee < ActiveRecord::Base
 
 	before_save :upper_case
 
+	validates :name, :email, presence: true
+
 	def upper_case
 		self.name.upcase!
 		self.email.upcase!

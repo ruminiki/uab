@@ -20,13 +20,19 @@ class RegistrationStatusesController < ApplicationController
 
   def create
     @registration_status = RegistrationStatus.new(registration_status_params)
-    @registration_status.save
-    redirect_to action: "index"
+    if @registration_status.save
+      redirect_to action: "index"  
+    else
+      respond_with(@registration_status)  
+    end
   end
 
   def update
-    @registration_status.update(registration_status_params)
-    redirect_to action: "index"
+    if @registration_status.update(registration_status_params)
+      redirect_to action: "index"  
+    else
+      respond_with(@registration_status)  
+    end
   end
 
   def destroy
