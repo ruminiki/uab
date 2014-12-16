@@ -14,6 +14,10 @@ class RegistrationsController < ApplicationController
 
   end
 
+  def edit
+    session["url_back_registration"] = request.referrer
+  end
+
   def show
     respond_with(@registration)
   end
