@@ -1,16 +1,21 @@
 class ListOfPresenceReport < Prawn::Document
 
-  require "prawn"
-  require "prawn/table"
+  LINE_HEIGHT = 18
 
   def initialize(course_class)
     super()
 
     @course_class = course_class
 
+    font = "Courrier"
+
+    font_size 10
+
     header 
 
     disciplina
+
+    professor
 
     tutor
 
@@ -24,12 +29,16 @@ class ListOfPresenceReport < Prawn::Document
   private
 
   def header(title=nil)
+
     move_cursor_to 710
+
     text "POLO DARCI RIBEIRO", size: 16, style: :bold, :align => :center
+
     move_cursor_to 690
+
     text 'LISTA DE PRESENÇA TURMA ' + @course_class.name, size: 14, style: :bold_italic, align: :center
     
-    text Time.now.strftime("%d/%m/%Y %I:%M"), size: 10, align: :center
+    text Time.now.strftime("%d/%m/%Y %H:%M"), size: 10, align: :center
 
     image "#{Rails.root}/public/assets/images/logo_uab.jpeg", :at => [15, 730], height: 70 
 
@@ -42,18 +51,38 @@ class ListOfPresenceReport < Prawn::Document
 
   def disciplina
 
-    @v_position = 630
+    @v_position = 636
 
-    draw_text "Disciplina(s):", :at => [10, @v_position]
+    draw_text "Disciplina(s):", :at => [16, @v_position]
     
-    @v_position += 20
+    @v_position += 14
 
-    bounding_box([0,@v_position], :width => 550, :height => 30) do
+    bounding_box([0,@v_position], :width => 550, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
 
-    bounding_box([0,@v_position], :width => 90, :height => 30) do
+    bounding_box([0,@v_position], :width => 90, :height => LINE_HEIGHT) do
+      stroke_color '000000'
+      stroke_bounds
+    end
+
+  end
+
+  def professor
+
+    @v_position = 618
+
+    draw_text "Professor(es):", :at => [10, @v_position]
+    
+    @v_position += 14
+
+    bounding_box([0,@v_position], :width => 550, :height => LINE_HEIGHT) do
+      stroke_color '000000'
+      stroke_bounds
+    end
+
+    bounding_box([0,@v_position], :width => 90, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
@@ -70,52 +99,50 @@ class ListOfPresenceReport < Prawn::Document
     if lines > 0
       
       employees.each do |name|
-        draw_text name, :at => [100, @v_position]
+        draw_text name[0].titleize, :at => [100, @v_position]
         
-        @v_position += 20
+        @v_position += 14
 
-        bounding_box([90,@v_position], :width => 250, :height => 30) do
+        bounding_box([90,@v_position], :width => 230, :height => LINE_HEIGHT) do
           stroke_color '000000'
           stroke_bounds
         end
 
-        bounding_box([340,@v_position], :width => 210, :height => 30) do
+        bounding_box([320,@v_position], :width => 230, :height => LINE_HEIGHT) do
           stroke_color '000000'
           stroke_bounds
         end
         
-        @v_position -= 50
+        @v_position -= 32
       
       end
 
-      @v_position += 15 #if lines == 1
-      #@v_position += 15 if lines == 2
-      #@v_position += 15 if lines == 3
+      @v_position += 9
 
-      draw_text "Tutor(es):", :at => [28, @v_position + lines * 30 / 2]
+      draw_text "Tutor(es):", :at => [30, @v_position + lines * LINE_HEIGHT / 2]
 
-      @v_position += 35 if lines == 1
-      @v_position += 5 + 30 * lines if lines > 1
+      @v_position += 23 if lines == 1
+      @v_position += 5 + LINE_HEIGHT * lines if lines > 1
       #@v_position += 95 if lines == 3
 
-      bounding_box([0,@v_position], :width => 90, :height => lines * 30) do
+      bounding_box([0,@v_position], :width => 90, :height => lines * LINE_HEIGHT) do
         stroke_color '000000'
         stroke_bounds
       end
 
-      @v_position -= (15 + 30 * lines)
+      @v_position -= (30 + LINE_HEIGHT * lines)
 
     else
-      draw_text "Tutor(es):", :at => [28, @v_position]
+      draw_text "Tutor(es):", :at => [35, @v_position]
       
-      @v_position += 20
+      @v_position += 14
 
-      bounding_box([0,@v_position], :width => 550, :height => 30) do
+      bounding_box([0,@v_position], :width => 550, :height => LINE_HEIGHT) do
         stroke_color '000000'
         stroke_bounds
       end
 
-      bounding_box([0,@v_position], :width => 90, :height => 30) do
+      bounding_box([0,@v_position], :width => 90, :height => LINE_HEIGHT) do
         stroke_color '000000'
         stroke_bounds
       end      
@@ -128,68 +155,72 @@ class ListOfPresenceReport < Prawn::Document
 
   def table_header
 
-    @v_position += 10
+    @v_position += 25
     move_cursor_to @v_position
 
     @v_position -= 15
 
     text "Alunos", size: 16, :align => :center
 
-    @v_position -= 20
+    @v_position -= 15
 
     draw_text "N.", :at => [10, @v_position]
     draw_text "Nome", :at => [150, @v_position]
     draw_text "Assinatura", :at => [410, @v_position]
 
-    @v_position += 20
+    @v_position += 15
 
-    bounding_box([0,@v_position], :width => 50, :height => 30) do
+    bounding_box([0,@v_position], :width => 30, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
 
-    bounding_box([50,@v_position], :width => 290, :height => 30) do
+    bounding_box([30,@v_position], :width => 290, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
 
-    bounding_box([340,@v_position], :width => 210, :height => 30) do
+    bounding_box([320,@v_position], :width => 230, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
-
-    @v_position -= 50
 
   end
 
   def table_data
 
-    text "Nenhum estudante encontrado", :align => :center if students.nil?
+    @v_position -= 31
+
+    if students.nil? || students.size <= 0
+      move_cursor_to @v_position
+      text "Nenhum estudante encontrado", :align => :center 
+    end
+
     index = 1
 
     students.each do |name|
 
       draw_text index, :at => [10, @v_position]
-      draw_text name, :at => [80, @v_position]
+      draw_text name[0].titleize,  :at => [40, @v_position]
 
-      @v_position += 20
+      @v_position += 13
 
-      bounding_box([0,@v_position], :width => 50, :height => 30) do
+      bounding_box([0,@v_position], :width => 30, :height => LINE_HEIGHT) do
         stroke_color '000000'
         stroke_bounds
       end
 
-      bounding_box([50,@v_position], :width => 290, :height => 30) do
+      bounding_box([30,@v_position], :width => 290, :height => LINE_HEIGHT) do
         stroke_color '000000'
         stroke_bounds
       end
 
-      bounding_box([340,@v_position], :width => 210, :height => 30) do
+      bounding_box([320,@v_position], :width => 230, :height => LINE_HEIGHT) do
         stroke_color '000000'
         stroke_bounds
       end  
 
-      @v_position -= 50
+      @v_position -= 31
       index += 1
 
     end
@@ -201,17 +232,17 @@ class ListOfPresenceReport < Prawn::Document
     draw_text col2, :at => [80, 550]
     draw_text col3, :at => [350, 550]
 
-    bounding_box([0,570], :width => 50, :height => 30) do
+    bounding_box([0,570], :width => 50, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
 
-    bounding_box([50,570], :width => 270, :height => 30) do
+    bounding_box([50,570], :width => 270, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
 
-    bounding_box([320,570], :width => 230, :height => 30) do
+    bounding_box([320,570], :width => 230, :height => LINE_HEIGHT) do
       stroke_color '000000'
       stroke_bounds
     end
@@ -222,7 +253,7 @@ class ListOfPresenceReport < Prawn::Document
     move_cursor_to 645
 
     #text 'Professor(es)'
-    #table([['']], :cell_style=>{:height=>30, :width=>550})    
+    #table([['']], :cell_style=>{:height=>LINE_HEIGHT, :width=>550})    
     
     move_cursor_to 595
 
