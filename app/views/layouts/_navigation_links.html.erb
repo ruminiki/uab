@@ -29,14 +29,6 @@
 
 	<li>
 		<%= 
-			if user_signed_in? && current_user.auth_to_view('student')
-				link_to "Alunos", "/students" 
-			end
-		%>
-	</li>	
-
-	<li>
-		<%= 
 			if user_signed_in? && current_user.auth_to_view('employee_category')
 				link_to "Categoria Colaborador", "/employee_categories" 
 			end
@@ -67,6 +59,15 @@
 
   </ul>
 </li>
+
+<li>
+	<%= 
+		if user_signed_in? && current_user.auth_to_view('student')
+			link_to "Alunos", "/students" 
+		end
+	%>
+</li>	
+
 
 <li>
 	<%= 
