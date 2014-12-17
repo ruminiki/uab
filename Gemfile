@@ -21,12 +21,12 @@ gem 'bootstrap-datepicker-rails'
 gem 'kaminari'
 gem 'prawn'
 gem 'prawn-table'
+gem 'devise'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'devise'
   #gem 'active_scaffold', github: 'activescaffold/active_scaffold', branch: 'master'
 end
 group :development, :test do
