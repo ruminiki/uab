@@ -3,6 +3,7 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
       t.string :name
       t.string :phone_number
+      t.string :mobile_phone_number
       t.string :email
       t.boolean :has_badge
       t.string :badge_observation
