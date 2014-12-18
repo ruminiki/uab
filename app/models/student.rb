@@ -31,8 +31,8 @@ class Student < ActiveRecord::Base
 
 		search = "";
 
-		search += "Student.joins('LEFT JOIN cities on cities.id = students.city_id').where('cities.name like ?', '%#{city}%')"
-		search += ".where('students.name like ?', '%#{name}%')"
+		search += "Student.joins(:city).where('cities.name like ?', '%#{city}%')." unless city.nil? || city.blank?
+		search += "where('students.name like ?', '%#{name}%')"
 		
 		if has_badge.present?
 			if has_badge == 'yes'
