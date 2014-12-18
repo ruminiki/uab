@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	     :recoverable, :rememberable, :trackable, :validatable
 
 	has_and_belongs_to_many :roles
+	before_destroy :check_associations
 
 	#selected role
 	attr_accessor :role
@@ -16,6 +17,10 @@ class User < ActiveRecord::Base
 
 	def inactive_message
 	  "Desculpe, essa conta foi desativada. Por favor contate o administrador."
+	end
+
+	def check_associations
+		!self.roles.any?
 	end
 
 	def auth_to_add(key)

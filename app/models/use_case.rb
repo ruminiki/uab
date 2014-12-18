@@ -1,6 +1,6 @@
 class UseCase < ActiveRecord::Base
 
-  	has_many :authorizations
+  	has_many :authorizations, :dependent => :delete_all
 
 	before_save :upper_case
 	before_update :upper_case

@@ -1,5 +1,7 @@
 class RegistrationStatus < ActiveRecord::Base
 
+	has_many :registrations, :dependent => :restrict_with_exception
+
 	before_save :upper_case
 	before_update :upper_case
 

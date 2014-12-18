@@ -1,6 +1,8 @@
 class DocumentCategory < ActiveRecord::Base
 	validates :name, presence: true
 
+	has_many :documents, :dependent => :restrict_with_exception
+
 	before_save :upper_case
 	before_update :upper_case
 

@@ -2,9 +2,12 @@ class Employee < ActiveRecord::Base
 
 	belongs_to :city, :autosave => true
 	belongs_to :employee_category, :autosave => true
-	has_and_belongs_to_many :course_classes
+	
+	has_and_belongs_to_many :course_classes, :dependent => :restrict_with_exception
 
 	before_save :upper_case
+
+	before_destroy :check_associations
 
 	validates :name, :email, presence: true
 
@@ -33,5 +36,8 @@ class Employee < ActiveRecord::Base
 
 	end
 
+	def check_associations
+		!self.course_classes.any?
+	end
 
 end

@@ -1,7 +1,7 @@
 class Role < ActiveRecord::Base
 
 	has_and_belongs_to_many :users
-	has_many :authorizations
+	has_many :authorizations, :dependent => :delete_all
 
 	validates :name, presence: true
 

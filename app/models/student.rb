@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
 
-	belongs_to :city, foreign_key: :city_id
-	has_many :registrations
+	belongs_to :city
+	has_many :registrations, :dependent => :restrict_with_exception
 	has_many :course_classes, :through => :registrations
 
 	validates :name, :email, presence: true
@@ -31,7 +31,7 @@ class Student < ActiveRecord::Base
 
 		search = "";
 
-		search += "Student.joins(:city).where('cities.name like ?', '%#{city}%')"
+		search += "Student.joins('LEFT JOIN cities on cities.id = students.city_id').where('cities.name like ?', '%#{city}%')"
 		search += ".where('students.name like ?', '%#{name}%')"
 		
 		if has_badge.present?

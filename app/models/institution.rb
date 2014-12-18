@@ -1,6 +1,6 @@
 class Institution < ActiveRecord::Base
 
-	has_many :course_classes
+	has_many :course_classes, :dependent => :restrict_with_exception
 
 	validates :name, :acronym, presence: true
 

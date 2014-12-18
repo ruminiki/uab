@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
 
-	has_many :course_classes
+	has_many :course_classes, :dependent => :restrict_with_exception
 
 	validates :name, :uniqueness => { :case_sensitive => false }, :presence => true
 	validates :acronym, :uniqueness => { :case_sensitive => false }, :presence => true

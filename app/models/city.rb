@@ -1,6 +1,9 @@
 class City < ActiveRecord::Base
 	validates :name, presence: true
 
+	has_many :students, :dependent => :restrict_with_exception
+	has_many :employees, :dependent => :restrict_with_exception
+
 	before_save :upper_case
 	before_update :upper_case
 
