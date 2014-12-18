@@ -10,8 +10,10 @@ class CreateEmployees < ActiveRecord::Migration
       t.integer :city_id
       t.string :address
       t.string :email
+      t.string :secondary_email
       t.string :pis
       t.string :mobile_phone_number
+      t.string :sanguine_type
 
       t.timestamps
     end
