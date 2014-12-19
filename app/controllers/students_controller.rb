@@ -3,7 +3,6 @@ class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :close_window, only: [:index]
   respond_to :html, :js
-  
   autocomplete :city, :name
 
   include ModelSearchHelper

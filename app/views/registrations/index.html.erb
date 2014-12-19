@@ -50,11 +50,11 @@
         <td><%= registration.course_class.name + ( registration.course_class.closed? ? ' (FECHADA)' : '') %></td>
         <td><%= (registration.registration_status.nil? ? "" : registration.registration_status.name) %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.edit', :default => "Editar"),
                 edit_registration_path(registration),
                 :disabled => !current_user.auth_to_edit('registration') || registration.course_class.closed?,
                 :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('.destroy', :default => "Remover"),
                 registration_path(registration),
                 :disabled => !current_user.auth_to_remove('registration') || registration.course_class.closed?,
                 :remote => true,

@@ -17,9 +17,11 @@
             <%= f.input :employee, 
                         :url => autocomplete_employee_name_course_classes_path, 
                         :as => :autocomplete,
+                        :autofocus => true,
                         :label=> false,
                         :input_html => { 
                           :class => 'form-control', 
+                          :autocomplete => 'off',
                           :style => 'max-width: 600px;',
                           :id_element=>'#employee_id'
                         } 

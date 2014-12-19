@@ -39,7 +39,11 @@ main {
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
-  }
+  //max-width: 90%;
+  //margin-left: 0px !important;
+  //min-height: 90%;
+}
+
 section {
   @extend .row;
   margin-top: 20px;
