@@ -4,7 +4,7 @@
 </div>
 
 <!-- FORM SEARCH -->
-<%= form_tag(course_classes_path, :method => "get", id: "search-form", :class => "form-inline course_class") do %>
+<%= form_tag(course_classes_path, :method => "get", id: "search-form", :class => "form-inline") do %>
 
   <fieldset class="well the-fieldset">
     <legend class="the-legend">Pesquisa</legend>
@@ -116,4 +116,5 @@
     <% end %>
   </tbody>
 </table>
+
 <%= paginate @course_classes %>

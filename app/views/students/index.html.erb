@@ -25,20 +25,14 @@
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag "Possui Crachá?" %>
+      <%= label_tag :status %>
       <div class="controls">
-        <%= label_tag "Sim" %>
-        <%= radio_button_tag(:search_student_has_badge, value = "yes", 
-            checked = (true if session[:search_student_has_badge] == 'yes'), options = {:class => 'form-control', :style=> 'width: 34px'}) %>
-        <%= label_tag "Não" %>
-        <%= radio_button_tag(:search_student_has_badge, value = "no", 
-            checked = (true if session[:search_student_has_badge] == 'no'), options = {:class => 'form-control', :style=> 'width: 34px'}) %>
-        <%= label_tag "Ambos" %>
-        <%= radio_button_tag(:search_student_has_badge, value = "both", 
-            checked = (true if session[:search_student_has_badge] == 'both'), options = {:class => 'form-control', :style=> 'width: 34px'}) %>
+        <%= select_tag :search_student_has_badge, 
+            options_for_select([["TODOS", "both"], ["SIM","yes"], ["NÃO", "no"]], session[:search_student_has_badge]),
+            :class => 'form-control', :style=> 'width: 120px' %>
       </div>
     </div>
-    
+
     <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
     <%= link_to "Limpar", students_clear_search_path,
           :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>

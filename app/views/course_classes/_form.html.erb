@@ -22,7 +22,7 @@ $(document).ready(function() {
   <div class="form-group">
     <%= f.label :nome, :class => 'col-sm-2 control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control', :style=> 'max-width: 600px' %>
+      <%= f.text_field :name, :autofocus => true, :class => 'form-control', :style=> 'max-width: 600px' %>
     </div>
     <%= error_span(@course_class[:name]) %>
   </div>
