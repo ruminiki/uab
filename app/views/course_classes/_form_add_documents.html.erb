@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  $(document).ready(function() { 
+     $('#document_file').on("change", function(){ 
+      var name = this.value.split("/");;
+      $('#file_name').val(name[name.length-1]);
+    });
+  });
+</script>
+
 <%= simple_form_for @course_class.document, 
     :html => { :class => "form-horizontal course_class", :multipart => true },
     :url => url_for(course_classes_add_document_path),
@@ -41,10 +50,12 @@
           <%= error_span(@course_class.document[:document_category]) %>
         </div>
 
-        <div class="form-group">
+        <div class="form-inline" style="margin-left: -11px;">
           <%= f.label :arquivo, :class => 'col-sm-2 control-label' %>
-          <div class="controls" style="max-width:600px; display: -webkit-box;">
-            <%= f.file_field :file, :style=> 'max-width: 600px', :title => "Escolha um arquivo" %>
+          <input id="file_name" class="form-control" disabled="disabled" />
+          <div class="fileUpload btn btn-default">
+            <span>Escolha um arquivo</span>
+            <%= f.file_field :file, :class => "upload"%>
           </div>
           <%= error_span(@course_class.document[:file]) %>
         </div>
