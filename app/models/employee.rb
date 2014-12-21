@@ -12,9 +12,9 @@ class Employee < ActiveRecord::Base
 	validates :name, :email, presence: true
 
 	def upper_case
-		self.name.upcase!
-		self.email.upcase!
-		self.address.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
+		self.email = self.email.mb_chars.upcase.to_s
+		self.address = self.address.mb_chars.upcase.to_s
 	end
 
 	def city_name

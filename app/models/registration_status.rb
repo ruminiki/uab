@@ -8,7 +8,7 @@ class RegistrationStatus < ActiveRecord::Base
 	validates :name, presence: true
 
 	def upper_case
-		self.name.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
 	end
 
 	def self.search(session)

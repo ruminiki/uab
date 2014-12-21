@@ -7,7 +7,7 @@ class EmployeeCategory < ActiveRecord::Base
 	before_update :upper_case
 
 	def upper_case
-		self.name.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
 	end
 
 	def self.search(session)

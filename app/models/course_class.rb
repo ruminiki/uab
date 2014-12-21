@@ -25,7 +25,7 @@ class CourseClass < ActiveRecord::Base
 	attr_accessor :document_id
 
 	def upper_case
-		self.name.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
 	end
 
 	def self.search(session)

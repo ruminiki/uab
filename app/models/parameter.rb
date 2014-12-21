@@ -8,7 +8,7 @@ class Parameter < ActiveRecord::Base
 	validates :name, :value, :description, presence: true
 
 	def upper_case
-		self.name.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
 	end
 
 	def self.search(session)

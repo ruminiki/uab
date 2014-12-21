@@ -9,10 +9,10 @@ class Student < ActiveRecord::Base
 	before_save :upper_case
 
 	def upper_case
-		self.name.upcase!
-		self.email.upcase!
-		self.badge_observation.upcase!
-		self.address.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
+		self.email = self.email.mb_chars.upcase.to_s
+		self.badge_observation = self.badge_observation.mb_chars.upcase.to_s
+		self.address = self.address.mb_chars.upcase.to_s
 	end
 
 	def city_name

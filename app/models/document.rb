@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
 	attr_accessor :file
 
 	def upper_case
-		self.name.upcase!
+		self.name = self.name.mb_chars.upcase.to_s
 	end
 	
 	def save
