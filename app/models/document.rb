@@ -19,9 +19,9 @@ class Document < ActiveRecord::Base
 		
 	    self.extension = File.extname(self.file.original_filename)
 		self.original_file_name = self.file.original_filename
-		self.original_file_name = self.original_file_name.delete! "^A-Za-z .".downcase
-		self.original_file_name.gsub!(' ', '_')
-
+		self.original_file_name = self.original_file_name.delete "^A-Za-zÇçãÃéÉíÍóÓõÕúÚ. "
+		self.original_file_name = self.original_file_name.downcase
+		
 	    self.disc_file_name = Time.now.to_f.to_s.gsub!('.','') + self.extension
 	    self.path = File.join('public/uploads',self.disc_file_name)
 	    
