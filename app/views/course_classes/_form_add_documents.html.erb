@@ -74,7 +74,7 @@
         </thead>
         <tbody>
           <% @course_class.documents.each do |document| %>
-            <tr>
+            <tr id="document_<%=document.id%>">
               <td width="30%"><%= document.name %></td>
               <td><%= (document.document_category.nil? ? "" : document.document_category.name) %></td>
               <td><%= document.original_file_name %></td>
