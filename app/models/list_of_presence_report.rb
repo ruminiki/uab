@@ -30,13 +30,14 @@ class ListOfPresenceReport < Prawn::Document
 
   def header(title=nil)
 
-    move_cursor_to 710
+    move_cursor_to 720
 
     text "POLO DARCI RIBEIRO", size: 16, style: :bold, :align => :center
+    text @course_class.institution.name, size: 12, style: :bold, :align => :center
 
-    move_cursor_to 690
+    move_cursor_to 685
 
-    text 'LISTA DE PRESENÇA TURMA ' + @course_class.name, size: 14, style: :bold_italic, align: :center
+    text 'LISTA DE PRESENÇA TURMA ' + @course_class.name, size: 12, style: :bold_italic, align: :center
     
     text Time.now.strftime("%d/%m/%Y %H:%M"), size: 10, align: :center
 
@@ -93,13 +94,16 @@ class ListOfPresenceReport < Prawn::Document
 
     @v_position = 600
 
-    lines = 0 if employees.nil?
-    lines = employees.size if !employees.nil?
+    #carrega a coleção ordenada
+    @course_class.employees.order("name ASC")
+
+    lines = 0 if @course_class.employees.nil?
+    lines = @course_class.employees.size if !@course_class.employees.nil?
 
     if lines > 0
       
-      employees.each do |name|
-        draw_text name[0].titleize, :at => [100, @v_position]
+      @course_class.employees.each do |employee|
+        draw_text employee.name.titleize, :at => [100, @v_position]
         
         @v_position += 14
 
@@ -191,17 +195,24 @@ class ListOfPresenceReport < Prawn::Document
 
     @v_position -= 31
 
-    if students.nil? || students.size <= 0
+    #carrega a coleção ordenada
+    #@course_class.registrations.joins(:student).order("students.name")
+
+    if @course_class.registrations.nil? || @course_class.registrations.size <= 0
       move_cursor_to @v_position
       text "Nenhum estudante encontrado", :align => :center 
     end
 
     index = 1
 
-    students.each do |name|
+    #@course_class.registrations.sort! { |a,b| a.student.name.downcase <=> b.student.name.downcase }
+
+    @course_class.registrations.joins(:student).each do |registration|
+
+      next if !registration.registration_status.show_list_of_presence
 
       draw_text index, :at => [10, @v_position]
-      draw_text name[0].titleize,  :at => [40, @v_position]
+      draw_text registration.student.name.titleize,  :at => [40, @v_position]
 
       @v_position += 13
 
@@ -275,14 +286,6 @@ end
     else
       table(table_data,:column_widths=>[25,270,240])
     end
-  end
-
-  def employees
-    @course_class.employees.map{ |e| [e.name, ""] } if !@course_class.nil? && !@course_class.employees.nil?
-  end
-
-  def students
-    @course_class.registrations.map{ |r| [r.student.name] } if !@course_class.nil? && !@course_class.registrations.nil?
   end
 
 end
