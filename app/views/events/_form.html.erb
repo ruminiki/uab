@@ -1,0 +1,68 @@
+<script type="text/javascript">
+
+$(document).ready(function() { 
+  $(".date-time").mask("99/99/9999 99:99");
+});
+
+</script>
+
+<%= form_for @event, :html => { :class => "form-horizontal event" } do |f| %>
+
+    <% if @event.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nome, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :autofocus => true, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@event[:name]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :local, :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :local, :class => 'form-control', :style=> 'max-width: 600px' %>
+    </div>
+    <%= error_span(@event[:local]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Início", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :begin, :class => 'form-control date-time', :style=> 'max-width: 250px'  %>
+    </div>
+    <%= error_span(@event[:begin]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Fim", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_field :end, :class => 'form-control date-time', :style=> 'max-width: 250px'  %>
+    </div>
+    <%= error_span(@event[:end]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Resumo", :class => 'col-sm-2 control-label' %>
+    <div class="controls">
+      <%= f.text_area :resume, :class => 'form-control', :style=> 'max-width: 600px'  %>
+    </div>
+    <%= error_span(@event[:resume]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit "Salvar Evento", :class => 'col-sm-offset-2 btn btn-primary', :remote => true %>
+  <%= link_to "Cancelar", events_path, :class => 'btn btn-default' %>
+
+<% end %>

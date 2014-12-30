@@ -1,0 +1,112 @@
+<script type="text/javascript">
+
+$(document).ready(function() { 
+  $(".date-time").mask("99/99/9999 99:99");
+});
+
+</script>
+<style type="text/css">
+
+.event{
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.td-hour{
+  font-size: 15px;
+}
+
+</style>
+<%- model_class = Event -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => "Agenda" %></h3>
+</div>
+<!-- FORM SEARCH -->
+<%= form_tag(events_path, :method => "get", id: "search-form", :class => "form-inline") do %>
+
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend">Pesquisa</legend>
+    <div class="form-group">
+      <%= label_tag :nome %>
+      <div class="controls">
+        <%= text_field_tag :search_event_name, session[:search_event_name], :class => 'form-control', :style=> 'max-width: 600px' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag "Data/Hora" %>
+      <div class="controls">
+        <%= text_field_tag :search_event_begin, session[:search_event_begin], :class => 'form-control date-time', :style=> 'max-width: 200px' %>
+      </div>
+    </div>
+ 
+    <!--<div class="form-group">
+      <%= label_tag "Até" %>
+      <div class="controls">
+        <%= text_field_tag :search_event_end, session[:search_event_end], :class => 'form-control date-time', :style=> 'max-width: 200px' %>
+      </div>
+    </div> -->
+
+    <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
+    <%= link_to "Limpar", events_clear_search_path, 
+          :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
+
+  </fieldset>
+
+<% end %>
+
+<%= 
+    link_to t('.new', :default => "Novo"),
+      current_user.auth_to_add('event') ? new_event_path : "",
+      :disabled => !current_user.auth_to_add('event'),
+      :class => 'btn btn-primary' 
+%>
+
+<!-- <table class="table table-striped"> -->
+<!--   <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name("Início") %></th>
+      <th><%= model_class.human_attribute_name("Fim") %></th>
+      <th><%=t '.actions', :default => "Ações" %></th>
+    </tr>
+  </thead> -->
+<p/>
+
+<% @events.each do |event| %>
+  <table width="100%" class="event">
+    <tr class="tr-data-hora">
+      <td class="td-hour"><b><%= event.begin %></b></td>
+    </tr>
+    <tr>
+      <td width="40%"><%=event.name%></td>
+      <td width="10%"><%= event.local%></td>
+      <td width="40%"><i><%= event.resume%></i></td>
+      <td width="10%">
+        <%= 
+          link_to t('.edit', :default => "Editar"),
+            current_user.auth_to_edit('event') ? edit_event_path(event) : "", 
+            :disabled => !current_user.auth_to_edit('event'),
+            :class => 'btn btn-default btn-xs'
+        %>
+
+        <%= 
+          link_to t('.destroy', :default => "Remover"),
+            current_user.auth_to_remove('event') ? event_path(event) : "", 
+            :disabled => !current_user.auth_to_remove('event'),
+            :remote => true,
+            :method => :delete,
+            :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja excluir?') },
+            :class => 'btn btn-xs btn-danger' 
+        %>
+      </td>
+    </tr>
+  </table>
+  
+<% end %>
+
+<%= paginate @events %>

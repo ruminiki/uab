@@ -83,6 +83,13 @@
 		end
 	%>
 </li>
+<li>
+	<%= 
+		if user_signed_in? && current_user.auth_to_view('event')
+			link_to "Agenda", "/events" 
+		end
+	%>
+</li>
 
 <% if user_signed_in? && (current_user.super? || current_user.admin?) %>
 <li class="dropdown">

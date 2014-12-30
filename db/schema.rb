@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210131758) do
+ActiveRecord::Schema.define(version: 20141230113605) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "role_id"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.datetime "updated_at"
   end
 
+  add_index "authorizations", ["role_id"], name: "role_id", using: :btree
+  add_index "authorizations", ["use_case_id"], name: "use_case_id", using: :btree
+
   create_table "cities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -34,10 +37,15 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.string   "name"
     t.integer  "institution_id"
     t.integer  "course_id"
-    t.date     "begin"
+    t.string   "begin",          limit: 10
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "end",            limit: 10
+    t.boolean  "closed",                    default: false, null: false
   end
+
+  add_index "course_classes", ["course_id"], name: "course_id", using: :btree
+  add_index "course_classes", ["institution_id"], name: "institution_id", using: :btree
 
   create_table "course_classes_documents", force: true do |t|
     t.integer  "document_id"
@@ -89,11 +97,24 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.string   "phone_number"
     t.string   "rg"
     t.string   "cpf"
-    t.date     "birthday"
+    t.string   "birthday",             limit: 10
     t.integer  "employee_category_id"
     t.integer  "city_id"
     t.string   "address"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "employees", ["city_id"], name: "city_id", using: :btree
+  add_index "employees", ["employee_category_id"], name: "employee_category_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "begin"
+    t.string   "end"
+    t.string   "local"
+    t.text     "resume"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -105,6 +126,8 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.string   "site"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contact",      limit: 100
+    t.string   "acronym",      limit: 20
   end
 
   create_table "parameters", force: true do |t|
@@ -119,19 +142,23 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "show_list_of_presence", default: false
   end
 
   create_table "registrations", force: true do |t|
     t.integer  "student_id"
     t.integer  "course_class_id"
     t.integer  "registration_status_id"
-    t.date     "date_abandonment"
-    t.date     "date_conclusion"
+    t.string   "date_abandonment",       limit: 10
+    t.string   "date_conclusion",        limit: 10
     t.float    "end_note",               limit: 24
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "registrations", ["course_class_id"], name: "course_class_id", using: :btree
+  add_index "registrations", ["student_id"], name: "student_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -146,13 +173,16 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.datetime "updated_at"
   end
 
+  add_index "roles_users", ["role_id"], name: "role_id", using: :btree
+  add_index "roles_users", ["user_id"], name: "user_id", using: :btree
+
   create_table "students", force: true do |t|
     t.string   "name"
     t.string   "phone_number"
     t.string   "email"
     t.boolean  "has_badge"
     t.string   "badge_observation"
-    t.date     "birthday"
+    t.string   "birthday",          limit: 10
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -160,6 +190,8 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.string   "cpf"
     t.string   "sanguine_type"
     t.integer  "city_id"
+    t.string   "badge_number",      limit: 15
+    t.string   "badge_end_date",    limit: 10
   end
 
   add_index "students", ["city_id"], name: "index_students_on_city_id", using: :btree
@@ -172,12 +204,12 @@ ActiveRecord::Schema.define(version: 20141210131758) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -187,7 +219,7 @@ ActiveRecord::Schema.define(version: 20141210131758) do
     t.string   "name"
     t.boolean  "admin"
     t.boolean  "active"
-    t.boolean  "super"
+    t.boolean  "super",                  default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

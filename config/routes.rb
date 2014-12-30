@@ -16,29 +16,18 @@ Rails.application.routes.draw do
 	  get  "course_classes/generate_list_of_presence" => "course_classes#generate_list_of_presence"  
 	  get  "course_classes/close_course_class" => "course_classes#close_course_class"  
 	  get  "course_classes/reopen_course_class" => "course_classes#reopen_course_class"  
-
 	  get  "documents/download_file" => "documents#download_file"
-
 	  get  "students/add_for_select" => "students#add_for_select"
 	  get  "students/clear_search" => "students#clear_search"
-
 	  get  "employees/add_for_select" => "employees#add_for_select"
 	  get  "employees/clear_search" => "employees#clear_search"
-
       get  "cities/clear_search" => "cities#clear_search"
-
       get  "institutions/clear_search" => "institutions#clear_search"
-
       get  "courses/clear_search" => "courses#clear_search"
-
  	  get  "employee_categories/clear_search" => "employee_categories#clear_search"     
-
  	  get  "registration_statuses/clear_search" => "registration_statuses#clear_search"   
-
  	  get  "document_categories/clear_search" => "document_categories#clear_search"  
-
  	  get  "parameters/clear_search" => "parameters#clear_search"  
-
  	  post "accounts/update_user_account" => "accounts#update_user_account"  
  	  get  "accounts/activate_user" => "accounts#activate_user"  
  	  get  "accounts/inactivate_user" => "accounts#inactivate_user"  
@@ -46,16 +35,15 @@ Rails.application.routes.draw do
 	  get  "accounts/add_role" => "accounts#add_role"	
 	  get  "accounts/remove_role" => "accounts#remove_role"    
 	  get  "accounts/clear_search" => "accounts#clear_search"
-
- 	  get  "use_cases/clear_search" => "use_cases#clear_search"  
-
+	  get  "use_cases/clear_search" => "use_cases#clear_search"  
  	  get  "roles/clear_search" => "roles#clear_search"
  	  get  "roles/authorizations" => "roles#authorizations"	
  	  get  "roles/update_authorization" => "roles#update_authorization"
  	  get  "roles/add_for_select" => "roles#add_for_select"
-
  	  get  "registrations/clear_search" => "registrations#clear_search"
+ 	  get  "events/clear_search" => "events#clear_search"
 
+	  resources :events
 	  resources :accounts
 	  resources :roles
 	  resources :authorizations
