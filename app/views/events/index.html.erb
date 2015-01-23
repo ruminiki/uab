@@ -9,11 +9,10 @@ $(document).ready(function() {
 
 .event{
   border: solid 1px #ccc;
-  border-radius: 5px;
   padding: 10px;
   display: block;
   width: 100%;
-  margin-top: 5px;
+  margin-top: -1px;
 }
 
 .td-hour{
@@ -26,6 +25,7 @@ $(document).ready(function() {
   <h3><%=t '.title', :default => "Agenda" %></h3>
 </div>
 <!-- FORM SEARCH -->
+<!--
 <%= form_tag(events_path, :method => "get", id: "search-form", :class => "form-inline") do %>
 
   <fieldset class="well the-fieldset">
@@ -40,30 +40,32 @@ $(document).ready(function() {
     <div class="form-group">
       <%= label_tag "Data/Hora" %>
       <div class="controls">
-        <%= text_field_tag :search_event_begin, session[:search_event_begin], :class => 'form-control date-time', :style=> 'max-width: 200px' %>
+        <%= text_field_tag :search_event_begin, session[:search_event_begin], :class => 'form-control date', :style=> 'max-width: 200px' %>
       </div>
     </div>
  
-    <!--<div class="form-group">
-      <%= label_tag "Até" %>
-      <div class="controls">
-        <%= text_field_tag :search_event_end, session[:search_event_end], :class => 'form-control date-time', :style=> 'max-width: 200px' %>
-      </div>
-    </div> -->
-
     <%= submit_tag "Pesquisar", :class => 'btn btn-success sm', :style => "margin-top: 22px;" %>
     <%= link_to "Limpar", events_clear_search_path, 
           :class => 'btn btn-default sm', :style => "margin-top: 22px;" %>
 
   </fieldset>
-
 <% end %>
+-->
+
+<div class="form-group" style="width:100%;justify-content: center;align-items: center;">
+  <div style="left: 50%;margin-left: -230px;position: absolute;width: 460px;">
+    <%= link_to @previous_month, events_previous_month_path, :class => 'btn btn-default sm', :style=>"width:150px"%>
+    <%= link_to @selected_month, nil, :class => 'btn btn-warning sm', :style=>"width:150px"%>
+    <%= link_to @next_month, events_next_month_path, :class => 'btn btn-default sm', :style=>"width:150px"%>
+  </div>
+</div>
+
+<br><br>
 
 <%= 
-    link_to t('.new', :default => "Novo"),
-      current_user.auth_to_add('event') ? new_event_path : "",
-      :disabled => !current_user.auth_to_add('event'),
-      :class => 'btn btn-primary' 
+  link_to "Novo", current_user.auth_to_add('event') ? new_event_path : "",
+    :disabled => !current_user.auth_to_add('event'),
+    :class => 'btn btn-primary'
 %>
 
 <!-- <table class="table table-striped"> -->
@@ -77,23 +79,28 @@ $(document).ready(function() {
   </thead> -->
 <p/>
 
-<% @events.each do |event| %>
-  <table width="100%" class="event">
-    <tr class="tr-data-hora">
-      <td class="td-hour"><b><%= event.begin %></b></td>
-    </tr>
-    <tr>
-      <td width="40%"><%=event.name%></td>
-      <td width="10%"><%= event.local%></td>
-      <td width="40%"><i><%= event.resume%></i></td>
-      <td width="10%">
-        <%= 
-          link_to t('.edit', :default => "Editar"),
+<table class="table table-striped">
+  <tbody>
+    <% @events.each do |event| %>
+    <% if @last_day_showed != event.formated_begin_date_without_time %>
+      <tr class="tr-data-hora">
+        <td class="td-hour" colspan="4">
+          <% @last_day_showed = event.formated_begin_date_without_time %>
+          <%= event.formated_begin_date_without_time %>
+        </td>
+      </tr>
+    <% end %>
+    <tr id="event_<%=event.id%>">
+      <td width="80%" style="padding-left:30px">
+        <b><%= link_to event.formated_begin_date_only_time,
             current_user.auth_to_edit('event') ? edit_event_path(event) : "", 
             :disabled => !current_user.auth_to_edit('event'),
-            :class => 'btn btn-default btn-xs'
-        %>
-
+            :class => 'btn btn-default btn-xs'%></b> 
+        <%= event.name %>
+        <i><b><%= event.local.downcase! %></b></i>
+        <i><%= event.resume %></i>
+      </td>
+      <td width="20%">
         <%= 
           link_to t('.destroy', :default => "Remover"),
             current_user.auth_to_remove('event') ? event_path(event) : "", 
@@ -105,8 +112,8 @@ $(document).ready(function() {
         %>
       </td>
     </tr>
-  </table>
-  
-<% end %>
+    <% end %>
+  </tbody>
+</table>
 
 <%= paginate @events %>

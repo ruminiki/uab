@@ -6,7 +6,18 @@ class EventsController < ApplicationController
   include ModelSearchHelper
 
   def index
-    session["search_event_begin"] = Time.now.strftime("%d/%m/%Y 00:00") if session["search_event_begin"].blank?
+    #session.delete :search_event_month_selected
+    if session["search_event_month_selected"].blank?
+      session["search_event_month_selected"] = Time.now.strftime("%Y-%m")
+      @selected_month = Time.now.strftime("%B - %Y")
+      @previous_month = (Time.now - 1.month).strftime("%B - %Y")
+      @next_month = (Time.now + 1.month).strftime("%B - %Y")
+    else
+      @selected_month = Date.strptime(session["search_event_month_selected"],"%Y-%m")
+      @previous_month = (@selected_month - 1.month).strftime("%B - %Y")
+      @next_month = (@selected_month + 1.month).strftime("%B - %Y")
+      @selected_month = @selected_month.strftime("%B - %Y")
+    end
     @events = self.search(params, Event)
   end
 
@@ -20,14 +31,14 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event.begin = @event.begin.strftime("%d/%m/%Y %H:%m")
-    @event.end = @event.end.strftime("%d/%m/%Y %H:%m")
+    @event.begin = @event.begin.strftime("%d/%m/%Y %H:%M")
+    @event.end = @event.end.strftime("%d/%m/%Y %H:%M")
   end
 
   def create
     @event = Event.new(event_params)
-    @event.begin = Time.parse(event_params[:begin])
-    @event.end = Time.parse(event_params[:end])
+    @event.begin = Time.parse(event_params[:begin] + 'UTC')
+    @event.end = Time.parse(event_params[:end] + 'UTC')
     if @event.save
       redirect_to action: "index"
     else
@@ -53,6 +64,24 @@ class EventsController < ApplicationController
     session.delete :search_event_name
     session.delete :search_event_begin
     session.delete :search_event_end
+    redirect_to action: "index"
+  end
+
+  def previous_month
+    @selected_month = Date.strptime(session["search_event_month_selected"],"%Y-%m") - 1.month
+    @previous_month = (@selected_month - 1.month).strftime("%B - %Y")
+    @next_month = (@selected_month + 1.month).strftime("%B - %Y")
+    session["search_event_month_selected"] = @selected_month 
+    @selected_month = @selected_month.strftime("%B - %Y")
+    redirect_to action: "index"
+  end
+
+  def next_month
+    @selected_month = Date.strptime(session["search_event_month_selected"],"%Y-%m") + 1.month
+    @previous_month = (@selected_month - 1.month).strftime("%B - %Y")
+    @next_month = (@selected_month + 1.month).strftime("%B - %Y")
+    session["search_event_month_selected"] = @selected_month 
+    @selected_month = @selected_month.strftime("%B - %Y")
     redirect_to action: "index"
   end
 

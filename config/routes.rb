@@ -42,6 +42,8 @@ Rails.application.routes.draw do
  	  get  "roles/add_for_select" => "roles#add_for_select"
  	  get  "registrations/clear_search" => "registrations#clear_search"
  	  get  "events/clear_search" => "events#clear_search"
+ 	  get  "events/previous_month" => "events#previous_month"
+ 	  get  "events/next_month" => "events#next_month"
 
 	  resources :events
 	  resources :accounts

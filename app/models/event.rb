@@ -14,15 +14,35 @@ class Event < ActiveRecord::Base
 
 	def self.search(session)
 		name   = session["search_event_name"]
-		_begin = session["search_event_begin"]
+		_month = session["search_event_month_selected"]
+
+	    if _month.blank?
+	      _month = Time.now.strftime("%Y-%m")
+	    else
+	      _month = _month[0..6]
+	    end
+
 		#_end   = session["search_event_end"]
 		
 		where("events.name like ?", "%#{name}%")
-		.where("('#{_begin}' between events.begin and events.end) or events.begin >= '#{_begin}'")
+		.where("DATE_FORMAT(begin, '%Y-%m') = '#{_month}'")
 		.order("begin")
 		#.where('events.end <= ?', '#{_end}')
-
-
 	end
 
+	def formated_begin_date
+		self.begin.strftime("%d/%m/%Y %H:%M") if self.begin
+	end
+
+	def formated_begin_date_without_time
+		self.begin.strftime("%d/%m/%Y") if self.begin
+	end	
+
+	def formated_begin_date_only_time
+		self.begin.strftime("%H:%M") if self.begin
+	end	
+
+	def formated_end_date
+		self.end.strftime("%d/%m/%Y %H:%M") if self.end
+	end
 end
