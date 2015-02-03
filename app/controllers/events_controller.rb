@@ -42,8 +42,9 @@ class EventsController < ApplicationController
     @event.end = Time.parse(event_params[:end] + 'UTC')
 
     if @event.save
+      redirect_to action: "index"
     else
-
+      respond_with(@event)   
     end
 
   end
