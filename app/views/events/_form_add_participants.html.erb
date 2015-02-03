@@ -1,0 +1,98 @@
+<%= simple_form_for @event, 
+    :html => { :class => "form-horizontal course_class"},
+    :url => url_for(events_add_participant_path),
+    :method => 'get' do |f| %>
+
+
+  <div class="page-header">
+    <h3>Participantes Evento</h3>
+  </div>
+
+  <% if @event.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-body">
+        <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+  <!--GROUP ADD PARTICIPANT -->
+  <fieldset class="well the-fieldset">
+    <div class="form-group">
+        <%= f.label :participante, :class => 'col-sm-2 control-label' %>
+        <div class="controls">
+
+            <%= f.input :event_participant, 
+                        :url => autocomplete_employee_name_events_path, 
+                        :as => :autocomplete,
+                        :label=> false,
+                        :input_html => { 
+                          :class => 'form-control', 
+                          :autocomplete => 'off',
+                          :style => 'max-width: 600px;',
+                          :id_element=>'#event_participant_id'
+                        } 
+            %>
+
+            <%= f.hidden_field :event_participant_id, :id => "event_participant_id", :name => "event_participant_id" %>
+            <%= f.hidden_field :id, :id => "id", :name => "id" %>
+
+        </div>
+
+        <br>
+
+        <%= f.submit 'Adicionar Participante',
+              :disabled => !current_user.auth_to_edit('event'),
+              :class => 'col-sm-offset-2 btn btn-primary' %>
+        <%= link_to "Cadastrar Novo", 
+              employees_add_for_select_path, 
+              :disabled => !current_user.auth_to_add('employee'),
+              :class => 'btn btn-success', 
+              :target => "blank" %> 
+        
+    </div>
+  </fieldset>
+  <!-- STUDENTS -->
+  <div role="tabpanel" class="tab-pane active" id="students">
+      <%- model_class = Student -%>
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event.event_participants.each do |participant| %>
+          <tr id="event_participant_<%=participant.id%>">
+            <td><%= participant.name %></td>
+            <td><%= participant.email %></td>
+          
+            <td>
+
+              <%= link_to "Remover", 
+                    events_remove_participant_path(:id => @event.id, :event_participant_id => participant.id),
+                    :data => { :confirm => t('.confirm', :default => 'Tem certeza que deseja remover o participante?') },
+                    :remote => true,
+                    :disabled => !current_user.auth_to_edit('event'),
+                    :class=>'btn btn-xs btn btn-danger'
+              %>
+
+            </td>
+          
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to "Voltar", events_path, :class => 'btn btn-default' %>                      
+ 
+<% end %>

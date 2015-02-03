@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230113605) do
+ActiveRecord::Schema.define(version: 20150123192519) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "role_id"
@@ -109,10 +109,20 @@ ActiveRecord::Schema.define(version: 20141230113605) do
   add_index "employees", ["city_id"], name: "city_id", using: :btree
   add_index "employees", ["employee_category_id"], name: "employee_category_id", using: :btree
 
+  create_table "event_participants", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.date     "notified_at"
+    t.integer  "event_id"
+    t.integer  "employee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "name"
-    t.string   "begin"
-    t.string   "end"
+    t.datetime "begin"
+    t.datetime "end"
     t.string   "local"
     t.text     "resume"
     t.datetime "created_at"

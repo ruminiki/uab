@@ -91,16 +91,20 @@ $(document).ready(function() {
       </tr>
     <% end %>
     <tr id="event_<%=event.id%>">
-      <td width="80%" style="padding-left:30px">
+      <td style="padding-left:30px">
         <b><%= link_to event.formated_begin_date_only_time,
             current_user.auth_to_edit('event') ? edit_event_path(event) : "", 
             :disabled => !current_user.auth_to_edit('event'),
             :class => 'btn btn-default btn-xs'%></b> 
         <%= event.name %>
-        <i><b><%= event.local.downcase! %></b></i>
+        <b><%= event.local.downcase! %></b>
         <i><%= event.resume %></i>
       </td>
-      <td width="20%">
+      <td>
+        <%= link_to 'Participantes', 
+          events_participants_path(:id=>event.id),
+          :disabled => !current_user.auth_to_view('event'),
+          :class => 'btn btn-default btn-xs' %>
         <%= 
           link_to t('.destroy', :default => "Remover"),
             current_user.auth_to_remove('event') ? event_path(event) : "", 

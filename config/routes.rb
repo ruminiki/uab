@@ -44,8 +44,14 @@ Rails.application.routes.draw do
  	  get  "events/clear_search" => "events#clear_search"
  	  get  "events/previous_month" => "events#previous_month"
  	  get  "events/next_month" => "events#next_month"
+ 	  get  "events/add_participant" => "events#add_participant"
+ 	  get  "events/remove_participant" => "events#remove_participant"
+ 	  get  "events/participants" => "events#participants"
 
-	  resources :events
+	  resources :events do
+	  	get :autocomplete_employee_name, :on => :collection
+	  end
+	  resources :event_participants
 	  resources :accounts
 	  resources :roles
 	  resources :authorizations

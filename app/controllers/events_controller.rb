@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
-  
+
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json
+  autocomplete :employee, :name, :full => true, :extra_data => [:id]
 
   include ModelSearchHelper
 
@@ -39,11 +40,12 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.begin = Time.parse(event_params[:begin] + 'UTC')
     @event.end = Time.parse(event_params[:end] + 'UTC')
+
     if @event.save
-      redirect_to action: "index"
     else
-      respond_with(@event)  
+
     end
+
   end
 
   def update
@@ -83,6 +85,49 @@ class EventsController < ApplicationController
     session["search_event_month_selected"] = @selected_month 
     @selected_month = @selected_month.strftime("%B - %Y")
     redirect_to action: "index"
+  end
+
+  def participants
+    @event = Event.find(params[:id])
+    render '_form_add_participants'
+  end
+
+  def add_participant
+
+    @event = Event.find(params[:id])
+    @event.errors.clear
+    
+    begin
+      @employee = Employee.find(params[:event_participant_id])      
+      @event.event_participants.each do |participant|
+        if @employee.id == participant.employee.id
+          @event.errors.add(:info, "O participante já está registrado no evento.")
+        end
+      end
+    rescue
+      @event.errors.add(:info, "Participante não encontrado. Por favor selecione um participante válido. ")
+    end
+
+    #if occurred any erros, back to page
+    if @event.errors.any?
+      render '_form_add_participants'
+      return
+    end
+
+    participant = EventParticipant.new
+    participant.name = @employee.name
+    participant.email = @employee.email
+    participant.employee = @employee
+
+    @event.event_participants << participant
+
+    render '_form_add_participants'
+  end
+
+  def remove_participant
+    @event = Event.find(params[:id])
+    @event.event_participants.delete(params[:event_participant_id])
+    render "destroy_event_participant"
   end
 
   private

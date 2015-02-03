@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 </script>
 
-<%= form_for @event, :html => { :class => "form-horizontal event" } do |f| %>
+<%= simple_form_for @event, :html => { :class => "form-horizontal event" } do |f| %>
 
     <% if @event.errors.any? %>
     <div id="error_expl" class="panel panel-danger">

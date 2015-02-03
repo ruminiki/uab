@@ -1,11 +1,17 @@
 class Event < ActiveRecord::Base
 
+	has_many :event_participants
+
 	validates :name, presence: true
 	validates :begin, presence: true
 	validates :end, presence: true
 
 	before_save :upper_case
 	before_update :upper_case
+
+	#selected participant
+	attr_accessor :event_participant
+	attr_accessor :event_participant_id
 
 	def upper_case
 		self.name = self.name.mb_chars.upcase.to_s

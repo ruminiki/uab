@@ -1,6 +1,6 @@
-class EventsParticipants < ActiveRecord::Migration
+class EventParticipants < ActiveRecord::Migration
   def change
-    create_table :events_participants do |t|
+    create_table :event_participants do |t|
       t.string :name
       t.string :email
       t.date :notified_at
