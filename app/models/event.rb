@@ -41,7 +41,6 @@ class Event < ActiveRecord::Base
 	end
 
 	def formated_begin_date_without_time
-		self.begin = Date.strptime(self.begin,"%Y-%m-%d")
 		self.begin.strftime("%d/%m/%Y") if self.begin
 	end	
 
