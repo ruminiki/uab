@@ -45,6 +45,7 @@ class RegistrationsController < ApplicationController
   def clear_search
     session.delete :search_course_class_name_in_registration
     session.delete :search_student_name_in_registration
+    session.delete :search_registration_in_status
     redirect_to action: "index"
   end
 

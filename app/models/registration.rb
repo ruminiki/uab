@@ -18,12 +18,17 @@ class Registration < ActiveRecord::Base
 
 		course_class = session["search_course_class_name_in_registration"]
 		student      = session["search_student_name_in_registration"]
+		status       = session["search_registration_in_status"]
 
 		search = "";
 
 		search += "Registration.joins(:course_class, :student)"
 		search += ".where('course_classes.name like ? and students.name like ? ', '%#{course_class}%', '%#{student}%')"
 		
+		if status.present?
+			search += ".where('registration_status_id = ?', #{status})"
+		end
+
 		eval(search)
 
 	end
