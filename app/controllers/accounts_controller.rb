@@ -1,4 +1,4 @@
-  class AccountsController < ApplicationController
+    class AccountsController < ApplicationController
 
   respond_to :html, :js
 
@@ -39,6 +39,12 @@
   def update_user_account
 
     @user = User.find(params[:id])
+
+    if @user.id != current_user.id
+      @user.active = params[:active]
+      @user.admin  = params[:admin]
+    end
+
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(user_params)
