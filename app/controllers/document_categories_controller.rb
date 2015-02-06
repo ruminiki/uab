@@ -7,7 +7,6 @@ class DocumentCategoriesController < ApplicationController
 
   def index
     @document_categories = self.search(params, DocumentCategory)
-    @total = DocumentCategory.distinct.count('id')
     respond_with(@document_categories)
   end  
   

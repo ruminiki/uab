@@ -8,6 +8,7 @@ module ModelSearchHelper
 	      end	
 	    end
 
+	    @total = model.search(session).count
 		model.search(session).page(params[:page]).per(10)
 	   
 	end

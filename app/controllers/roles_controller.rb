@@ -9,7 +9,6 @@ class RolesController < ApplicationController
   
   def index
     @roles = self.search(params, Role)
-    @total = Role.distinct.count('id')
     respond_with(@roles)
   end
 

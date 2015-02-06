@@ -3,7 +3,6 @@ class AuthorizationsController < ApplicationController
 
   def index
     @authorizations = Authorization.all
-    @total = Authorization.distinct.count('id')
     respond_with(@authorizations)
   end
 

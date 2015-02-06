@@ -8,7 +8,6 @@ class InstitutionsController < ApplicationController
 
   def index
     @institutions = self.search(params, Institution)
-    @total = Institution.distinct.count('id')
     respond_with(@institutions)
   end
 

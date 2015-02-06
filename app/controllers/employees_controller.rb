@@ -10,7 +10,6 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = self.search(params, Employee)
-    @total = Employee.distinct.count('id')
     respond_with(@employees)
   end
 

@@ -8,7 +8,6 @@
     #@users = Array.new
     #@users << User.where("super = ? ", true) if current_user.super?
     @users = self.search(params, User)
-    @total = User.distinct.count('id')
   end
 
   def show
