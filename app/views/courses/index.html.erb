@@ -59,6 +59,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @courses.length %> de <%= @total %> curso(s)
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @courses %>

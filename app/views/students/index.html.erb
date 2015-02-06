@@ -79,6 +79,13 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @students.length %> de <%= @total %> aluno(s)
+      </td>
+    <tr>
   </tbody>
-</table>
+
+  </table>
+
 <%= paginate @students %>

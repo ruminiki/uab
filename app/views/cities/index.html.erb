@@ -66,7 +66,11 @@
       
       </tr>
     <% end %>
-
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @cities.length %> de <%= @total %> cidade(s)
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @cities %>

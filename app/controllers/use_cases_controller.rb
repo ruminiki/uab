@@ -6,6 +6,7 @@ class UseCasesController < ApplicationController
 
   def index
     @use_cases = self.search(params, UseCase)
+    @total = UseCase.distinct.count('id')
   end
 
   def show

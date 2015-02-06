@@ -69,6 +69,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @employees.length %> de <%= @total %> colaborador(es)
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @employees %>

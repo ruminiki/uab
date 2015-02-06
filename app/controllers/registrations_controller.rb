@@ -8,10 +8,8 @@ class RegistrationsController < ApplicationController
 
   def index
     @registrations = self.search(params, Registration)
-    @registration = Registration.new #para ser usado no form de pesquisa  no index
-
-    #render :json => params
-
+    @total         = Registration.distinct.count('id')
+    @registration  = Registration.new #para ser usado no form de pesquisa  no index
   end
 
   def edit

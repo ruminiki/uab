@@ -55,6 +55,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @document_categories.length %> de <%= @total %> categoria(s)
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @document_categories %>

@@ -7,6 +7,7 @@ class CitiesController < ApplicationController
 
   def index
     @cities = self.search(params, City)
+    @total = City.distinct.count('id')
   end
 
   def show

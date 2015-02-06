@@ -20,6 +20,7 @@ class EventsController < ApplicationController
       @selected_month = @selected_month.strftime("%B - %Y")
     end
     @events = self.search(params, Event)
+    @total = Event.distinct.count('id')
   end
 
   def show

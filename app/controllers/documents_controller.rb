@@ -4,6 +4,7 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = Document.all
+    @total = Document.distinct.count('id')
     respond_with(@documents)
   end
 

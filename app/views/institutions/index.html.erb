@@ -62,6 +62,15 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        <% if @institutions.length == 1 %>
+          Exibindo <%= @institutions.length %> de <%= @total %> instituição
+        <% else %>
+          Exibindo <%= @institutions.length %> de <%= @total %> instituições
+        <% end %>
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @institutions %>

@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 
   def index
     @students = self.search(params, Student)
+    @total    = Student.distinct.count('id')
     respond_with(@students)
   end
 

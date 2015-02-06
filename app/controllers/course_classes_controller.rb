@@ -11,6 +11,7 @@ class CourseClassesController < ApplicationController
 
   def index
     @course_classes = self.search(params, CourseClass)
+    @total = CourseClass.distinct.count('id')
     respond_with(@course_classes)
   end
 

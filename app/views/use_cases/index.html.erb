@@ -58,6 +58,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @use_cases.length %> de <%= @total %> caso(s) de uso
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @use_cases %>

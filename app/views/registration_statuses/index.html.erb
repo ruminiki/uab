@@ -58,6 +58,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @registration_statuses.length %> de <%= @total %> status
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @registration_statuses %>

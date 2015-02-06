@@ -6,6 +6,7 @@ class RegistrationStatusesController < ApplicationController
 
   def index
     @registration_statuses = self.search(params, RegistrationStatus)
+    @total = RegistrationStatus.distinct.count('id')
     respond_with(@registration_statuses)
   end  
   

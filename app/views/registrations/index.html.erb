@@ -73,6 +73,12 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @registrations.length %> de <%= @total %> matrícula(s)
+      </td>
+    <tr>
   </tbody>
 </table>
+
 <%= paginate @registrations %>

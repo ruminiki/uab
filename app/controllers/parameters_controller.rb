@@ -6,6 +6,7 @@ class ParametersController < ApplicationController
 
   def index
     @parameters = self.search(params, Parameter)
+    @total = Parameter.distinct.count('id')
     respond_with(@parameters)
   end
 

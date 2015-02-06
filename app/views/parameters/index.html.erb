@@ -59,6 +59,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="7">
+        Exibindo <%= @parameters.length %> de <%= @total %> parâmetro(s)
+      </td>
+    <tr>
   </tbody>
 </table>
 <%= paginate @parameters %>
